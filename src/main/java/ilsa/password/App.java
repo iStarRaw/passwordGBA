@@ -1,5 +1,6 @@
 package ilsa.password;
 
+import ilsa.password.models.Password;
 
 public class App {
 

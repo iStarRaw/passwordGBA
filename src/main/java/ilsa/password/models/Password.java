@@ -1,4 +1,4 @@
-package ilsa.password;
+package ilsa.password.models;
 
 public class Password {
 	private int length;
