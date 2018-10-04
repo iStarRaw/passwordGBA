@@ -59,6 +59,9 @@ local.properties
 .scala_dependencies
 .worksheet
 
+# Maven Dependencies
+pom.xml
+
 ### Eclipse Patch ###
 # Eclipse Core
 .project
