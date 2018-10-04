@@ -1,10 +1,17 @@
 package ilsa.password;
 
 public class Password {
+	private int length;
 
 	public Password(int length) {
-		// TODO Auto-generated constructor stub
+		this.length = length;
 	}
+
+	public int getLength() {
+		return length;
+	}
+	
+	
 	
 
 }
