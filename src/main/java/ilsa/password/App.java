@@ -1,28 +1,20 @@
 package ilsa.password;
 
-import ilsa.password.models.Password;
+
+import ilsa.password.generator.PasswordGenerator;
 
 public class App {
 
 	public static void main(String[] args) {
 		
-		Password password = new Password(8);
+		PasswordGenerator pg = new PasswordGenerator(8);
 		
-		for (int i = 0; i < password.getLength(); i++) {
-			
-			generateChar();
-					
-		}
 		
 		
 		
 
 	}
 
-	private static void generateChar() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 
 }
