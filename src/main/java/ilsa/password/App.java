@@ -10,17 +10,19 @@ public class App {
 		
 		for (int i = 0; i < password.getLength(); i++) {
 			
-			
 			generateChar();
 					
 		}
-			
+		
+		
+		
 
 	}
 
 	private static void generateChar() {
-		// TODO char pikken uit al beperkte groep chars
+		// TODO Auto-generated method stub
 		
 	}
+
 
 }
