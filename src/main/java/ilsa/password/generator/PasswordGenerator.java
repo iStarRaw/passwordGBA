@@ -20,26 +20,58 @@ public class PasswordGenerator {
 
 	}
 
-	private String createPassword() {
+	private void createPassword() {
 		for (int i = 0; i < password.getLength(); i++) {
-			generateChar(i);
+			addChar(i);
 
 			System.out.println(password.getPassword()[i]);
 		}
 
-		return password.toString();
-
 	}
 
-	private int generateChar(int index) {
+	
+	
+	private int addChar(int index) {
 		
 		if (index < 2) {
 			// pick from all possibilities
-			int randomInt = 
+			return 0;
 		}
-			int randomInt = secGenerator.nextInt(cbox.getLetters().length);
 		
-		return randomInt;
+		
+		if (!twoBeforeSame() && !duplicatesExist()) {
+			//pick from all possibilities
+		} else if (duplicatesExist()) {
+			//pick from all without the duplicate
+		}
+		
+		if (twoBeforeSame && threeBeforeSame()) {
+			if (duplicatesExist()) {
+				//pick from other sort without the duplicate
+			}
+			//pick from all possibilities
+		}
+		
+		//condition that two of the same type are not allowed together
+		if (twoBeforeSame()) {
+			if (duplicatesExist()) {
+				//pick from all without the duplicate
+			}
+			if (sequenceExists()) {
+				//pick same sort without lastChar +1 or -1
+			}
+			//pick the same sort
+		}
+		
+		
+		//condition that four of the same type are not allowed together
+		if (threeBeforeSame()) {
+			//pick another
+		}
+		
+		
+		
+		return 0;
 
 	}
 
