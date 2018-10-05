@@ -22,24 +22,27 @@ public class PasswordGenerator {
 
 	private String createPassword() {
 		for (int i = 0; i < password.getLength(); i++) {
-			password.getPassword()[i] = generateChar(i);
+			generateChar(i);
 
 			System.out.println(password.getPassword()[i]);
 		}
-
 
 		return password.toString();
 
 	}
 
 	private int generateChar(int index) {
-		// pick from all letters
-		int randomInt = secGenerator.nextInt(cbox.getLetters().length);
+		
+		if (index < 2) {
+			// pick from all possibilities
+			int randomInt = 
+		}
+			int randomInt = secGenerator.nextInt(cbox.getLetters().length);
+		
 		return randomInt;
 
 	}
 
-//	password[i] = ALL_CHARS[rand.nextInt(ALL_CHARS.length)]
 
 	public char generateChar(String candidateChars) {
 		int index = secGenerator.nextInt(candidateChars.length());
@@ -51,10 +54,6 @@ public class PasswordGenerator {
 		return randomChar;
 	}
 
-	// hulpmethode van generateChar
-	private char asciiToChar(int asciiNumber) {
-		return (char) asciiNumber;
-
-	}
+	
 
 }

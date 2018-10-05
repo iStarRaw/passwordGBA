@@ -7,9 +7,8 @@ public class App {
 
 	public static void main(String[] args) {
 		
+		
 		PasswordGenerator pg = new PasswordGenerator(8);
-		
-		
 		
 		
 
