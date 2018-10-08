@@ -39,35 +39,35 @@ public class PasswordGenerator {
 		}
 		
 		
-		if (!twoBeforeSame() && !duplicatesExist()) {
-			//pick from all possibilities
-		} else if (duplicatesExist()) {
-			//pick from all without the duplicate
-		}
-		
-		if (twoBeforeSame && threeBeforeSame()) {
-			if (duplicatesExist()) {
-				//pick from other sort without the duplicate
-			}
-			//pick from all possibilities
-		}
-		
-		//condition that two of the same type are not allowed together
-		if (twoBeforeSame()) {
-			if (duplicatesExist()) {
-				//pick from all without the duplicate
-			}
-			if (sequenceExists()) {
-				//pick same sort without lastChar +1 or -1
-			}
-			//pick the same sort
-		}
-		
-		
-		//condition that four of the same type are not allowed together
-		if (threeBeforeSame()) {
-			//pick another
-		}
+//		if (!twoBeforeSame() && !duplicatesExist()) {
+//			//pick from all possibilities
+//		} else if (duplicatesExist()) {
+//			//pick from all without the duplicate
+//		}
+//		
+//		if (twoBeforeSame && threeBeforeSame()) {
+//			if (duplicatesExist()) {
+//				//pick from other sort without the duplicate
+//			}
+//			//pick from all possibilities
+//		}
+//		
+//		//condition that two of the same type are not allowed together
+//		if (twoBeforeSame()) {
+//			if (duplicatesExist()) {
+//				//pick from all without the duplicate
+//			}
+//			if (sequenceExists()) {
+//				//pick same sort without lastChar +1 or -1
+//			}
+//			//pick the same sort
+//		}
+//		
+//		
+//		//condition that four of the same type are not allowed together
+//		if (threeBeforeSame()) {
+//			//pick another
+//		}
 		
 		
 		
