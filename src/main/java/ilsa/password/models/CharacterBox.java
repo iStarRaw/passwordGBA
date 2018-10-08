@@ -22,10 +22,42 @@ public class CharacterBox {
 		fillSymbols();
 		
 	}
-
+	
 	
 
 	
+
+	
+
+	public int[] getLetterBox() {
+		return letterBox;
+	}
+
+
+
+
+
+
+
+	public int[] getDigitBox() {
+		return digitBox;
+	}
+
+
+
+
+
+
+
+	public int[] getSymbolBox() {
+		return symbolBox;
+	}
+
+
+
+
+
+
 
 	private void fillLetters() {
 		// 65 tm 90
