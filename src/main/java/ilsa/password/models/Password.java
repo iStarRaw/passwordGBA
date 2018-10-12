@@ -25,7 +25,6 @@ public class Password {
 		for (int i = 0; i < password.length; i++) {
 			passwordString.append(Character.toString((char) i));
 		}
-		System.out.println(passwordString.toString());
 		return passwordString.toString();
 	}
 
