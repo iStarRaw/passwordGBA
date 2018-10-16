@@ -76,6 +76,7 @@ public class PasswordGenerator {
 	}
 
 
+	//TODO godarray meegeven als parameter ipv string
 	public char generateChar(String candidateChars) {
 		int index = secGenerator.nextInt(candidateChars.length());
 

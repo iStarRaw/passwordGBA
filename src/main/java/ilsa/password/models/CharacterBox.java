@@ -14,8 +14,6 @@ public class CharacterBox {
 	// 0 tm 47 (32 NIET), 58 tm 64, 91 tm 96, 123 tm 254
 	private int[] symbolBox = new int[192];
 	
-	
-	
 	public CharacterBox() {
 		fillLetters();
 		fillDigits();
@@ -23,20 +21,10 @@ public class CharacterBox {
 		
 	}
 	
-	
-
-	
-
-	
 
 	public int[] getLetterBox() {
 		return letterBox;
 	}
-
-
-
-
-
 
 
 	public int[] getDigitBox() {
@@ -44,19 +32,9 @@ public class CharacterBox {
 	}
 
 
-
-
-
-
-
 	public int[] getSymbolBox() {
 		return symbolBox;
 	}
-
-
-
-
-
 
 
 	private void fillLetters() {
