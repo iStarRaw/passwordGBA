@@ -129,4 +129,11 @@ public class CharacterBox {
 		
 	}
 
+	public int generateWithout(int duplicate) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+
 }
