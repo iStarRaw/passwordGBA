@@ -14,13 +14,6 @@ public class CharacterBox {
 	// condities opstellen en dan box kleiner maken
 	private List<Integer> box;
 
-	// 65 tm 90 en 97 tm 122
-	private int[] letterBox = new int[52];
-	// 48 tm 57
-	private int[] digitBox = new int[10];
-	// 0 tm 47 (32 NIET), 58 tm 64, 91 tm 96, 123 tm 254
-	private int[] symbolBox = new int[192];
-
 	public CharacterBox() {
 		box = new ArrayList<>();
 		fillBox();
@@ -84,6 +77,27 @@ public class CharacterBox {
 		}
 
 	}
+	
+	
+	private void deleteLetters() {
+		// 65 tm 90
+		// 97 tm 122
+		
+	}
+	
+	private void deleteDigits() {
+		// 48 tm 57
+	}
+	
+	private void deleteSymbols() {
+		// 0 tm 31
+		// 33 tm 47
+		// 58 tm 64
+		// 91 tm 96
+		// 123 tm 254
+		
+	}
+	
 
 	public int addChar(int index) {
 
