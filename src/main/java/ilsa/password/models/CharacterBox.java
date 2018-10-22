@@ -1,5 +1,8 @@
 package ilsa.password.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author ilsadejager Class that defines the characters out of which the
  *         password will be made (Extended ASCII).
@@ -7,45 +10,42 @@ package ilsa.password.models;
  */
 public class CharacterBox {
 
+	// alle characters in 1 arraylist stoppen
+	// condities opstellen en dan box kleiner maken
+	private List<Integer> box;
+
 	// 65 tm 90 en 97 tm 122
 	private int[] letterBox = new int[52];
 	// 48 tm 57
 	private int[] digitBox = new int[10];
 	// 0 tm 47 (32 NIET), 58 tm 64, 91 tm 96, 123 tm 254
 	private int[] symbolBox = new int[192];
-	
+
 	public CharacterBox() {
+		box = new ArrayList<>();
+		fillBox();
+
+	}
+
+	public List<Integer> getBox() {
+		return box;
+	}
+
+	private void fillBox() {
 		fillLetters();
 		fillDigits();
 		fillSymbols();
-		
 	}
-	
-
-	public int[] getLetterBox() {
-		return letterBox;
-	}
-
-
-	public int[] getDigitBox() {
-		return digitBox;
-	}
-
-
-	public int[] getSymbolBox() {
-		return symbolBox;
-	}
-
 
 	private void fillLetters() {
 		// 65 tm 90
 		for (int i = 0; i < 26; i++) {
-			letterBox[i] = 65 + i;
+			box.add(65 + i);
 		}
 
 		// 97 tm 122
 		for (int i = 26, j = 0; i < 52; i++, j++) {
-			letterBox[i] = 97 + j;
+			box.add(97 + j);
 		}
 
 	}
@@ -53,35 +53,76 @@ public class CharacterBox {
 	private void fillDigits() {
 		// 48 tm 57
 		for (int i = 0; i < 10; i++) {
-			digitBox[i] = 48 + i;
+			box.add(48 + i);
 		}
 	}
 
 	private void fillSymbols() {
 		// 0 tm 31 (32 NIET)
 		for (int i = 0; i < 32; i++) {
-			symbolBox[i] = i;
+			box.add(i);
 		}
 
 		// 33 tm 47
 		for (int i = 32, j = 0; i < 47; i++, j++) {
-			symbolBox[i] = 33 + j;
+			box.add(33 + j);
 		}
 
 		// 58 tm 64
 		for (int i = 47, j = 0; i < 54; i++, j++) {
-			symbolBox[i] = 58 + j;
+			box.add(58 + j);
 		}
 
 		// 91 tm 96
 		for (int i = 54, j = 0; i < 60; i++, j++) {
-			symbolBox[i] = 91 + j;
+			box.add(91 + j);
 		}
 
 		// 123 tm 254
 		for (int i = 60, j = 0; i < 192; i++, j++) {
-			symbolBox[i] = 123 + j;
+			box.add(123 + j);
 		}
+
+	}
+
+	public int addChar(int index) {
+
+		if (index < 2) {
+			// pick from all possibilities
+			return 0;
+		}
+
+//		if (!twoBeforeSame() && !duplicatesExist()) {
+//			//pick from all possibilities
+//		} else if (duplicatesExist()) {
+//			//pick from all without the duplicate
+//		}
+//		
+//		if (twoBeforeSame && threeBeforeSame()) {
+//			if (duplicatesExist()) {
+//				//pick from other sort without the duplicate
+//			}
+//			//pick from all possibilities
+//		}
+//		
+//		//condition that two of the same type are not allowed together
+//		if (twoBeforeSame()) {
+//			if (duplicatesExist()) {
+//				//pick from all without the duplicate
+//			}
+//			if (sequenceExists()) {
+//				//pick same sort without lastChar +1 or -1
+//			}
+//			//pick the same sort
+//		}
+//		
+//		
+//		//condition that four of the same type are not allowed together
+//		if (threeBeforeSame()) {
+//			//pick another
+//		}
+
+		return 0;
 
 	}
 
