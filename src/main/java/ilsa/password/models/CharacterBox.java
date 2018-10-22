@@ -1,5 +1,6 @@
 package ilsa.password.models;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class CharacterBox {
 	// alle characters in 1 arraylist stoppen
 	// condities opstellen en dan box kleiner maken
 	private List<Integer> box;
+	private SecureRandom secGenerator = new SecureRandom();
+	
 
 	public CharacterBox() {
 		box = new ArrayList<>();
@@ -82,11 +85,21 @@ public class CharacterBox {
 	private void deleteLetters() {
 		// 65 tm 90
 		// 97 tm 122
+		for (Integer digit : this.box) {
+			if (digit >= 65 && digit <= 90 || digit >= 97 && digit <= 122) {
+				box.remove(digit);
+			}
+		}
 		
 	}
 	
 	private void deleteDigits() {
 		// 48 tm 57
+		for (Integer digit : this.box) {
+			if (digit >= 48 && digit <= 57) {
+				box.remove(digit);
+			}
+		}
 	}
 	
 	private void deleteSymbols() {
@@ -95,49 +108,25 @@ public class CharacterBox {
 		// 58 tm 64
 		// 91 tm 96
 		// 123 tm 254
+		for (Integer digit : this.box) {
+			if (digit >= 0 && digit <= 31 || digit >= 33 && digit <= 47 || digit >= 58 && digit <= 64 || digit >= 91 && digit <= 96 || digit >= 123 && digit <= 254) {
+				box.remove(digit);
+			}
+		}
 		
 	}
 	
 
-	public int addChar(int index) {
+	
+	
+	public int generateFromAll() {
+		int index = secGenerator.nextInt(box.size());
 
-		if (index < 2) {
-			// pick from all possibilities
-			return 0;
+		while (index < 0 || index > box.size()) {
+			index = secGenerator.nextInt(box.size());
 		}
-
-//		if (!twoBeforeSame() && !duplicatesExist()) {
-//			//pick from all possibilities
-//		} else if (duplicatesExist()) {
-//			//pick from all without the duplicate
-//		}
-//		
-//		if (twoBeforeSame && threeBeforeSame()) {
-//			if (duplicatesExist()) {
-//				//pick from other sort without the duplicate
-//			}
-//			//pick from all possibilities
-//		}
-//		
-//		//condition that two of the same type are not allowed together
-//		if (twoBeforeSame()) {
-//			if (duplicatesExist()) {
-//				//pick from all without the duplicate
-//			}
-//			if (sequenceExists()) {
-//				//pick same sort without lastChar +1 or -1
-//			}
-//			//pick the same sort
-//		}
-//		
-//		
-//		//condition that four of the same type are not allowed together
-//		if (threeBeforeSame()) {
-//			//pick another
-//		}
-
-		return 0;
-
+		return box.get(index);
+		
 	}
 
 }
