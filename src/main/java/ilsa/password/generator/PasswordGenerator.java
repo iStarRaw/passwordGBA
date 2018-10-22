@@ -1,8 +1,6 @@
 package ilsa.password.generator;
 
 
-import java.util.Arrays;
-
 import ilsa.password.models.CharacterBox;
 import ilsa.password.models.Password;
 
@@ -29,7 +27,9 @@ public class PasswordGenerator  {
 
 	}
 	
-	public void addChar(int index) {
+	
+	
+	private void addChar(int index) {
 
 		if (index < 2) {
 			// pick from all possibilities
@@ -38,6 +38,7 @@ public class PasswordGenerator  {
 
 //		if (!twoBeforeSame() && !duplicatesExist()) {
 //			//pick from all possibilities
+//			password.getPassword()[index] = cbox.generateFromAll();
 //		} else if (duplicatesExist()) {
 //			//pick from all without the duplicate
 //		}
@@ -47,6 +48,7 @@ public class PasswordGenerator  {
 //				//pick from other sort without the duplicate
 //			}
 //			//pick from all possibilities
+//			password.getPassword()[index] = cbox.generateFromAll();
 //		}
 //		
 //		//condition that two of the same type are not allowed together

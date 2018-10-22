@@ -3,7 +3,6 @@ package ilsa.password.models;
 public class Password {
 	private int length;
 	private int[] password;
-	private CharacterBox cbox;
 
 
 	public Password(int length) {
