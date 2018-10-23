@@ -31,17 +31,17 @@ public class PasswordGenerator {
 			password.getPassword().add(cbox.generateFromAll());
 		}
 
-		if (!twoBeforeSame() && !duplicatesExist()) {
+		if (!twoBeforeSame() && !password.hasDuplicates()) {
 			// pick from all possibilities
 			password.getPassword().add(cbox.generateFromAll());
-//		} else if (duplicatesExist()) {
+//		} else if (password.hasDuplicates()) {
 //			//pick from all without the duplicate
 			int duplicate = getDuplicate();
 			password.getPassword().add(cbox.generateWithout(duplicate));
 //		}
 //		
 //		if (twoBeforeSame && threeBeforeSame()) {
-//			if (duplicatesExist()) {
+//			if (password.hasDuplicates()) {
 //				//pick from other sort without the duplicate
 //			}
 //			//pick from all possibilities
@@ -50,7 +50,7 @@ public class PasswordGenerator {
 //		
 //		//condition that two of the same type are not allowed together
 //		if (twoBeforeSame()) {
-//			if (duplicatesExist()) {
+//			if (password.hasDuplicates()) {
 //				//pick from all without the duplicate
 //			}
 //			if (sequenceExists()) {
@@ -79,23 +79,7 @@ public class PasswordGenerator {
 		return 0;
 	}
 
-	private boolean duplicatesExist() {
-		// TODO Auto-generated method stub
-		if (password.getPassword().size() < 2) {
-			return false;
-		}
-		
-		int occurrences = 0;
-		for (int i = 0; i < password.getLength() - 1; i++) {
-			if (password.getPassword().get(i) == password.getPassword().get(i + 1)) {
-				occurrences++;
-			}
-			if (occurrences == 2) {
-				return true;
-			}
-		}
-		return false;
-	}
+	
 	
 
 	private boolean twoBeforeSame() {
