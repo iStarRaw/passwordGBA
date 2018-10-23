@@ -16,9 +16,9 @@ public class PasswordGenerator {
 	}
 
 	private void createPassword() {
-		for (int i = 0; i < password.getPassword().size(); i++) {
+		for (int i = 0; i < password.getLength(); i++) {
 			addChar(i);
-
+			
 			System.out.println(password.getPassword().get(i));
 		}
 
@@ -31,13 +31,13 @@ public class PasswordGenerator {
 			password.getPassword().add(cbox.generateFromAll());
 		}
 
-		if (!twoBeforeSame() && !password.hasDuplicates()) {
+//		if (!password.isTwoBeforeSame() && !password.hasDuplicates()) {
 			// pick from all possibilities
 			password.getPassword().add(cbox.generateFromAll());
 //		} else if (password.hasDuplicates()) {
 //			//pick from all without the duplicate
-			int duplicate = getDuplicate();
-			password.getPassword().add(cbox.generateWithout(duplicate));
+//			int duplicate = getDuplicate();
+//			password.getPassword().add(cbox.generateWithout(duplicate));
 //		}
 //		
 //		if (twoBeforeSame && threeBeforeSame()) {
@@ -64,31 +64,12 @@ public class PasswordGenerator {
 //		if (threeBeforeSame()) {
 //			//pick another
 //		}
-
-			password.getPassword().add(cbox.generateFromAll());
-
-		}
-
-	}
-
-	private int getDuplicate() {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < password.getLength(); i++) {
-
-		}
-		return 0;
-	}
-
-	
-	
-
-	private boolean twoBeforeSame() {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < password.getLength(); i++) {
-			
-		}
 		
-		return false;
+		password.getPassword().add(cbox.generateFromAll());
+
 	}
+
+
+	
 
 }

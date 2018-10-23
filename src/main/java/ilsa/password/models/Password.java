@@ -25,24 +25,29 @@ public class Password {
 		this.hasDuplicates = duplicatesExist();
 		return hasDuplicates;
 	}
-
-	// check with junit
+	
+	
+	
+	// TODO check with junit
 	private boolean duplicatesExist() {
 		if (password.size() < 2) {
 			return false;
 		}
 
-		int occurrences = 0;
-		for (int i = 0; i < password.size(); i++) {
-			if (password.get(password.size() - 1) == password.get(i)) {
-				occurrences++;
-			}
-			if (occurrences == 2) {
+		for (int i = 0; i < password.size() - 1; i++) {
+			if (password.get(i) == password.get(password.size() - 1)) {
 				return true;
 			}
 		}
 		return false;
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public String toString() {
@@ -52,5 +57,7 @@ public class Password {
 		}
 		return passwordString.toString();
 	}
+
+	
 
 }
