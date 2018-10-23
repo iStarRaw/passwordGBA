@@ -26,9 +26,9 @@ public class Password {
 		return hasDuplicates;
 	}
 	
-	
-	
+
 	// TODO check with junit
+	//TODO lijst maken met duplicates zodat ik snel kan vinden
 	private boolean duplicatesExist() {
 		if (password.size() < 2) {
 			return false;
@@ -41,11 +41,6 @@ public class Password {
 		}
 		return false;
 	}
-	
-	
-	
-	
-	
 	
 	
 
