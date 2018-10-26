@@ -20,15 +20,14 @@ public class Password {
 	public int getLength() {
 		return length;
 	}
-	
+
 	public boolean hasDuplicates() {
 		this.hasDuplicates = duplicatesExist();
 		return hasDuplicates;
 	}
-	
 
 	// TODO check with junit
-	//TODO lijst maken met duplicates zodat ik snel kan vinden
+	// TODO lijst maken met duplicates zodat ik snel kan vinden
 	private boolean duplicatesExist() {
 		if (password.size() < 2) {
 			return false;
@@ -41,8 +40,20 @@ public class Password {
 		}
 		return false;
 	}
-	
-	
+
+//	public boolean checkSameSort(int fromIndex, int toIndex, boolean isSame) {
+//		// stop conditie
+//		while (fromIndex != toIndex) {
+//			// hier de inhoud vd functie: same sort uitvinden
+//			
+//			
+//			return isSame;
+//			
+//			// opnieuw aanroepen
+//			checkSameSort(fromIndex - 1, toIndex);
+//		}
+//
+//	}
 
 	@Override
 	public String toString() {
@@ -52,7 +63,5 @@ public class Password {
 		}
 		return passwordString.toString();
 	}
-
-	
 
 }

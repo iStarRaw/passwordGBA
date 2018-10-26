@@ -31,6 +31,11 @@ public class PasswordGenerator {
 			password.getPassword().add(cbox.generateFromAll());
 		}
 
+		//if lastTwoSameSort() then getSort() and add.generateFromSameSort()
+		//if lastThreeSameSort() then getSort() and add.generateFromOtherSort()
+		
+		
+		
 //		if (!password.isTwoBeforeSame() && !password.hasDuplicates()) {
 			// pick from all possibilities
 			password.getPassword().add(cbox.generateFromAll());
