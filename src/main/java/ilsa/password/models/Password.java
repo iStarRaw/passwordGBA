@@ -29,7 +29,7 @@ public class Password {
 	// TODO check with junit
 	// TODO lijst maken met duplicates zodat ik snel kan vinden
 	private boolean duplicatesExist() {
-		if (password.size() < 2) {
+		if (password.size() < 1) {
 			return false;
 		}
 
@@ -40,20 +40,33 @@ public class Password {
 		}
 		return false;
 	}
-
-//	public boolean checkSameSort(int fromIndex, int toIndex, boolean isSame) {
-//		// stop conditie
-//		while (fromIndex != toIndex) {
-//			// hier de inhoud vd functie: same sort uitvinden
-//			
-//			
-//			return isSame;
-//			
-//			// opnieuw aanroepen
-//			checkSameSort(fromIndex - 1, toIndex);
-//		}
-//
-//	}
+	
+	// TODO
+	public int findDuplicate() {
+		
+		int lastIndex = 0;
+		for (int i = 0; i < password.size() - 1; i++) {
+			if (password.get(i) == password.get(password.size() - 1)) {
+				lastIndex = i;
+			}
+		}
+		//last index of duplicate
+		return 0;
+	}	
+	
+	// TODO met ranges werken van cbox???
+	public String getSort(int index) {
+		char toCheck = (char) index;
+		
+		if (Character.isDigit(toCheck)) {
+			return "Digit";
+		} else if (Character.isLetter(toCheck)) {
+			return "Letter";
+		}
+		return "Symbol";
+		
+	}
+	
 
 	@Override
 	public String toString() {
@@ -63,5 +76,49 @@ public class Password {
 		}
 		return passwordString.toString();
 	}
+
+	//TODO wat doe ik met al deze sameSort methodes...geen mogelijkheid tot recursie of wel...???
+	
+	public boolean firstTwoLetter() {
+		try {
+			if (Character.isLetter(password.get(password.size() - 3)) && Character.isLetter(password.get(password.size() - 2))) {
+				return true;
+			}
+			return false;
+
+		} catch (IndexOutOfBoundsException e) {
+			return false;
+		}
+	}
+	
+	public boolean firstTwoDigit() {
+		try {
+			if (Character.isDigit(password.get(password.size() - 3)) && Character.isDigit(password.get(password.size() - 2))) {
+				return true;
+			}
+			return false;
+
+		} catch (IndexOutOfBoundsException e) {
+			return false;
+		}
+	}
+
+	public boolean firstTwoSymbol() {
+		try {
+			if (firstTwoDigit() && firstTwoLetter()) {
+				return true;
+			}
+			return false;
+
+		} catch (IndexOutOfBoundsException e) {
+			return false;
+		}
+	}
+	
+	public boolean isSymbol(int index) {
+		//TODO
+		return false;
+	}
+	
 
 }

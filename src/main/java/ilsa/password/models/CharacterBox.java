@@ -82,6 +82,11 @@ public class CharacterBox {
 	}
 	
 	
+	private void returnToFullBox() {
+		this.box.clear();
+		fillBox();
+	}
+	
 	private void deleteLetters() {
 		// 65 tm 90
 		// 97 tm 122
@@ -119,13 +124,36 @@ public class CharacterBox {
 
 	
 	
-	public int generateFromAll() {
+	public int generateChar() {
 		int index = secGenerator.nextInt(box.size());
 
 		while (index < 0 || index > box.size()) {
 			index = secGenerator.nextInt(box.size());
 		}
 		return box.get(index);
+		
+	}
+	
+	public int generateFrom(String nameSort) {
+		switch (nameSort) {
+		case "Digit":
+			deleteLetters();
+			deleteSymbols();
+			
+			break;
+		case "Letter":
+			deleteSymbols();
+			deleteDigits();
+			
+			break;
+
+		case "Symbol":
+			deleteDigits();
+			deleteLetters();
+			
+			break;
+		}
+		return generateChar();
 		
 	}
 
