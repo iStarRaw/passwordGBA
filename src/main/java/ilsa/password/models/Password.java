@@ -6,7 +6,6 @@ import java.util.List;
 public class Password {
 	private int length;
 	private List<Integer> password;
-	private boolean hasDuplicates;
 
 	public Password(int length) {
 		this.length = length;
@@ -20,16 +19,11 @@ public class Password {
 	public int getLength() {
 		return length;
 	}
-
-	public boolean hasDuplicates() {
-		this.hasDuplicates = duplicatesExist();
-		return hasDuplicates;
-	}
 	
 	
 	public boolean areSameSort(int totalToCheck, int currentIndex) {
-		
 		return areSameSortHelper(totalToCheck, currentIndex);
+		
 	}
 	
 	//TODO checken met versie thuis
@@ -49,7 +43,7 @@ public class Password {
 
 	// TODO check with junit
 	// TODO lijst maken met duplicates zodat ik snel kan vinden
-	private boolean duplicatesExist() {
+	public boolean lastIsDuplicate() {
 		if (password.size() < 1) {
 			return false;
 		}
@@ -62,18 +56,10 @@ public class Password {
 		return false;
 	}
 	
-	// TODO
-	public int findDuplicate() {
-		
-		int lastIndex = 0;
-		for (int i = 0; i < password.size() - 1; i++) {
-			if (password.get(i) == password.get(password.size() - 1)) {
-				lastIndex = i;
-			}
-		}
-		//last index of duplicate
-		return 0;
+	public int getDuplicate() {
+		return password.get(password.size() - 1);
 	}	
+	
 	
 	// TODO met ranges werken van cbox???
 	public String getSort(int index) {
