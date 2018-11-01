@@ -54,29 +54,25 @@ public class CharacterBox {
 		}
 	}
 
+	//TODO checken na verandering
 	private void fillSymbols() {
-		// 0 tm 31 (32 NIET)
-		for (int i = 0; i < 32; i++) {
-			box.add(i);
-		}
-
 		// 33 tm 47
-		for (int i = 32, j = 0; i < 47; i++, j++) {
-			box.add(33 + j);
+		for (int i = 0; i < 15; i++) {
+			box.add(33 + i);
 		}
 
 		// 58 tm 64
-		for (int i = 47, j = 0; i < 54; i++, j++) {
+		for (int i = 15, j = 0; i < 22; i++, j++) {
 			box.add(58 + j);
 		}
 
 		// 91 tm 96
-		for (int i = 54, j = 0; i < 60; i++, j++) {
+		for (int i = 22, j = 0; i < 28; i++, j++) {
 			box.add(91 + j);
 		}
 
 		// 123 tm 254
-		for (int i = 60, j = 0; i < 192; i++, j++) {
+		for (int i = 28, j = 0; i < 132; i++, j++) {
 			box.add(123 + j);
 		}
 
@@ -109,6 +105,7 @@ public class CharacterBox {
 	}
 	
 	
+	//TODO checken na verandering symbol fill box
 	private void deleteSymbols() {
 		// 0 tm 31
 		// 33 tm 47

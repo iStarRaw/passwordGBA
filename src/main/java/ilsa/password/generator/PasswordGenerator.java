@@ -26,7 +26,7 @@ public class PasswordGenerator {
 
 			System.out.println(password.getPassword().get(i));
 		}
-
+		System.out.println(password.toString());
 	}
 
 	private void addChar(int indexToAdd) {
@@ -50,7 +50,7 @@ public class PasswordGenerator {
 				duplicates.add(duplicate);
 			}
 
-			if (password.areSameSort(2, indexToAdd)) {
+			if (password.areSameSort(2)) {
 				generateSame = true;
 				sort = password.getSort(indexToAdd);
 
@@ -70,10 +70,10 @@ public class PasswordGenerator {
 				duplicates.add(duplicate);
 			}
 
-			if (password.areSameSort(3, indexToAdd)) {
+			if (password.areSameSort(3)) {
 				sort = password.getSort(indexToAdd);
 
-			} else if (password.areSameSort(2, indexToAdd)) {
+			} else if (password.areSameSort(2)) {
 				// laatste 2 checken
 				generateSame = true;
 				sort = password.getSort(indexToAdd);

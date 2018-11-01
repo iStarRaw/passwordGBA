@@ -19,40 +19,40 @@ public class Password {
 	public int getLength() {
 		return length;
 	}
-	
-	
-	public boolean areSameSort(int totalToCheck, int currentIndex) {
-		boolean sameSort = false;
-		return areSameSortHelper(totalToCheck, currentIndex, sameSort, 0);
-		
+
+	public boolean areSameSort(int indexesToCheck) {
+		boolean sameSort = true;
+		int lastIndex = password.size() - 1;
+
+		return areSameSortHelper(indexesToCheck, lastIndex, sameSort, 1);
+
 	}
-	
-	//TODO checken met versie thuis
-	public boolean areSameSortHelper(int totalToCheck, int currentIndex, boolean sameSort, int count) {
-		
-		//stopconditie
+
+	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
+			System.out.println("In stopconditie");
 			return sameSort;
 		}
-		
-		while (totalToCheck != 0) {
-			char someChar = (char)Integer.parseInt(String.valueOf(password.get(currentIndex)));
-			char charToComp = (char)Integer.parseInt(String.valueOf(password.get(currentIndex - 1)));
-			
-			if (Character.isDigit(someChar) && Character.isDigit(charToComp) ||
-					Character.isLetter(someChar) && Character.isLetter(charToComp) ||
-					!Character.isDigit(someChar) && !Character.isLetter(someChar) && !Character.isDigit(charToComp) && !Character.isLetter(charToComp)) {
+
+		char lastChar = (char) Integer.parseInt(String.valueOf(password.get(lastIndexToCheck)));
+		char charToComp = (char) Integer.parseInt(String.valueOf(password.get(lastIndexToCheck - 1)));
+
+		if (Character.isDigit(lastChar) && Character.isDigit(charToComp) ||
+		  Character.isLetter(lastChar) && Character.isLetter(charToComp) || 
+		  !Character.isDigit(lastChar) && !Character.isLetter(lastChar) && !Character.isDigit(charToComp) && !Character.isLetter(charToComp)) {
+
+			boolean tempSort = true;
+
+			if (sameSort && tempSort) {
 				sameSort = true;
 			}
-			count++;
-			
+			sameSort = false;
 		}
-		return areSameSortHelper(totalToCheck, currentIndex - 1, sameSort, count);
-		
+		count++;
+
+		return areSameSortHelper(totalToCheck, lastIndexToCheck - 1, sameSort, count);
+
 	}
-	
-	
-	
 
 	// TODO check with junit
 	// TODO lijst maken met duplicates zodat ik snel kan vinden
@@ -68,44 +68,42 @@ public class Password {
 		}
 		return false;
 	}
-	
+
 	public int getDuplicate() {
 		return password.get(password.size() - 1);
-	}	
-	
-	
+	}
+
 	// TODO met ranges werken van cbox???
 	public String getSort(int index) {
 		char toCheck = (char) index;
-		
+
 		if (Character.isDigit(toCheck)) {
 			return "Digit";
 		} else if (Character.isLetter(toCheck)) {
 			return "Letter";
 		}
 		return "Symbol";
-		
+
 	}
-	
+
 	public boolean isSequence() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	public int getForbiddenInt() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
 
 	@Override
 	public String toString() {
 		StringBuilder passwordString = new StringBuilder();
-		for (int i = 0; i < password.size(); i++) {
-			passwordString.append(Character.toString((char) i));
+		for (Integer number : password) {
+			char thisChar = (char)Integer.parseInt(String.valueOf(number));
+			passwordString.append(Character.toString(thisChar));
 		}
 		return passwordString.toString();
 	}
-	
 
 }
