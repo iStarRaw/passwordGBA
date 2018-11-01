@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * @author ilsadejager Class that defines the characters out of which the
  *         password will be made (Extended ASCII).
+ *         Spatie (32) en 0 (48) zijn uitgesloten.
  *
  */
 public class CharacterBox {
@@ -15,22 +16,16 @@ public class CharacterBox {
 	// condities opstellen en dan box kleiner maken
 	private List<Integer> box;
 	private SecureRandom secGenerator = new SecureRandom();
-	private List<Integer> duplicates;
 	
-
+	
 	public CharacterBox() {
 		box = new ArrayList<>();
-		duplicates = new ArrayList<>();
 		fillBox();
 		
 	}
 
 	public List<Integer> getBox() {
 		return box;
-	}
-
-	public List<Integer> getWithout() {
-		return duplicates;
 	}
 
 	private void fillBox() {
@@ -53,9 +48,9 @@ public class CharacterBox {
 	}
 
 	private void fillDigits() {
-		// 48 tm 57
+		// 49 tm 57 (48 NIET)
 		for (int i = 0; i < 10; i++) {
-			box.add(48 + i);
+			box.add(49 + i);
 		}
 	}
 
@@ -105,13 +100,14 @@ public class CharacterBox {
 	}
 	
 	private void deleteDigits() {
-		// 48 tm 57
+		// 49 tm 57
 		for (Integer digit : this.box) {
-			if (digit >= 48 && digit <= 57) {
+			if (digit >= 49 && digit <= 57) {
 				box.remove(digit);
 			}
 		}
 	}
+	
 	
 	private void deleteSymbols() {
 		// 0 tm 31
@@ -120,11 +116,21 @@ public class CharacterBox {
 		// 91 tm 96
 		// 123 tm 254
 		for (Integer digit : this.box) {
-			if (digit >= 0 && digit <= 31 || digit >= 33 && digit <= 47 || digit >= 58 && digit <= 64 || digit >= 91 && digit <= 96 || digit >= 123 && digit <= 254) {
+			char someChar = (char)Integer.parseInt(String.valueOf(digit));
+			if (!Character.isDigit(someChar)) {
+//			if (digit >= 0 && digit <= 31 || digit >= 33 && digit <= 47 || digit >= 58 && digit <= 64 || digit >= 91 && digit <= 96 || digit >= 123 && digit <= 254) {
 				box.remove(digit);
 			}
 		}
 		
+	}
+	
+	private void deleteInt(int intToDelete) {
+		for (Integer digit : this.box) {
+			if (digit == intToDelete) {
+				box.remove(digit);
+			}
+		}
 	}
 	
 
@@ -141,9 +147,7 @@ public class CharacterBox {
 	}
 	
 	//TODO aanpassen met in acht neming parameters
-	public int generateChar(String sort, int forbiddenInt) {
-		//duplicates List ook meenemen
-		
+	public int generateChar(String sort, boolean generateSame, int forbiddenInt) {
 		int index = secGenerator.nextInt(box.size());
 
 		while (index < 0 || index > box.size()) {
@@ -153,9 +157,10 @@ public class CharacterBox {
 		
 	}
 	
+		
 	
 	
-	public int generateFrom(String nameSort) {
+	private int generateFrom(String nameSort) {
 		switch (nameSort) {
 		case "Digit":
 			deleteLetters();

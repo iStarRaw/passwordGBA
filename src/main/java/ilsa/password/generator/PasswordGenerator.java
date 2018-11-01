@@ -1,5 +1,8 @@
 package ilsa.password.generator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ilsa.password.models.CharacterBox;
 import ilsa.password.models.Password;
 
@@ -7,10 +10,12 @@ public class PasswordGenerator {
 
 	private Password password;
 	private CharacterBox cbox;
+	private List<Integer> duplicates;
 
 	public PasswordGenerator(int length) {
 		password = new Password(length);
 		cbox = new CharacterBox();
+		duplicates = new ArrayList<>();
 
 		createPassword();
 	}
@@ -26,54 +31,64 @@ public class PasswordGenerator {
 
 	private void addChar(int indexToAdd) {
 		int duplicate = 0;
+		boolean generateSame = false;
+		boolean generateAll = false;
 		String sort = "";
 		int forbiddenInt = 0;
 
+		// bij 0 en 1
 		if (indexToAdd < 2) {
-			// pick from all possibilities
 			password.getPassword().add(cbox.generateChar());
-			
-		}
 
-		if (indexToAdd == 2) {
-			
+		} 
+		
+		//bij index 2
+		else if (indexToAdd == 2) {
+
 			if (password.hasDuplicates()) {
 				duplicate = password.findDuplicate();
-				cbox.getWithout().add(duplicate);
+				duplicates.add(duplicate);
 			}
-			
+
 			if (password.areSameSort(2, indexToAdd)) {
+				generateSame = true;
 				sort = password.getSort(indexToAdd);
+
 				if (password.isSequence()) {
 					forbiddenInt = password.getForbiddenInt();
 				}
-				//generateSameSort
 			}
-			//TODO genereren met in acht neming van uitkomsten if statements
-			password.getPassword().add(cbox.generateChar(sort, forbiddenInt));			
-			
-		}
+			password.getPassword().add(cbox.generateChar(sort, generateSame, forbiddenInt));
+
+		} 
 		
-		
-		if (indexToAdd == 3) {
-			
+		//bij index 3
+		else if (indexToAdd == 3) {
+
+			if (password.hasDuplicates()) {
+				duplicate = password.findDuplicate();
+				duplicates.add(duplicate);
+			}
+
 			if (password.areSameSort(3, indexToAdd)) {
 				sort = password.getSort(indexToAdd);
-				//generateWithout
-				
+
+			} else if (password.areSameSort(2, indexToAdd)) {
+				// laatste 2 checken
+				generateSame = true;
+				sort = password.getSort(indexToAdd);
+
+				if (password.isSequence()) {
+					forbiddenInt = password.getForbiddenInt();
+				}
 			}
-			
-			
-			
-			
-			//TODO genereren met in acht neming van uitkomsten if statements
-	
+			password.getPassword().add(cbox.generateChar(sort, generateSame, forbiddenInt));
+
 		}
-		
-		
+
 //		if (!password.isTwoBeforeSame() && !password.hasDuplicates()) {
 		// pick from all possibilities
-		password.getPassword().add(cbox.generateChar());
+//		password.getPassword().add(cbox.generateChar());
 //		} else if (password.hasDuplicates()) {
 //			//pick from all without the duplicate
 //			int duplicate = getDuplicate();
@@ -105,9 +120,9 @@ public class PasswordGenerator {
 //			//pick another
 //		}
 
-		password.getPassword().add(cbox.generateChar());
-		
-		//box resetten of dingen bewaren?
+//		password.getPassword().add(cbox.generateChar());
+
+		// box resetten of dingen bewaren?
 
 	}
 
