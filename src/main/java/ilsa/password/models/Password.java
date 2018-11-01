@@ -22,19 +22,32 @@ public class Password {
 	
 	
 	public boolean areSameSort(int totalToCheck, int currentIndex) {
-		return areSameSortHelper(totalToCheck, currentIndex);
+		boolean sameSort = false;
+		return areSameSortHelper(totalToCheck, currentIndex, sameSort, 0);
 		
 	}
 	
 	//TODO checken met versie thuis
-	public boolean areSameSortHelper(int totalToCheck, int currentIndex) {
+	public boolean areSameSortHelper(int totalToCheck, int currentIndex, boolean sameSort, int count) {
+		
 		//stopconditie
-		if (totalToCheck == 0) {
-			
+		if (count == totalToCheck) {
+			return sameSort;
 		}
 		
-		
-		return areSameSortHelper(totalToCheck, currentIndex);
+		while (totalToCheck != 0) {
+			char someChar = (char)Integer.parseInt(String.valueOf(password.get(currentIndex)));
+			char charToComp = (char)Integer.parseInt(String.valueOf(password.get(currentIndex - 1)));
+			
+			if (Character.isDigit(someChar) && Character.isDigit(charToComp) ||
+					Character.isLetter(someChar) && Character.isLetter(charToComp) ||
+					!Character.isDigit(someChar) && !Character.isLetter(someChar) && !Character.isDigit(charToComp) && !Character.isLetter(charToComp)) {
+				sameSort = true;
+			}
+			count++;
+			
+		}
+		return areSameSortHelper(totalToCheck, currentIndex - 1, sameSort, count);
 		
 	}
 	
