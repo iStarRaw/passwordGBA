@@ -15,16 +15,22 @@ public class CharacterBox {
 	// condities opstellen en dan box kleiner maken
 	private List<Integer> box;
 	private SecureRandom secGenerator = new SecureRandom();
+	private List<Integer> duplicates;
 	
 
 	public CharacterBox() {
 		box = new ArrayList<>();
+		duplicates = new ArrayList<>();
 		fillBox();
-
+		
 	}
 
 	public List<Integer> getBox() {
 		return box;
+	}
+
+	public List<Integer> getWithout() {
+		return duplicates;
 	}
 
 	private void fillBox() {
@@ -135,7 +141,9 @@ public class CharacterBox {
 	}
 	
 	//TODO aanpassen met in acht neming parameters
-	public int generateChar(int duplicate, String sort, int forbiddenInt) {
+	public int generateChar(String sort, int forbiddenInt) {
+		//duplicates List ook meenemen
+		
 		int index = secGenerator.nextInt(box.size());
 
 		while (index < 0 || index > box.size()) {

@@ -32,12 +32,14 @@ public class PasswordGenerator {
 		if (indexToAdd < 2) {
 			// pick from all possibilities
 			password.getPassword().add(cbox.generateChar());
+			
 		}
 
 		if (indexToAdd == 2) {
 			
 			if (password.hasDuplicates()) {
 				duplicate = password.findDuplicate();
+				cbox.getWithout().add(duplicate);
 			}
 			
 			if (password.areSameSort(2, indexToAdd)) {
@@ -45,11 +47,11 @@ public class PasswordGenerator {
 				if (password.isSequence()) {
 					forbiddenInt = password.getForbiddenInt();
 				}
+				//generateSameSort
 			}
-			
 			//TODO genereren met in acht neming van uitkomsten if statements
-			password.getPassword().add(cbox.generateChar(duplicate, sort, forbiddenInt));
-							
+			password.getPassword().add(cbox.generateChar(sort, forbiddenInt));			
+			
 		}
 		
 		
@@ -57,14 +59,15 @@ public class PasswordGenerator {
 			
 			if (password.areSameSort(3, indexToAdd)) {
 				sort = password.getSort(indexToAdd);
+				//generateWithout
 				
 			}
 			
+			
+			
+			
 			//TODO genereren met in acht neming van uitkomsten if statements
-//			password.getPassword().add(cbox.generateWithout(duplicate));
-//			password.getPassword().add(cbox.generateFromOtherSort(sort));
-			
-			
+	
 		}
 		
 		
