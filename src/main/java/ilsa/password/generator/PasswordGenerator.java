@@ -24,27 +24,50 @@ public class PasswordGenerator {
 
 	}
 
-	private void addChar(int index) {
+	private void addChar(int indexToAdd) {
+		int duplicate = 0;
+		String sort = "";
+		int forbiddenInt = 0;
 
-		if (index < 2) {
+		if (indexToAdd < 2) {
 			// pick from all possibilities
 			password.getPassword().add(cbox.generateChar());
 		}
 
-		if (index == 2) {
-			if (password.areSameSort(index)) {
-				String sort = password.getSort(index);
-				// alleen generateChar en daarin
-				password.getPassword().add(cbox.generateFrom(sort));
-			}
+		if (indexToAdd == 2) {
+			
 			if (password.hasDuplicates()) {
-				password.findDuplicate();
-				password.getPassword().add(cbox.generateWithout(duplicate));
+				duplicate = password.findDuplicate();
 			}
+			
+			if (password.areSameSort(2, indexToAdd)) {
+				sort = password.getSort(indexToAdd);
+				if (password.isSequence()) {
+					forbiddenInt = password.getForbiddenInt();
+				}
+			}
+			
+			//TODO genereren met in acht neming van uitkomsten if statements
+			password.getPassword().add(cbox.generateChar(duplicate, sort, forbiddenInt));
+							
 		}
-
-		// if lastThreeSameSort() then getSort() and add.generateFromOtherSort()
-
+		
+		
+		if (indexToAdd == 3) {
+			
+			if (password.areSameSort(3, indexToAdd)) {
+				sort = password.getSort(indexToAdd);
+				
+			}
+			
+			//TODO genereren met in acht neming van uitkomsten if statements
+//			password.getPassword().add(cbox.generateWithout(duplicate));
+//			password.getPassword().add(cbox.generateFromOtherSort(sort));
+			
+			
+		}
+		
+		
 //		if (!password.isTwoBeforeSame() && !password.hasDuplicates()) {
 		// pick from all possibilities
 		password.getPassword().add(cbox.generateChar());

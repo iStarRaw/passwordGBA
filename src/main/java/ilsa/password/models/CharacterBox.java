@@ -134,6 +134,19 @@ public class CharacterBox {
 		
 	}
 	
+	//TODO aanpassen met in acht neming parameters
+	public int generateChar(int duplicate, String sort, int forbiddenInt) {
+		int index = secGenerator.nextInt(box.size());
+
+		while (index < 0 || index > box.size()) {
+			index = secGenerator.nextInt(box.size());
+		}
+		return box.get(index);
+		
+	}
+	
+	
+	
 	public int generateFrom(String nameSort) {
 		switch (nameSort) {
 		case "Digit":
@@ -157,10 +170,6 @@ public class CharacterBox {
 		
 	}
 
-	public int generateWithout(int duplicate) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	
 

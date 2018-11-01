@@ -25,6 +25,27 @@ public class Password {
 		this.hasDuplicates = duplicatesExist();
 		return hasDuplicates;
 	}
+	
+	
+	public boolean areSameSort(int totalToCheck, int currentIndex) {
+		
+		return areSameSortHelper(totalToCheck, currentIndex);
+	}
+	
+	//TODO checken met versie thuis
+	public boolean areSameSortHelper(int totalToCheck, int currentIndex) {
+		//stopconditie
+		if (totalToCheck == 0) {
+			
+		}
+		
+		
+		return areSameSortHelper(totalToCheck, currentIndex);
+		
+	}
+	
+	
+	
 
 	// TODO check with junit
 	// TODO lijst maken met duplicates zodat ik snel kan vinden
@@ -67,6 +88,16 @@ public class Password {
 		
 	}
 	
+	public boolean isSequence() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public int getForbiddenInt() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 
 	@Override
 	public String toString() {
@@ -75,49 +106,6 @@ public class Password {
 			passwordString.append(Character.toString((char) i));
 		}
 		return passwordString.toString();
-	}
-
-	//TODO wat doe ik met al deze sameSort methodes...geen mogelijkheid tot recursie of wel...???
-	
-	public boolean firstTwoLetter() {
-		try {
-			if (Character.isLetter(password.get(password.size() - 3)) && Character.isLetter(password.get(password.size() - 2))) {
-				return true;
-			}
-			return false;
-
-		} catch (IndexOutOfBoundsException e) {
-			return false;
-		}
-	}
-	
-	public boolean firstTwoDigit() {
-		try {
-			if (Character.isDigit(password.get(password.size() - 3)) && Character.isDigit(password.get(password.size() - 2))) {
-				return true;
-			}
-			return false;
-
-		} catch (IndexOutOfBoundsException e) {
-			return false;
-		}
-	}
-
-	public boolean firstTwoSymbol() {
-		try {
-			if (firstTwoDigit() && firstTwoLetter()) {
-				return true;
-			}
-			return false;
-
-		} catch (IndexOutOfBoundsException e) {
-			return false;
-		}
-	}
-	
-	public boolean isSymbol(int index) {
-		//TODO
-		return false;
 	}
 	
 
