@@ -45,8 +45,8 @@ public class PasswordGenerator {
 		//bij index 2
 		else if (indexToAdd == 2) {
 
-			if (password.hasDuplicates()) {
-				duplicate = password.findDuplicate();
+			if (password.lastIsDuplicate()) {
+				duplicate = password.getDuplicate();
 				duplicates.add(duplicate);
 			}
 
