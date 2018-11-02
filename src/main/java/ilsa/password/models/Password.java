@@ -55,7 +55,6 @@ public class Password {
 	}
 
 	// TODO check with junit
-	// TODO lijst maken met duplicates zodat ik snel kan vinden
 	public boolean lastIsDuplicate() {
 		if (password.size() < 1) {
 			return false;
@@ -99,9 +98,15 @@ public class Password {
 	@Override
 	public String toString() {
 		StringBuilder passwordString = new StringBuilder();
-		for (Integer number : password) {
-			char thisChar = (char)Integer.parseInt(String.valueOf(number));
-			passwordString.append(Character.toString(thisChar));
+		for (Integer number : password) {			
+			
+			//begin OPTIE
+//			byte[] bytes = new byte[number];
+//			String thisString = new String(bytes, Charset.forName("ISO-8859-15"));
+			//einde OPTIE
+			
+			String thisString = Character.toString((char)(int)number);
+			passwordString.append(thisString);
 		}
 		return passwordString.toString();
 	}

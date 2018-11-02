@@ -1,6 +1,8 @@
 package ilsa.password.generator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import ilsa.password.models.CharacterBox;
@@ -30,6 +32,8 @@ public class PasswordGenerator {
 	}
 
 	private void addChar(int indexToAdd) {
+//		System.out.println(Arrays.toString(cbox.getBox().toArray()));
+		
 		int duplicate = 0;
 		boolean generateSame = false;
 		boolean generateAll = false;
@@ -43,7 +47,7 @@ public class PasswordGenerator {
 		} 
 		
 		//bij index 2
-		else if (indexToAdd == 2) {
+		else if (indexToAdd % 2 == 0) {
 
 			if (password.lastIsDuplicate()) {
 				duplicate = password.getDuplicate();
@@ -52,7 +56,7 @@ public class PasswordGenerator {
 
 			if (password.areSameSort(2)) {
 				generateSame = true;
-				sort = password.getSort(indexToAdd);
+				sort = password.getSort(indexToAdd - 1);
 
 				if (password.isSequence()) {
 					forbiddenInt = password.getForbiddenInt();
@@ -63,7 +67,7 @@ public class PasswordGenerator {
 		} 
 		
 		//bij index 3
-		else if (indexToAdd == 3) {
+		else if (indexToAdd % 3 == 0) {
 
 			if (password.lastIsDuplicate()) {
 				duplicate = password.getDuplicate();
@@ -71,12 +75,12 @@ public class PasswordGenerator {
 			}
 
 			if (password.areSameSort(3)) {
-				sort = password.getSort(indexToAdd);
+				sort = password.getSort(indexToAdd - 1);
 
 			} else if (password.areSameSort(2)) {
 				// laatste 2 checken
 				generateSame = true;
-				sort = password.getSort(indexToAdd);
+				sort = password.getSort(indexToAdd - 1);
 
 				if (password.isSequence()) {
 					forbiddenInt = password.getForbiddenInt();
