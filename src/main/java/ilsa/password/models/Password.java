@@ -1,11 +1,13 @@
 package ilsa.password.models;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Password {
 	private int length;
-	private List<Integer> password;
+	private List<Integer> password; // omzetten naar bytes
 
 	public Password(int length) {
 		this.length = length;
@@ -37,9 +39,10 @@ public class Password {
 		char lastChar = (char) Integer.parseInt(String.valueOf(password.get(lastIndexToCheck)));
 		char charToComp = (char) Integer.parseInt(String.valueOf(password.get(lastIndexToCheck - 1)));
 
-		if (Character.isDigit(lastChar) && Character.isDigit(charToComp) ||
-		  Character.isLetter(lastChar) && Character.isLetter(charToComp) || 
-		  !Character.isDigit(lastChar) && !Character.isLetter(lastChar) && !Character.isDigit(charToComp) && !Character.isLetter(charToComp)) {
+		if (Character.isDigit(lastChar) && Character.isDigit(charToComp)
+				|| Character.isLetter(lastChar) && Character.isLetter(charToComp)
+				|| !Character.isDigit(lastChar) && !Character.isLetter(lastChar) && !Character.isDigit(charToComp)
+						&& !Character.isLetter(charToComp)) {
 
 			boolean tempSort = true;
 
@@ -98,15 +101,29 @@ public class Password {
 	@Override
 	public String toString() {
 		StringBuilder passwordString = new StringBuilder();
-		for (Integer number : password) {			
+		for (Integer number : password) {
+
+//			String thisString = Character.toString((char)(int)number);
+
+			String hexString = Integer.toHexString(number);
+			System.out.println(hexString);
 			
-			//begin OPTIE
-//			byte[] bytes = new byte[number];
-//			String thisString = new String(bytes, Charset.forName("ISO-8859-15"));
-			//einde OPTIE
 			
-			String thisString = Character.toString((char)(int)number);
-			passwordString.append(thisString);
+//			byte[] bytes = Hex.decodeHex(hexString.toCharArray());
+//			System.out.println(new String(bytes, "UTF-8"));
+			
+			
+
+		    String[] list=hexString.split("(?<=\\G.{2})");
+	        ByteBuffer buffer= ByteBuffer.allocate(list.length);
+	        System.out.println(list.length);
+	        for(String str: list)
+	            buffer.put((byte)Integer.parseInt(str,16));
+
+	        buffer.array();
+
+			passwordString.append(hexString);
+
 		}
 		return passwordString.toString();
 	}

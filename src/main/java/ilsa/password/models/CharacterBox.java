@@ -72,9 +72,10 @@ public class CharacterBox {
 
 		// 123 tm 254 (127 NIET)
 		for (int i = 28, j = 0; i < 160; i++, j++) {
-			box.add(123 + j);
+			if (j != 4) {
+				box.add(123 + j);
+			}
 		}
-
 	}
 
 	private void returnToFullBox() {
@@ -83,8 +84,7 @@ public class CharacterBox {
 	}
 
 	private void deleteLetters() {
-		// 65 tm 90
-		// 97 tm 122
+		// 65 tm 90, 97 tm 122
 		for (Integer digit : this.box) {
 			if (digit >= 65 && digit <= 90 || digit >= 97 && digit <= 122) {
 				box.remove(digit);
@@ -106,10 +106,7 @@ public class CharacterBox {
 
 	// TODO checken na verandering symbol fill box
 	private void deleteSymbols() {
-		// 33 tm 47
-		// 58 tm 64
-		// 91 tm 96
-		// 123 tm 254
+		// 33 tm 47, 58 tm 64, 91 tm 96, 123 tm 254
 		for (Integer digit : this.box) {
 			if (digit >= 33 && digit <= 47 || digit >= 58 && digit <= 64 || digit >= 91 && digit <= 96
 					|| digit >= 123 && digit <= 254) {
