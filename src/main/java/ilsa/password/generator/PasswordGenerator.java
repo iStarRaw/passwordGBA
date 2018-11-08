@@ -35,7 +35,7 @@ public class PasswordGenerator {
 	private void addChar(int indexToAdd) {
 		int duplicate = 0;
 		boolean generateSame = false;
-		boolean generateAll = false;
+		boolean generateAll = false; //als sort niet uit maakt?
 		String sort = "";
 		int forbiddenInt = 0;
 
@@ -61,7 +61,7 @@ public class PasswordGenerator {
 					forbiddenInt = password.getForbiddenInt();
 				}
 			}
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenInt));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenInt));
 
 		} 
 		
@@ -87,13 +87,13 @@ public class PasswordGenerator {
 				}
 			}
 			
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenInt));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenInt));
 
 		}
 		
 		//bij anders... maar met welke % met restwaarde?
 		else if (indexToAdd > 4) {
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenInt));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenInt));
 
 		}
 

@@ -135,11 +135,17 @@ public class CharacterBox {
 	}
 
 	// TODO aanpassen met in acht neming parameters
-	public int generateChar(List<Integer> doubles, String sort, boolean generateSame, int forbiddenInt) {
+	public int generateChar(List<Integer> doubles, String sort, boolean generateSame, boolean generateAll, int forbiddenInt) { //generateAll toevoegen in passwordGenerator als sort niet uit maakt?
 		
+		if (doubles.isEmpty() && generateAll && forbiddenInt == 0) {
+			return generateChar();
+		} else if (!generateSame)
 		
 		//if generateSame = false; dan uit box generaten zonder sort erin.
 		
+			
+			
+			
 		int index = secGenerator.nextInt(box.size());
 
 		while (index < 0 || index > box.size()) {
