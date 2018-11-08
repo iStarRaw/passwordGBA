@@ -62,7 +62,7 @@ public class PasswordGenerator {
 					forbiddenInt = password.getForbiddenInt();
 				}
 			}
-			password.getPassword().add(cbox.generateChar(sort, generateSame, forbiddenInt));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenInt));
 
 		} 
 		
@@ -75,8 +75,9 @@ public class PasswordGenerator {
 			}
 
 			if (password.areSameSort(3)) {
+				generateSame = false;
 				sort = password.getSort(indexToAdd - 1);
-
+				
 			} else if (password.areSameSort(2)) {
 				// laatste 2 checken
 				generateSame = true;
@@ -86,7 +87,8 @@ public class PasswordGenerator {
 					forbiddenInt = password.getForbiddenInt();
 				}
 			}
-			password.getPassword().add(cbox.generateChar(sort, generateSame, forbiddenInt));
+			
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenInt));
 
 		}
 		

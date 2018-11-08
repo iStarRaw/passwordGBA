@@ -135,7 +135,11 @@ public class CharacterBox {
 	}
 
 	// TODO aanpassen met in acht neming parameters
-	public int generateChar(String sort, boolean generateSame, int forbiddenInt) {
+	public int generateChar(List<Integer> doubles, String sort, boolean generateSame, int forbiddenInt) {
+		
+		
+		//if generateSame = false; dan uit box generaten zonder sort erin.
+		
 		int index = secGenerator.nextInt(box.size());
 
 		while (index < 0 || index > box.size()) {
