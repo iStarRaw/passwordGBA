@@ -26,7 +26,8 @@ public class PasswordGenerator {
 
 			System.out.printf("Index %d is: %d\n", i, password.getPassword().get(i));
 		}
-		System.out.println(password.toString());
+//		System.out.println(password.toHexString());
+		System.out.println(password.toBinaryString());
 	}
 
 	
@@ -67,7 +68,7 @@ public class PasswordGenerator {
 		} 
 		
 		//bij index 3
-		else if (indexToAdd % 3 == 0) {
+		else if (indexToAdd % 2 != 0) {
 
 			if (password.lastIsDuplicate()) {
 				duplicate = password.getDuplicate();
@@ -92,9 +93,9 @@ public class PasswordGenerator {
 
 		}
 		
-		//bij anders
+		//bij anders... maar met welke % met restwaarde?
 		else if (indexToAdd > 4) {
-			password.getPassword().add(cbox.generateChar(sort, generateSame, forbiddenInt));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenInt));
 
 		}
 

@@ -96,19 +96,41 @@ public class Password {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
+	public byte[] toByteArray() {
+		byte[] bytes = new byte[password.size()];
+		
+		for (int i = 0; i < bytes.length; i++) {
+			bytes[i] = password.get(i).byteValue();
+		}
+		
+		return bytes;
+	}
+	
+	public String toBinaryString() {
+		StringBuilder binaryString = new StringBuilder();
+		for (Integer number : password) {
+			
+			String binary = Integer.toBinaryString(number);
+			binaryString.append(String.format("%s, ", binary));
 
-	@Override
-	public String toString() {
+		}
+		return binaryString.toString();
+		
+	}
+	
+	
+	public String toHexString() {
 		StringBuilder passwordString = new StringBuilder();
 		for (Integer number : password) {
-
-//			String thisString = Character.toString((char)(int)number);
-
+			
 			String hexString = Integer.toHexString(number);
 			passwordString.append(String.format("%s\n", hexString));
 
 		}
 		return passwordString.toString();
+		
 	}
 
 }
