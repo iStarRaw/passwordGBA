@@ -1,17 +1,12 @@
 package ilsa.password.models;
 
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.binary.Hex;
 
 
 public class Password {
 	private int length;
-	private List<Integer> password; // omzetten naar bytes
+	private List<Integer> password;
 
 	public Password(int length) {
 		this.length = length;
@@ -108,32 +103,9 @@ public class Password {
 		for (Integer number : password) {
 
 //			String thisString = Character.toString((char)(int)number);
-//			System.out.println("thisString = " + thisString);
 
-			String hexString = Integer.toHexString(number);			
-			
-			byte[] bytes;
-			
-			try {
-				bytes = Hex.decodeHex(hexString.toCharArray());
-				passwordString.append(new String(bytes, Charset.defaultCharset()));
-			} catch (DecoderException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			
-
-//		    String[] list=hexString.split("(?<=\\G.{2})");
-//	        ByteBuffer buffer= ByteBuffer.allocate(list.length);
-//	        System.out.println(list.length);
-//	        for(String str: list)
-//	            buffer.put((byte)Integer.parseInt(str,16));
-//
-//	        buffer.array();
-
-			
+			String hexString = Integer.toHexString(number);
+			passwordString.append(String.format("%s\n", hexString));
 
 		}
 		return passwordString.toString();

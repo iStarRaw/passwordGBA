@@ -1,8 +1,6 @@
 package ilsa.password.generator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import ilsa.password.models.CharacterBox;
@@ -26,11 +24,13 @@ public class PasswordGenerator {
 		for (int i = 0; i < password.getLength(); i++) {
 			addChar(i);
 
-			System.out.println(password.getPassword().get(i));
+			System.out.printf("Index %d is: %d\n", i, password.getPassword().get(i));
 		}
 		System.out.println(password.toString());
 	}
 
+	
+	
 	private void addChar(int indexToAdd) {
 //		System.out.println(Arrays.toString(cbox.getBox().toArray()));
 		
@@ -86,6 +86,12 @@ public class PasswordGenerator {
 					forbiddenInt = password.getForbiddenInt();
 				}
 			}
+			password.getPassword().add(cbox.generateChar(sort, generateSame, forbiddenInt));
+
+		}
+		
+		//bij anders
+		else if (indexToAdd > 4) {
 			password.getPassword().add(cbox.generateChar(sort, generateSame, forbiddenInt));
 
 		}
