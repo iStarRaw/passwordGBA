@@ -1,5 +1,6 @@
 package ilsa.password.models;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,10 +153,8 @@ public class Password {
 		StringBuilder passwordString = new StringBuilder();
 		for (Character c : password) {
 			int item = (int)c;
-			String hexString1 = String.format("0x%02X", item);
-			String hexString2 = String.format("%04X", item);
-			String hexString3 = Integer.toHexString(item);
-			passwordString.append(String.format("%s, %s, %s\n", hexString1, hexString2, hexString3));
+			String hexString = Integer.toHexString(item);
+			passwordString.append(String.format("%s\n", hexString));
 
 		}
 		return passwordString.toString();

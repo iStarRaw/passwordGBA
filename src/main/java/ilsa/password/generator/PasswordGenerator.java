@@ -1,7 +1,6 @@
 package ilsa.password.generator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import ilsa.password.models.CharacterBox;
@@ -27,7 +26,8 @@ public class PasswordGenerator {
 
 			System.out.printf("Index %d is: %c\n", i, password.getPassword().get(i));
 		}
-		System.out.println(password.toHexString());
+		System.out.println(password.toHexString()); //sommige printen niet goed uit ivm encoding
+		System.out.println(password.toBinaryString());
 		
 	}
 
