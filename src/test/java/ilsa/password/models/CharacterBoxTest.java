@@ -12,7 +12,7 @@ class CharacterBoxTest {
 	
 	@Test
 	void testFillBox() {
-		CharacterBox cbox = new CharacterBox();	
+		IntegerBox cbox = new IntegerBox();	
 		
 		int expectedSize = 52;
 		int actualSize = cbox.getBox().size();

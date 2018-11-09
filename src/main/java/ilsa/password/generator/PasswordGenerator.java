@@ -3,18 +3,18 @@ package ilsa.password.generator;
 import java.util.ArrayList;
 import java.util.List;
 
-import ilsa.password.models.CharacterBox;
+import ilsa.password.models.IntegerBox;
 import ilsa.password.models.Password;
 
 public class PasswordGenerator {
 
 	private Password password;
-	private CharacterBox cbox;
+	private IntegerBox cbox;
 	private List<Integer> duplicates;
 
 	public PasswordGenerator(int length) {
 		password = new Password(length);
-		cbox = new CharacterBox();
+		cbox = new IntegerBox();
 		duplicates = new ArrayList<>();
 
 		createPassword();
