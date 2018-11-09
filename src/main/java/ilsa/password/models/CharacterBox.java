@@ -6,8 +6,8 @@ import java.util.List;
 
 /**
  * @author ilsadejager Class that defines the characters out of which the
- *         password will be made (Extended ASCII). Spatie (32), 0 (48) en delete (127) zijn
- *         uitgesloten.
+ *         password will be made (Extended ASCII). Spatie (32), 0 (48) en delete
+ *         (127) zijn uitgesloten.
  *
  */
 public class CharacterBox {
@@ -134,28 +134,37 @@ public class CharacterBox {
 
 	}
 
-	// TODO aanpassen met in acht neming parameters
-	public int generateChar(List<Integer> doubles, String sort, boolean generateSame, boolean generateAll, int forbiddenInt) { //generateAll toevoegen in passwordGenerator als sort niet uit maakt?
-		
-		if (doubles.isEmpty() && generateAll && forbiddenInt == 0) {
-			return generateChar();
-		} else if (!generateSame)
-		
-		//if generateSame = false; dan uit box generaten zonder sort erin.
-		
-			
-			
-			
-		int index = secGenerator.nextInt(box.size());
+	public int generateChar(List<Integer> doubles, String sort, boolean generateSame, boolean generateAll,
+			int forbiddenInt) { // generateAll toevoegen in passwordGenerator als sort niet uit maakt?
 
-		while (index < 0 || index > box.size()) {
-			index = secGenerator.nextInt(box.size());
+		returnToFullBox();
+		
+		if (!doubles.isEmpty()) {
+			// delete double inhoud uit box
+			for (Integer number : doubles) {
+				deleteInt(number);
+			}
 		}
-		return box.get(index);
+
+		if (generateAll) {
+			return generateChar();
+		}
+
+		if (forbiddenInt != 0) {
+			// generate without sequenceInt
+			deleteInt(forbiddenInt);
+		}
+
+		if (generateSame) {
+			boxSameSort(sort);
+		}
+		boxOtherSorts(sort);
+
+		return generateChar();
 
 	}
 
-	private int generateFrom(String nameSort) {
+	private void boxSameSort(String nameSort) {
 		switch (nameSort) {
 		case "Digit":
 			deleteLetters();
@@ -174,8 +183,24 @@ public class CharacterBox {
 
 			break;
 		}
-		return generateChar();
 
+	}
+
+	private void boxOtherSorts(String nameSort) {
+		switch (nameSort) {
+		case "Digit":
+			deleteDigits();
+
+			break;
+		case "Letter":
+			deleteLetters();
+
+			break;
+		case "Symbol":
+			deleteSymbols();
+
+			break;
+		}
 	}
 
 }
