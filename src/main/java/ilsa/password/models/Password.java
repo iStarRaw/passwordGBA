@@ -28,6 +28,7 @@ public class Password {
 
 	}
 
+	// TODO check with JUnit
 	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
 			System.out.println("In stopconditie");
@@ -55,7 +56,6 @@ public class Password {
 
 	}
 
-	// TODO check with junit
 	public boolean lastIsDuplicate() {
 		if (password.size() < 1) {
 			return false;
@@ -67,6 +67,7 @@ public class Password {
 			}
 		}
 		return false;
+
 	}
 
 	public int getDuplicate() {
@@ -91,26 +92,31 @@ public class Password {
 			return false;
 		}
 
-		for (int i = 0; i < password.size() - 1; i++) {
-			int lastIndex = password.size() - 1;
-			int beforeLastIndex = password.size() - 2;
+		int lastValue = password.get(password.size() - 1);
+		int beforeLastValue = password.get(password.size() - 2);
 
-			// als de waarde van de laatste index en die daarvoor -1 verschillen
-			if (password.get(lastIndex) == password.get(beforeLastIndex) - 1) {
-				return true;
-			}
-			// als de waarde van de laatste index en die daarvoor +1 verschillen
-			if (password.get(lastIndex) == password.get(beforeLastIndex) + 1) {
-				return true;
-			}
+		if (lastValue == beforeLastValue - 1) {
+			return true;
 		}
+
+		if (lastValue == beforeLastValue + 1) {
+			return true;
+		}
+
 		return false;
 
 	}
 
 	public int getForbiddenInt() {
-		// TODO Auto-generated method stub
-		
+		int lastValue = password.get(password.size() - 1);
+		int beforeLastValue = password.get(password.size() - 2);
+
+		if (lastValue == beforeLastValue + 1) {
+			return lastValue + 1;
+		} else if (lastValue == beforeLastValue - 1) {
+			return lastValue - 1;
+		}
+
 		return 0;
 	}
 

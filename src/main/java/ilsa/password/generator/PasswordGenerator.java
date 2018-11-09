@@ -26,7 +26,7 @@ public class PasswordGenerator {
 
 			System.out.printf("Index %d is: %d\n", i, password.getPassword().get(i));
 		}
-		System.out.println(password.toHexString());
+//		System.out.println(password.toHexString());
 		
 	}
 
