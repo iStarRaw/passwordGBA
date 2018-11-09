@@ -28,19 +28,19 @@ public class Password {
 
 	}
 
-	// TODO check with JUnit
+	// TODO checken!!!!! ook met JUnit
 	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
 			return sameSort;
 		}
 
 		char lastChar = password.get(lastIndexToCheck);
-		char charToComp = password.get(lastIndexToCheck - 1);
+		char beforeLastChar = password.get(lastIndexToCheck - 1);
 
-		if (Character.isDigit(lastChar) && Character.isDigit(charToComp)
-				|| Character.isLetter(lastChar) && Character.isLetter(charToComp)
-				|| !Character.isDigit(lastChar) && !Character.isLetter(lastChar) && !Character.isDigit(charToComp)
-						&& !Character.isLetter(charToComp)) {
+		if ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) || 
+		    (Character.isLetter(lastChar) && Character.isLetter(beforeLastChar)) || 
+		    (!Character.isDigit(lastChar) && !Character.isLetter(lastChar)) &&
+		    (!Character.isDigit(beforeLastChar) && !Character.isLetter(beforeLastChar))) {
 
 			boolean tempSort = true;
 
@@ -151,9 +151,11 @@ public class Password {
 	public String toHexString() {
 		StringBuilder passwordString = new StringBuilder();
 		for (Character c : password) {
-
-			String hexString = Integer.toHexString(c);
-			passwordString.append(String.format("%s\n", hexString));
+			int item = (int)c;
+			String hexString1 = String.format("0x%02X", item);
+			String hexString2 = String.format("%04X", item);
+			String hexString3 = Integer.toHexString(item);
+			passwordString.append(String.format("%s, %s, %s\n", hexString1, hexString2, hexString3));
 
 		}
 		return passwordString.toString();

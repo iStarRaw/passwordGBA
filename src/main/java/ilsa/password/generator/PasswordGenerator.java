@@ -18,9 +18,6 @@ public class PasswordGenerator {
 		cbox = new CharacterBox();
 		duplicates = new ArrayList<>();
 		
-		System.out.println(Arrays.toString(cbox.getBox().toArray()));
-		System.out.println(cbox.getBox().size());
-		
 		createPassword();
 	}
 
@@ -30,7 +27,7 @@ public class PasswordGenerator {
 
 			System.out.printf("Index %d is: %c\n", i, password.getPassword().get(i));
 		}
-//		System.out.println(password.toHexString());
+		System.out.println(password.toHexString());
 		
 	}
 
