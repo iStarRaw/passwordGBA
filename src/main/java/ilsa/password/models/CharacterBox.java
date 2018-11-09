@@ -2,6 +2,7 @@ package ilsa.password.models;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class CharacterBox {
 
 	// alle characters in 1 arraylist stoppen
 	// condities opstellen en dan box kleiner maken
-	private List<Integer> box;
+	private List<Character> box;
 	private SecureRandom secGenerator = new SecureRandom();
 
 	public CharacterBox() {
@@ -23,7 +24,7 @@ public class CharacterBox {
 
 	}
 
-	public List<Integer> getBox() {
+	public List<Character> getBox() {
 		return box;
 	}
 
@@ -36,12 +37,12 @@ public class CharacterBox {
 	private void fillLetters() {
 		// 65 tm 90
 		for (int i = 0; i < 26; i++) {
-			box.add(65 + i);
+			box.add((char)(65 + i));
 		}
 
 		// 97 tm 122
 		for (int i = 26, j = 0; i < 52; i++, j++) {
-			box.add(97 + j);
+			box.add((char)(97 + j));
 		}
 
 	}
@@ -49,7 +50,7 @@ public class CharacterBox {
 	private void fillDigits() {
 		// 49 tm 57 (48 NIET)
 		for (int i = 0; i < 9; i++) {
-			box.add(49 + i);
+			box.add((char)(49 + i));
 		}
 	}
 
@@ -57,23 +58,28 @@ public class CharacterBox {
 	private void fillSymbols() {
 		// 33 tm 47
 		for (int i = 0; i < 15; i++) {
-			box.add(33 + i);
+			box.add((char)(33 + i));
 		}
 
 		// 58 tm 64
 		for (int i = 15, j = 0; i < 22; i++, j++) {
-			box.add(58 + j);
+			box.add((char)(58 + j));
 		}
 
 		// 91 tm 96
 		for (int i = 22, j = 0; i < 28; i++, j++) {
-			box.add(91 + j);
+			box.add((char)(91 + j));
 		}
 
 		// 123 tm 254 (127 NIET)
-		for (int i = 28, j = 0; i < 160; i++, j++) {
-			if (j != 4) {
-				box.add(123 + j);
+		for (int i = 28, j = 0; i < 151; i++, j++) {
+			if (j != 4 && j < 6) {
+				box.add((char)(123 + j));
+			} else if ( j != 4) {
+				// TODO hier met de hand ontbrekende symbols invullen! 128 < 256 (NIET 173,160,157,144,143,141,129)
+				box.addAll(Arrays.asList('ÿ','þ','ý','ü','û','ú','ù','ø','÷','ö','õ','ô','ó','ò','ñ','ð','ï','î','í','ì','ë','ê','é','è','ç','æ','å','ä','ã','â','á','à','ß','Þ','Ý','Ü','Û','Ú','Ù','Ø','×','Ö','Õ','Ô','Ó','Ò','Ñ','Ð','Ï','Î','Í','Ì','Ë','Ê','É','È','Ç','Æ','Å','Ä','Ã','Â','Á','À','¿','¾','½','¼','»','º','¹','¸','·','¶','µ','´','³','²','±','°','¯','®','¬','«','ª','©','¨','§','¦','¥','¤','£','¢','¡','Ÿ','ž','œ','›','š','™','˜','—','–','•','”','“','’','‘','Ž','Œ','‹','Š','‰','ˆ','‡','†','…','„','ƒ','‚','€'));
+				
+				
 			}
 		}
 	}
@@ -96,9 +102,8 @@ public class CharacterBox {
 	private void deleteDigits() {
 		// 49 tm 57
 		for (int i = 0; i < this.box.size(); i++) {
-//			char someChar = (char)Integer.parseInt(String.valueOf(digit));
-//			if (!Character.isDigit(someChar)) {
-			if (box.get(i) <= 49 && box.get(i) <= 57) {
+			char someChar = (char)Integer.parseInt(String.valueOf(i));
+			if (!Character.isDigit(someChar)) {
 				box.remove(i);
 			}
 		}
