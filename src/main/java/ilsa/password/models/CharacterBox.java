@@ -157,15 +157,15 @@ public class CharacterBox {
 		}
 
 		if (generateSame) {
-			boxSameSort(sort);
+			makeSameSortBox(sort);
 		}
-		boxOtherSorts(sort);
+		makeOtherSortsBox(sort);
 
 		return generateChar();
 
 	}
 
-	private void boxSameSort(String nameSort) {
+	private void makeSameSortBox(String nameSort) {
 		switch (nameSort) {
 		case "Digit":
 			deleteLetters();
@@ -177,7 +177,6 @@ public class CharacterBox {
 			deleteDigits();
 
 			break;
-
 		case "Symbol":
 			deleteDigits();
 			deleteLetters();
@@ -187,7 +186,7 @@ public class CharacterBox {
 
 	}
 
-	private void boxOtherSorts(String nameSort) {
+	private void makeOtherSortsBox(String nameSort) {
 		switch (nameSort) {
 		case "Digit":
 			deleteDigits();

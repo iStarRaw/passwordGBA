@@ -31,7 +31,7 @@ public class Password {
 	// TODO check with JUnit
 	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
-			System.out.println("In stopconditie");
+//			System.out.println("In stopconditie");
 			return sameSort;
 		}
 
