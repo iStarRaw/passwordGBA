@@ -10,14 +10,14 @@ import java.util.List;
  *         (127) zijn uitgesloten.
  *
  */
-public class IntegerBox {
+public class CharacterBox {
 
 	// alle characters in 1 arraylist stoppen
 	// condities opstellen en dan box kleiner maken
 	private List<Integer> box;
 	private SecureRandom secGenerator = new SecureRandom();
 
-	public IntegerBox() {
+	public CharacterBox() {
 		box = new ArrayList<>();
 		fillBox();
 
