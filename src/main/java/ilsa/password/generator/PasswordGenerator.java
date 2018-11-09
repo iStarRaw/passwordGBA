@@ -97,9 +97,6 @@ public class PasswordGenerator {
 
 		}
 
-
-		// box resetten of dingen bewaren?
-
 	}
 
 }

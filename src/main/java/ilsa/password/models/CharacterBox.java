@@ -85,9 +85,9 @@ public class CharacterBox {
 
 	private void deleteLetters() {
 		// 65 tm 90, 97 tm 122
-		for (Integer digit : this.box) {
-			if (digit >= 65 && digit <= 90 || digit >= 97 && digit <= 122) {
-				box.remove(digit);
+		for (int i = 0; i < this.box.size(); i++) {
+			if (box.get(i) >= 65 && box.get(i) <= 90 || box.get(i) >= 97 && box.get(i) <= 122) {
+				box.remove(i);
 			}
 		}
 
@@ -95,11 +95,11 @@ public class CharacterBox {
 
 	private void deleteDigits() {
 		// 49 tm 57
-		for (Integer digit : this.box) {
+		for (int i = 0; i < this.box.size(); i++) {
 //			char someChar = (char)Integer.parseInt(String.valueOf(digit));
 //			if (!Character.isDigit(someChar)) {
-			if (digit >= 49 && digit <= 57) {
-				box.remove(digit);
+			if (box.get(i) <= 49 && box.get(i) <= 57) {
+				box.remove(i);
 			}
 		}
 	}
@@ -107,30 +107,31 @@ public class CharacterBox {
 	// TODO checken na verandering symbol fill box
 	private void deleteSymbols() {
 		// 33 tm 47, 58 tm 64, 91 tm 96, 123 tm 254
-		for (Integer digit : this.box) {
-			if (digit >= 33 && digit <= 47 || digit >= 58 && digit <= 64 || digit >= 91 && digit <= 96
-					|| digit >= 123 && digit <= 254) {
-				box.remove(digit);
+		for (int i = 0; i < this.box.size(); i++) {
+			if (box.get(i) >= 33 && box.get(i) <= 47 || box.get(i) >= 58 && box.get(i) <= 64 || box.get(i) >= 91 && box.get(i) <= 96
+					|| box.get(i) >= 123 && box.get(i) <= 254) {
+				box.remove(i);
 			}
 		}
 
 	}
 
 	private void deleteInt(int intToDelete) {
-		for (Integer digit : this.box) {
-			if (digit == intToDelete) {
-				box.remove(digit);
+		for (int i = 0; i < this.box.size(); i++) {
+			if (box.get(i) == intToDelete) {
+				box.remove(box.remove(i));
 			}
 		}
+		
 	}
 
 	public int generateChar() {
-		int index = secGenerator.nextInt(box.size());
+		int index = secGenerator.nextInt(this.box.size());
 
-		while (index < 0 || index > box.size()) {
-			index = secGenerator.nextInt(box.size());
+		while (index < 0 || index > this.box.size()) {
+			index = secGenerator.nextInt(this.box.size());
 		}
-		return box.get(index);
+		return this.box.get(index);
 
 	}
 

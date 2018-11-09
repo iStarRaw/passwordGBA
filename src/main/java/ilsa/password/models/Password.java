@@ -3,7 +3,6 @@ package ilsa.password.models;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Password {
 	private int length;
 	private List<Integer> password;
@@ -88,49 +87,65 @@ public class Password {
 	}
 
 	public boolean isSequence() {
-		// TODO Auto-generated method stub
+		if (password.size() < 2) {
+			return false;
+		}
+
+		for (int i = 0; i < password.size() - 1; i++) {
+			int lastIndex = password.size() - 1;
+			int beforeLastIndex = password.size() - 2;
+
+			// als de waarde van de laatste index en die daarvoor -1 verschillen
+			if (password.get(lastIndex) == password.get(beforeLastIndex) - 1) {
+				return true;
+			}
+			// als de waarde van de laatste index en die daarvoor +1 verschillen
+			if (password.get(lastIndex) == password.get(beforeLastIndex) + 1) {
+				return true;
+			}
+		}
 		return false;
+
 	}
 
 	public int getForbiddenInt() {
 		// TODO Auto-generated method stub
+		
 		return 0;
 	}
-	
-	
+
 	public byte[] toByteArray() {
 		byte[] bytes = new byte[password.size()];
-		
+
 		for (int i = 0; i < bytes.length; i++) {
 			bytes[i] = password.get(i).byteValue();
 		}
-		
+
 		return bytes;
 	}
-	
+
 	public String toBinaryString() {
 		StringBuilder binaryString = new StringBuilder();
 		for (Integer number : password) {
-			
+
 			String binary = Integer.toBinaryString(number);
 			binaryString.append(String.format("%s, ", binary));
 
 		}
 		return binaryString.toString();
-		
+
 	}
-	
-	
+
 	public String toHexString() {
 		StringBuilder passwordString = new StringBuilder();
 		for (Integer number : password) {
-			
+
 			String hexString = Integer.toHexString(number);
 			passwordString.append(String.format("%s\n", hexString));
 
 		}
 		return passwordString.toString();
-		
+
 	}
 
 }
