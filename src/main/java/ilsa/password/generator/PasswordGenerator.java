@@ -1,6 +1,7 @@
 package ilsa.password.generator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ilsa.password.models.CharacterBox;
@@ -10,13 +11,16 @@ public class PasswordGenerator {
 
 	private Password password;
 	private CharacterBox cbox;
-	private List<Integer> duplicates;
+	private List<Character> duplicates;
 
 	public PasswordGenerator(int length) {
 		password = new Password(length);
 		cbox = new CharacterBox();
 		duplicates = new ArrayList<>();
-
+		
+		System.out.println(Arrays.toString(cbox.getBox().toArray()));
+		System.out.println(cbox.getBox().size());
+		
 		createPassword();
 	}
 
@@ -24,7 +28,7 @@ public class PasswordGenerator {
 		for (int i = 0; i < password.getLength(); i++) {
 			addChar(i);
 
-			System.out.printf("Index %d is: %d\n", i, password.getPassword().get(i));
+			System.out.printf("Index %d is: %c\n", i, password.getPassword().get(i));
 		}
 //		System.out.println(password.toHexString());
 		
@@ -33,11 +37,11 @@ public class PasswordGenerator {
 	
 	
 	private void addChar(int indexToAdd) {
-		int duplicate = 0;
+		char duplicate;
 		boolean generateSame = false;
 		boolean generateAll = false; //als sort niet uit maakt?
 		String sort = "";
-		int forbiddenInt = 0;
+		char forbiddenChar = '\0';
 
 		// bij 0 en 1
 		if (indexToAdd < 2) {
@@ -58,10 +62,10 @@ public class PasswordGenerator {
 				sort = password.getSort(indexToAdd - 1);
 
 				if (password.isSequence()) {
-					forbiddenInt = password.getForbiddenInt();
+					forbiddenChar = password.getForbiddenChar();
 				}
 			}
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenInt));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenChar));
 
 		} 
 		
@@ -83,17 +87,17 @@ public class PasswordGenerator {
 				sort = password.getSort(indexToAdd - 1);
 
 				if (password.isSequence()) {
-					forbiddenInt = password.getForbiddenInt();
+					forbiddenChar = password.getForbiddenChar();
 				}
 			}
 			
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenInt));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenChar));
 
 		}
 		
 		//bij anders... maar met welke % met restwaarde?
 		else if (indexToAdd > 4) {
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenInt));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenChar));
 
 		}
 

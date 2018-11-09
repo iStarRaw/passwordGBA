@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Password {
 	private int length;
-	private List<Integer> password;
+	private List<Character> password;
 
 	public Password(int length) {
 		this.length = length;
 		this.password = new ArrayList<>();
 	}
 
-	public List<Integer> getPassword() {
+	public List<Character> getPassword() {
 		return password;
 	}
 
@@ -31,12 +31,11 @@ public class Password {
 	// TODO check with JUnit
 	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
-//			System.out.println("In stopconditie");
 			return sameSort;
 		}
 
-		char lastChar = (char) Integer.parseInt(String.valueOf(password.get(lastIndexToCheck)));
-		char charToComp = (char) Integer.parseInt(String.valueOf(password.get(lastIndexToCheck - 1)));
+		char lastChar = password.get(lastIndexToCheck);
+		char charToComp = password.get(lastIndexToCheck - 1);
 
 		if (Character.isDigit(lastChar) && Character.isDigit(charToComp)
 				|| Character.isLetter(lastChar) && Character.isLetter(charToComp)
@@ -70,7 +69,7 @@ public class Password {
 
 	}
 
-	public int getDuplicate() {
+	public char getDuplicate() {
 		return password.get(password.size() - 1);
 	}
 
@@ -95,6 +94,10 @@ public class Password {
 		int lastValue = password.get(password.size() - 1);
 		int beforeLastValue = password.get(password.size() - 2);
 
+		if (!Character.isLetter(lastValue) && !Character.isDigit(lastValue)) {
+			return false;
+		}
+		
 		if (lastValue == beforeLastValue - 1) {
 			return true;
 		}
@@ -107,14 +110,16 @@ public class Password {
 
 	}
 
-	public int getForbiddenInt() {
-		int lastValue = password.get(password.size() - 1);
-		int beforeLastValue = password.get(password.size() - 2);
+	public char getForbiddenChar() {
+		int lastCharInt = (int)password.get(password.size() - 1);
+		int beforeLastCharInt = (int)password.get(password.size() - 2);
 
-		if (lastValue == beforeLastValue + 1) {
-			return lastValue + 1;
-		} else if (lastValue == beforeLastValue - 1) {
-			return lastValue - 1;
+		if (lastCharInt == beforeLastCharInt + 1) {
+			
+			return (char)(lastCharInt + 1);
+		} else if (lastCharInt == beforeLastCharInt - 1) {
+			
+			return (char)(lastCharInt - 1);
 		}
 
 		return 0;
@@ -124,7 +129,8 @@ public class Password {
 		byte[] bytes = new byte[password.size()];
 
 		for (int i = 0; i < bytes.length; i++) {
-			bytes[i] = password.get(i).byteValue();
+			Integer charInt = (int)password.get(i);
+			bytes[i] = charInt.byteValue();
 		}
 
 		return bytes;
@@ -132,9 +138,9 @@ public class Password {
 
 	public String toBinaryString() {
 		StringBuilder binaryString = new StringBuilder();
-		for (Integer number : password) {
+		for (Character c : password) {
 
-			String binary = Integer.toBinaryString(number);
+			String binary = Integer.toBinaryString(c);
 			binaryString.append(String.format("%s, ", binary));
 
 		}
@@ -144,9 +150,9 @@ public class Password {
 
 	public String toHexString() {
 		StringBuilder passwordString = new StringBuilder();
-		for (Integer number : password) {
+		for (Character c : password) {
 
-			String hexString = Integer.toHexString(number);
+			String hexString = Integer.toHexString(c);
 			passwordString.append(String.format("%s\n", hexString));
 
 		}
