@@ -60,9 +60,10 @@ public class Password {
 			return false;
 		}
 		
-		//wat is hier best practice? variabele lastChar aanmaken en in onderstaande if statement gebruiken of zo laten?
+		char lastValue = password.get(password.size() - 1);
+		
 		for (Character c : password) {
-			if (Character.compare(c, password.get(password.size() - 1)) == 0) {
+			if (Character.compare(c, lastValue) == 0) {
 				return true;
 			}
 		}
