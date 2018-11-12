@@ -1,6 +1,5 @@
 package ilsa.password.models;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class Password {
 
 	}
 
-	// TODO checken!!!!! ook met JUnit
+	// TODO checken met Erik/jUnit
 	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
 			return sameSort;
@@ -57,12 +56,13 @@ public class Password {
 	}
 
 	public boolean lastIsDuplicate() {
-		if (password.size() < 1) {
+		if (password.size() < 2) {
 			return false;
 		}
-
-		for (int i = 0; i < password.size() - 1; i++) {
-			if (password.get(i) == password.get(password.size() - 1)) {
+		
+		//wat is hier best practice? variabele lastChar aanmaken en in onderstaande if statement gebruiken of zo laten?
+		for (Character c : password) {
+			if (Character.compare(c, password.get(password.size() - 1)) == 0) {
 				return true;
 			}
 		}
@@ -74,7 +74,6 @@ public class Password {
 		return password.get(password.size() - 1);
 	}
 
-	// TODO met ranges werken van cbox???
 	public String getSort(int index) {
 		char toCheck = (char) index;
 
@@ -87,13 +86,14 @@ public class Password {
 
 	}
 
+	//TODO check met char list dit is nog integer?)
 	public boolean isSequence() {
-		if (password.size() < 2) {
+		if (password.size() < 1) {
 			return false;
 		}
 
-		int lastValue = password.get(password.size() - 1);
-		int beforeLastValue = password.get(password.size() - 2);
+		int lastValue = (int)password.get(password.size() - 1);
+		int beforeLastValue = (int)password.get(password.size() - 2);
 
 		if (!Character.isLetter(lastValue) && !Character.isDigit(lastValue)) {
 			return false;
