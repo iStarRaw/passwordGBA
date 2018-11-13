@@ -31,6 +31,7 @@ public class CharacterBox {
 		return box;
 	}	
 	
+	
 	private void fillBox() {
 		for (int i = 1; i < 256; i++) {
 			if (!excluded.contains(i)) {
@@ -39,8 +40,6 @@ public class CharacterBox {
 		}
 	}
 	
-
-
 	private void returnToFullBox() {
 		this.box.clear();
 		fillBox();
@@ -48,7 +47,7 @@ public class CharacterBox {
 
 	private void deleteLetters() {
 		for (int i = 0; i < this.box.size(); i++) {
-			if (Character.isLetter(this.box.get(i))) {
+			if (Character.isAlphabetic(this.box.get(i))) {
 				box.remove(i);
 			}
 		}
@@ -61,9 +60,9 @@ public class CharacterBox {
 		}
 	}
 
-	private void deleteSymbols() {
+	private void deleteOther() {
 		for (int i = 0; i < this.box.size(); i++) {
-			if (!Character.isDigit(this.box.get(i)) && !Character.isLetter(this.box.get(i))) {
+			if (!Character.isDigit(this.box.get(i)) && !Character.isAlphabetic(this.box.get(i))) {
 				box.remove(i);
 			}
 		}
@@ -115,11 +114,11 @@ public class CharacterBox {
 		switch (nameSort) {
 		case "Digit":
 			deleteLetters();
-			deleteSymbols();
+			deleteOther();
 
 			break;
 		case "Letter":
-			deleteSymbols();
+			deleteOther();
 			deleteDigits();
 
 			break;
@@ -143,7 +142,7 @@ public class CharacterBox {
 
 			break;
 		case "Symbol":
-			deleteSymbols();
+			deleteOther();
 
 			break;
 		}
