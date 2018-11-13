@@ -28,7 +28,7 @@ public class Password {
 
 	}
 
-	// TODO checken met Erik/jUnit
+	// TODO checken met Erik
 	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
 			return sameSort;
@@ -38,9 +38,9 @@ public class Password {
 		char beforeLastChar = password.get(lastIndexToCheck - 1);
 
 		if ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) || 
-		    (Character.isLetter(lastChar) && Character.isLetter(beforeLastChar)) || 
-		    (!Character.isDigit(lastChar) && !Character.isLetter(lastChar)) &&
-		    (!Character.isDigit(beforeLastChar) && !Character.isLetter(beforeLastChar))) {
+		    (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)) || 
+		    (!Character.isDigit(lastChar) && !Character.isAlphabetic(lastChar)) &&
+		    (!Character.isDigit(beforeLastChar) && !Character.isAlphabetic(beforeLastChar))) {
 
 			boolean tempSort = true;
 
@@ -80,7 +80,7 @@ public class Password {
 
 		if (Character.isDigit(toCheck)) {
 			return "Digit";
-		} else if (Character.isLetter(toCheck)) {
+		} else if (Character.isAlphabetic(toCheck)) {
 			return "Letter";
 		}
 		return "Symbol";
@@ -96,7 +96,7 @@ public class Password {
 		int lastValue = (int)password.get(password.size() - 1);
 		int beforeLastValue = (int)password.get(password.size() - 2);
 
-		if (!Character.isLetter(lastValue) && !Character.isDigit(lastValue)) {
+		if (!Character.isAlphabetic(lastValue) && !Character.isDigit(lastValue)) {
 			return false;
 		}
 		
