@@ -28,7 +28,7 @@ public class Password {
 
 	}
 
-	// TODO checken met Erik
+	// TODO Advies Eric: zoek uit of dit niet beter in for loop kan!
 	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
 			return sameSort;
@@ -37,11 +37,7 @@ public class Password {
 		char lastChar = password.get(lastIndexToCheck);
 		char beforeLastChar = password.get(lastIndexToCheck - 1);
 
-		if ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) || 
-		    (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)) || 
-		    (!Character.isDigit(lastChar) && !Character.isAlphabetic(lastChar)) &&
-		    (!Character.isDigit(beforeLastChar) && !Character.isAlphabetic(beforeLastChar))) {
-
+		if (compareSorts(lastChar, beforeLastChar)) {
 			boolean tempSort = true;
 
 			if (sameSort != tempSort) {
@@ -54,6 +50,28 @@ public class Password {
 		return areSameSortHelper(totalToCheck, lastIndexToCheck - 1, sameSort, count);
 
 	}
+	
+	
+	public boolean compareSorts(char lastChar, char beforeLastChar) {
+		
+		if (Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) {
+			return true;
+		} else if (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)) {
+			return true;
+		} else if (!Character.isDigit(lastChar) && !Character.isAlphabetic(lastChar) &&
+	    (!Character.isDigit(beforeLastChar) && !Character.isAlphabetic(beforeLastChar))) {
+	    	return true;
+	    }
+	    return false;
+		
+		
+//		return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) || 
+//			    (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)) || 
+//			    (!Character.isDigit(lastChar) && !Character.isAlphabetic(lastChar)) &&
+//			    (!Character.isDigit(beforeLastChar) && !Character.isAlphabetic(beforeLastChar)));
+
+	}
+	
 
 	public boolean lastIsDuplicate() {
 		if (password.size() < 2) {
@@ -62,8 +80,8 @@ public class Password {
 		
 		char lastValue = password.get(password.size() - 1);
 		
-		for (Character c : password) {
-			if (Character.compare(c, lastValue) == 0) {
+		for (int i = 0; i < password.size() - 1; i++) {
+			if (Character.compare(password.get(i), lastValue) == 0) {
 				return true;
 			}
 		}

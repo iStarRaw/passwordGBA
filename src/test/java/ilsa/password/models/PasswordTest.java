@@ -11,10 +11,15 @@ import org.junit.jupiter.api.Test;
 class PasswordTest {
 
 	@Test
-	void testIsSequence() {
-		Password pw = new Password(6);
+	void testIsSameSort() {
+		Password pw = new Password(5);
 		
-		//MOCKEN????????????
+		char one = '0';
+		char two = '6';
+		
+		boolean actual = pw.compareSorts(one, two);
+		
+		assertTrue(actual);
 		
 	}
 	
