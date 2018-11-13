@@ -37,13 +37,11 @@ public class PasswordGenerator {
 		String sort = "";
 		char forbiddenChar = '\0';
 
-		// bij 0 en 1
 		if (indexToAdd < 2) {
 			password.getPassword().add(cbox.generateChar());
 
 		}
 
-		// bij index 2
 		else if (indexToAdd == 2) {
 
 			if (password.lastIsDuplicate()) {
@@ -63,7 +61,6 @@ public class PasswordGenerator {
 
 		}
 
-		// bij index > 2
 		else if (indexToAdd > 2) {
 
 			if (password.lastIsDuplicate()) {
