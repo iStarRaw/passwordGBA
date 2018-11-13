@@ -7,9 +7,9 @@ import java.util.List;
 
 /**
  * @author ilsadejager Class that defines the characters out of which the
- *         password will be made (Extended ASCII).
- *         https://www.ascii-code.com. Uitgesloten zijn: 0 t/m 32, 48, 127, 129,
- *         141, 143, 144, 157, 160, 173.
+ *         password will be made (Extended ASCII). https://www.ascii-code.com.
+ *         Uitgesloten zijn: 0 t/m 32, 48, 127, 129, 141, 143, 144, 157, 160,
+ *         173.
  *
  */
 public class CharacterBox {
@@ -22,24 +22,24 @@ public class CharacterBox {
 
 	public CharacterBox() {
 		box = new ArrayList<>();
-		excluded = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,48,127,129,141,143,144,157,160,173);
+		excluded = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+				24, 25, 26, 27, 28, 29, 30, 31, 32, 48, 127, 129, 141, 143, 144, 157, 160, 173);
 		fillBox();
 
 	}
 
 	public List<Character> getBox() {
 		return box;
-	}	
-	
-	
+	}
+
 	private void fillBox() {
 		for (int i = 1; i < 256; i++) {
 			if (!excluded.contains(i)) {
-			box.add((char)i);
+				box.add((char) i);
 			}
 		}
 	}
-	
+
 	private void returnToFullBox() {
 		this.box.clear();
 		fillBox();
@@ -86,25 +86,29 @@ public class CharacterBox {
 
 	}
 
-	public char generateChar(List<Character> doubles, String sort, boolean generateSame,char forbiddenChar) { // generateAll toevoegen in passwordGenerator als sort niet uit maakt?
+	public char generateChar(List<Character> doubles, String sort, boolean generateSame, boolean generateOther,
+			char forbiddenChar) {
 
 		returnToFullBox();
 
+		// doubles deleten uit box
 		if (!doubles.isEmpty()) {
 			for (Character c : doubles) {
 				deleteCharFromBox(c);
 			}
 		}
 
+		// sequence deleten uit box
 		if (forbiddenChar != 0) {
-			// generate without sequenceInt
 			deleteCharFromBox(forbiddenChar);
 		}
 
+		// zelfde soort of ander of maakt niet uit?
 		if (generateSame) {
 			makeSameSortBox(sort);
+		} else if (generateOther) {
+			makeOtherSortsBox(sort);
 		}
-		makeOtherSortsBox(sort);
 
 		return generateChar();
 
@@ -115,34 +119,39 @@ public class CharacterBox {
 		case "Digit":
 			deleteLetters();
 			deleteOther();
+			System.out.println("make same sort: digit");
 
 			break;
 		case "Letter":
 			deleteOther();
 			deleteDigits();
+			System.out.println("make same sort: letter");
 
 			break;
-		case "Symbol":
+		case "Other":
 			deleteDigits();
 			deleteLetters();
+			System.out.println("make same sort: other");
 
 			break;
 		}
-
 	}
 
 	private void makeOtherSortsBox(String nameSort) {
 		switch (nameSort) {
 		case "Digit":
 			deleteDigits();
+			System.out.println("make other sort than digits");
 
 			break;
 		case "Letter":
 			deleteLetters();
+			System.out.println("make other sort than letters");
 
 			break;
-		case "Symbol":
+		case "Other":
 			deleteOther();
+			System.out.println("make other sort than other");
 
 			break;
 		}

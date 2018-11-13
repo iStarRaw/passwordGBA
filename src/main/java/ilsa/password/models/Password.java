@@ -44,10 +44,10 @@ public class Password {
 
 			boolean tempSort = true;
 
-			if (sameSort && tempSort) {
-				sameSort = true;
+			if (sameSort != tempSort) {
+				sameSort = false;
+				count = totalToCheck;
 			}
-			sameSort = false;
 		}
 		count++;
 
@@ -76,35 +76,35 @@ public class Password {
 	}
 
 	public String getSort(int index) {
-		char toCheck = (char) index;
+		
+		char toCheck = password.get(index);
 
 		if (Character.isDigit(toCheck)) {
 			return "Digit";
 		} else if (Character.isAlphabetic(toCheck)) {
 			return "Letter";
 		}
-		return "Symbol";
+		return "Other";
 
 	}
 
-	//TODO check met char list dit is nog integer?)
 	public boolean isSequence() {
 		if (password.size() < 1) {
 			return false;
 		}
 
-		int lastValue = (int)password.get(password.size() - 1);
-		int beforeLastValue = (int)password.get(password.size() - 2);
+		char lastValue = password.get(password.size() - 1);
+		char beforeLastValue = password.get(password.size() - 2);
 
 		if (!Character.isAlphabetic(lastValue) && !Character.isDigit(lastValue)) {
 			return false;
 		}
 		
-		if (lastValue == beforeLastValue - 1) {
+		if ((int)lastValue == (int)beforeLastValue - 1) {
 			return true;
 		}
 
-		if (lastValue == beforeLastValue + 1) {
+		if ((int)lastValue == (int)beforeLastValue + 1) {
 			return true;
 		}
 
