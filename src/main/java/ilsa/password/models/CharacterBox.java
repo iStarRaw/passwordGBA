@@ -29,69 +29,17 @@ public class CharacterBox {
 
 	public List<Character> getBox() {
 		return box;
-	}
-
+	}	
+	
 	private void fillBox() {
-		fillLetters();
-		fillDigits();
-		fillOther();
-
-	}
-	
-	private void fillAll() {
 		for (int i = 1; i < 256; i++) {
-			if (
+			if (!excluded.contains(i)) {
 			box.add((char)i);
+			}
 		}
 	}
 	
 
-	private void fillLetters() {
-		// 65 tm 90
-		for (int i = 0; i < 26; i++) {
-			box.add((char) (65 + i));
-		}
-		// 97 tm 122
-		for (int i = 26, j = 0; i < 52; i++, j++) {
-			box.add((char) (97 + j));
-		}
-
-	}
-
-	private void fillDigits() {
-		// 49 tm 57
-		for (int i = 0; i < 9; i++) {
-			box.add((char) (49 + i));
-		}
-	}
-
-	private void fillOther() {
-		// 33 tm 47
-		for (int i = 0; i < 15; i++) {
-			box.add((char) (33 + i));
-		}
-		// 58 tm 64
-		for (int i = 15, j = 0; i < 22; i++, j++) {
-			box.add((char) (58 + j));
-		}
-		// 91 tm 96
-		for (int i = 22, j = 0; i < 28; i++, j++) {
-			box.add((char) (91 + j));
-		}
-		// 123 tm 126
-		for (int i = 28, j = 0; i < 32; i++, j++) {
-			box.add((char) (123 + j));
-		}
-		// t/m 255
-		for (int)
-		box.addAll(Arrays.asList('ÿ', 'þ', 'ý', 'ü', 'û', 'ú', 'ù', 'ø', '÷', 'ö', 'õ', 'ô', 'ó', 'ò', 'ñ', 'ð', 'ï',
-				'î', 'í', 'ì', 'ë', 'ê', 'é', 'è', 'ç', 'æ', 'å', 'ä', 'ã', 'â', 'á', 'à', 'ß', 'Þ', 'Ý', 'Ü', 'Û', 'Ú',
-				'Ù', 'Ø', '×', 'Ö', 'Õ', 'Ô', 'Ó', 'Ò', 'Ñ', 'Ð', 'Ï', 'Î', 'Í', 'Ì', 'Ë', 'Ê', 'É', 'È', 'Ç', 'Æ', 'Å',
-				'Ä', 'Ã', 'Â', 'Á', 'À', '¿', '¾', '½', '¼', '»', 'º', '¹', '¸', '·', '¶', 'µ', '´', '³', '²', '±', '°',
-				'¯', '®', '¬', '«', 'ª', '©', '¨', '§', '¦', '¥', '¤', '£', '¢', '¡', 'Ÿ', 'ž', 'œ', '›', 'š', '™', '˜',
-				'—', '–', '•', '”', '“', '’', '‘', 'Ž', 'Œ', '‹', 'Š', '‰', 'ˆ', '‡', '†', '…', '„', 'ƒ', '‚', '€'));
-
-	}
 
 	private void returnToFullBox() {
 		this.box.clear();
