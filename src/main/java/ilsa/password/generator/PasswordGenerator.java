@@ -47,7 +47,7 @@ public class PasswordGenerator {
 		} 
 		
 		//bij index 2
-		else if (indexToAdd % 2 == 0) {
+		else if (indexToAdd == 2) {
 
 			if (password.lastIsDuplicate()) {
 				duplicate = password.getDuplicate();
@@ -62,12 +62,12 @@ public class PasswordGenerator {
 					forbiddenChar = password.getForbiddenChar();
 				}
 			}
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenChar));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenChar));
 
 		} 
 		
-		//bij index 3
-		else if (indexToAdd % 2 != 0) {
+		//bij index > 2
+		else if (indexToAdd > 2) {
 
 			if (password.lastIsDuplicate()) {
 				duplicate = password.getDuplicate();
@@ -79,7 +79,6 @@ public class PasswordGenerator {
 				sort = password.getSort(indexToAdd - 1);
 				
 			} else if (password.areSameSort(2)) {
-				// laatste 2 checken
 				generateSame = true;
 				sort = password.getSort(indexToAdd - 1);
 
@@ -88,13 +87,13 @@ public class PasswordGenerator {
 				}
 			}
 			
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenChar));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenChar));
 
 		}
 		
 		//bij anders... maar met welke % met restwaarde?
 		else if (indexToAdd > 4) {
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateAll, forbiddenChar));
+			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenChar));
 
 		}
 

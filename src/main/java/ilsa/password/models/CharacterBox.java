@@ -116,7 +116,6 @@ public class CharacterBox {
 				box.remove(box.remove(i));
 			}
 		}
-
 	}
 
 	public char generateChar() {
@@ -129,8 +128,7 @@ public class CharacterBox {
 
 	}
 
-	public char generateChar(List<Character> doubles, String sort, boolean generateSame, boolean generateAll,
-			char forbiddenChar) { // generateAll toevoegen in passwordGenerator als sort niet uit maakt?
+	public char generateChar(List<Character> doubles, String sort, boolean generateSame,char forbiddenChar) { // generateAll toevoegen in passwordGenerator als sort niet uit maakt?
 
 		returnToFullBox();
 
