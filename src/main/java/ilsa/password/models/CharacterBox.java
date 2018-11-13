@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author ilsadejager Class that defines the characters out of which the
- *         password will be made (Extended ASCII, ISO LATIN-1).
+ *         password will be made (Extended ASCII).
  *         https://www.ascii-code.com. Uitgesloten zijn: 0 t/m 32, 48, 127, 129,
  *         141, 143, 144, 157, 160, 173.
  *
@@ -18,9 +18,11 @@ public class CharacterBox {
 	// condities opstellen en dan box kleiner maken
 	private List<Character> box;
 	private SecureRandom secGenerator = new SecureRandom();
+	private List<Integer> excluded;
 
 	public CharacterBox() {
 		box = new ArrayList<>();
+		excluded = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,48,127,129,141,143,144,157,160,173);
 		fillBox();
 
 	}
@@ -32,9 +34,17 @@ public class CharacterBox {
 	private void fillBox() {
 		fillLetters();
 		fillDigits();
-		fillSymbols();
+		fillOther();
 
 	}
+	
+	private void fillAll() {
+		for (int i = 1; i < 256; i++) {
+			if (
+			box.add((char)i);
+		}
+	}
+	
 
 	private void fillLetters() {
 		// 65 tm 90
@@ -55,7 +65,7 @@ public class CharacterBox {
 		}
 	}
 
-	private void fillSymbols() {
+	private void fillOther() {
 		// 33 tm 47
 		for (int i = 0; i < 15; i++) {
 			box.add((char) (33 + i));
@@ -73,6 +83,7 @@ public class CharacterBox {
 			box.add((char) (123 + j));
 		}
 		// t/m 255
+		for (int)
 		box.addAll(Arrays.asList('ÿ', 'þ', 'ý', 'ü', 'û', 'ú', 'ù', 'ø', '÷', 'ö', 'õ', 'ô', 'ó', 'ò', 'ñ', 'ð', 'ï',
 				'î', 'í', 'ì', 'ë', 'ê', 'é', 'è', 'ç', 'æ', 'å', 'ä', 'ã', 'â', 'á', 'à', 'ß', 'Þ', 'Ý', 'Ü', 'Û', 'Ú',
 				'Ù', 'Ø', '×', 'Ö', 'Õ', 'Ô', 'Ó', 'Ò', 'Ñ', 'Ð', 'Ï', 'Î', 'Í', 'Ì', 'Ë', 'Ê', 'É', 'È', 'Ç', 'Æ', 'Å',
@@ -110,7 +121,7 @@ public class CharacterBox {
 		}
 	}
 
-	private void deleteChar(char charToDelete) {
+	private void deleteCharFromBox(char charToDelete) {
 		for (int i = 0; i < this.box.size(); i++) {
 			if (box.get(i) == charToDelete) {
 				box.remove(box.remove(i));
@@ -133,19 +144,14 @@ public class CharacterBox {
 		returnToFullBox();
 
 		if (!doubles.isEmpty()) {
-			// delete double inhoud uit box
 			for (Character c : doubles) {
-				deleteChar(c);
+				deleteCharFromBox(c);
 			}
-		}
-
-		if (generateAll) {
-			return generateChar();
 		}
 
 		if (forbiddenChar != 0) {
 			// generate without sequenceInt
-			deleteChar(forbiddenChar);
+			deleteCharFromBox(forbiddenChar);
 		}
 
 		if (generateSame) {
