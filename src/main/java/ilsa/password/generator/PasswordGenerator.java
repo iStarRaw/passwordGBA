@@ -16,7 +16,7 @@ public class PasswordGenerator {
 		password = new Password(length);
 		cbox = new CharacterBox();
 		duplicates = new ArrayList<>();
-		
+
 		createPassword();
 	}
 
@@ -26,13 +26,11 @@ public class PasswordGenerator {
 
 			System.out.printf("Index %d is: %c\n", i, password.getPassword().get(i));
 		}
-		System.out.println(password.toHexString()); //sommige printen niet goed uit ivm encoding
+		System.out.println(password.toHexString()); // sommige printen niet goed uit ivm encoding
 		System.out.println(password.toBinaryString());
-		
+
 	}
 
-	
-	
 	private void addChar(int indexToAdd) {
 		char duplicate;
 		boolean generateSame = false;
@@ -43,9 +41,9 @@ public class PasswordGenerator {
 		if (indexToAdd < 2) {
 			password.getPassword().add(cbox.generateChar());
 
-		} 
-		
-		//bij index 2
+		}
+
+		// bij index 2
 		else if (indexToAdd == 2) {
 
 			if (password.lastIsDuplicate()) {
@@ -63,33 +61,33 @@ public class PasswordGenerator {
 			}
 			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenChar));
 
-		} 
-		
-		//bij index > 2
-		else if (indexToAdd > 2) { 
+		}
+
+		// bij index > 2
+		else if (indexToAdd > 2) {
 
 			if (password.lastIsDuplicate()) {
 				duplicate = password.getDuplicate();
 				duplicates.add(duplicate);
 			}
-
-			if (password.areSameSort(3)) {
-				generateSame = false;
-				sort = password.getSort(indexToAdd - 1);
-				
-			} else if (password.areSameSort(2)) {
+			
+			
+			if (password.areSameSort(2) & !password.areSameSort(3)) {
 				generateSame = true;
 				sort = password.getSort(indexToAdd - 1);
-
+				
 				if (password.isSequence()) {
 					forbiddenChar = password.getForbiddenChar();
 				}
-			}
+
+			} else if (password.areSameSort(3)) {
+				generateSame = false;
+				sort = password.getSort(indexToAdd - 1);
+			} 
 			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, forbiddenChar));
 
 		}
-		
-		
+
 	}
 
 }
