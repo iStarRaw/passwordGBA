@@ -18,41 +18,25 @@ public class Password {
 
 	public int getLength() {
 		return length;
-	}
-
-	public boolean areSameSort(int indexesToCheck) {
-		boolean sameSort = true;
+	}	
+	
+	public boolean isTheSame(int amount) {
 		int lastIndex = password.size() - 1;
-
-		return areSameSortHelper(indexesToCheck, lastIndex, sameSort, 1);
-
-	}
-
-	// TODO Advies Eric: zoek uit of dit niet beter in for loop kan!
-	private boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
-		if (count == totalToCheck) {
-			return sameSort;
-		}
-
-		char lastChar = password.get(lastIndexToCheck);
-		char beforeLastChar = password.get(lastIndexToCheck - 1);
-
-		if (compareSorts(lastChar, beforeLastChar)) {
-			boolean tempSort = true;
-
-			if (sameSort != tempSort) {
-				sameSort = false;
-				count = totalToCheck;
+		int limit = lastIndex - amount;
+		
+		char lastChar = password.get(lastIndex);
+		char beforeLastChar = password.get(lastIndex - 1);
+		
+		for (int i = lastIndex; i > limit; i--) {
+			if (!isTheSameHelper(lastChar, beforeLastChar)) {
+				return false;
 			}
+//			lastIndex = lastIndex - 1;
 		}
-		count++;
-
-		return areSameSortHelper(totalToCheck, lastIndexToCheck - 1, sameSort, count);
-
+		return true;
 	}
 	
-	
-	public boolean compareSorts(char lastChar, char beforeLastChar) {
+	public boolean isTheSameHelper(char lastChar, char beforeLastChar) {
 		
 	    return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) || (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)));
 	}
