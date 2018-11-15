@@ -12,14 +12,6 @@ class PasswordTest {
 
 	@Test
 	void testIsSameSort() {
-		Password pw = new Password(5);
-		
-		char one = '0';
-		char two = '6';
-		
-		boolean actual = pw.compareSorts(one, two);
-		
-		assertTrue(actual);
 		
 	}
 	

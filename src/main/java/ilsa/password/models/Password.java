@@ -21,17 +21,29 @@ public class Password {
 	}	
 	
 	public boolean isTheSame(int amount) {
+		int limitIndex = password.size() - amount;
 		int lastIndex = password.size() - 1;
-		int limit = lastIndex - amount;
-		
+		int beforeLastIndex = lastIndex - 1;
+
 		char lastChar = password.get(lastIndex);
-		char beforeLastChar = password.get(lastIndex - 1);
-		
-		for (int i = lastIndex; i > limit; i--) {
+		char beforeLastChar = password.get(beforeLastIndex);
+
+		for (int i = lastIndex; i > limitIndex; i--) {
+
 			if (!isTheSameHelper(lastChar, beforeLastChar)) {
 				return false;
 			}
-//			lastIndex = lastIndex - 1;
+
+			lastIndex--;
+			beforeLastIndex--;
+			
+			lastChar = password.get(lastIndex);
+			beforeLastChar = password.get(beforeLastIndex);
+			
+			if (beforeLastIndex == 0) {
+				return isTheSameHelper(lastChar, beforeLastChar);
+			}
+
 		}
 		return true;
 	}

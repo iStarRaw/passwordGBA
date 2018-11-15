@@ -50,7 +50,7 @@ public class PasswordGenerator {
 				duplicates.add(duplicate);
 			}
 
-			if (password.areSameSort(2)) {
+			if (password.isTheSame(2)) {
 				generateSame = true;
 				sort = password.getSort(indexToAdd - 1);
 
@@ -70,7 +70,7 @@ public class PasswordGenerator {
 			}
 			
 			
-			if (password.areSameSort(2) & !password.areSameSort(3)) {
+			if (password.isTheSame(2) & !password.isTheSame(3)) {
 				generateSame = true;
 				sort = password.getSort(indexToAdd - 1);
 				
@@ -78,7 +78,7 @@ public class PasswordGenerator {
 					forbiddenChar = password.getForbiddenChar();
 				}
 
-			} else if (password.areSameSort(3)) {
+			} else if (password.isTheSame(3)) {
 				generateOther = true;
 				sort = password.getSort(indexToAdd - 1);
 			} 
