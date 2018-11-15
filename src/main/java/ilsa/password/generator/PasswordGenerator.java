@@ -14,6 +14,10 @@ public class PasswordGenerator {
 	private List<Character> duplicates;
 
 	public PasswordGenerator(int length) throws TooSmallException {
+		if (length < 8) {
+			throw new TooSmallException();
+		}
+
 		password = new Password(length);
 		cbox = new CharacterBox();
 		duplicates = new ArrayList<>();
@@ -27,6 +31,7 @@ public class PasswordGenerator {
 
 			System.out.printf("Index %d is: %c en is een %s\n", i, password.getPassword().get(i), password.getSort(i));
 		}
+
 		System.out.println(password.toHexString()); // sommige printen niet goed uit ivm encoding
 		System.out.println(password.toBinaryString());
 
@@ -44,57 +49,37 @@ public class PasswordGenerator {
 
 		}
 
-		// TODO als indexToAdd laatste is dan moet isTheSame(2) false zijn: oftewel de
-		// laatste 2 moeten verschillend zijn
-		if (indexToAdd == password.getLength() - 1) {
-			if (!password.isTheSame(2)) {
-				generateOther = true;
-				sort = password.getSort(indexToAdd - 1);
-			}
-		}
-
-		else if (indexToAdd == 2) {
+		else if (indexToAdd >= 2) {
 
 			if (password.lastIsDuplicate()) {
 				duplicate = password.getDuplicate();
 				duplicates.add(duplicate);
 			}
 
-			if (password.isTheSame(2)) {
-				generateSame = true;
-				sort = password.getSort(indexToAdd - 1);
-
-				if (password.isSequence()) {
-					forbiddenChar = password.getForbiddenChar();
+			if (indexToAdd == password.getLength() - 1) {
+				if (!password.isTheSame(2)) {
+					generateOther = true;
+					sort = password.getSort(indexToAdd - 1);
 				}
+
+			} else if (password.isTheSame(2)) {
+				if (!password.isTheSame(3) || indexToAdd == 2) {
+					generateSame = true;
+					sort = password.getSort(indexToAdd - 1);
+
+					if (password.isSequence()) {
+						forbiddenChar = password.getForbiddenChar();
+					}
+				} else {
+					generateOther = true;
+					sort = password.getSort(indexToAdd - 1);
+				}
+
 			}
+
 			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateOther, forbiddenChar));
 
 		}
-
-		else if (indexToAdd > 2) {
-
-			if (password.lastIsDuplicate()) {
-				duplicate = password.getDuplicate();
-				duplicates.add(duplicate);
-			}
-
-			if (password.isTheSame(2) && !password.isTheSame(3)) {
-				generateSame = true;
-				sort = password.getSort(indexToAdd - 1);
-
-				if (password.isSequence()) {
-					forbiddenChar = password.getForbiddenChar();
-				}
-
-			} else if (password.isTheSame(3)) {
-				generateOther = true;
-				sort = password.getSort(indexToAdd - 1);
-			}
-			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateOther, forbiddenChar));
-
-		}
-
 	}
 
 }

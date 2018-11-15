@@ -41,11 +41,13 @@ public class CharacterBox {
 	}
 
 	private void returnToFullBox() {
+		System.out.println("return to full box");
 		this.box.clear();
 		fillBox();
 	}
 
 	private void deleteLetters() {
+		System.out.println("deleting letters");
 		for (int i = 0; i < this.box.size(); i++) {
 			if (Character.isAlphabetic(this.box.get(i))) {
 				box.remove(i);
@@ -54,6 +56,7 @@ public class CharacterBox {
 	}
 
 	private void deleteDigits() {
+		System.out.println("deleting digits");
 		for (int i = 0; i < this.box.size(); i++) {
 			if (Character.isDigit(this.box.get(i)))
 				box.remove(i);
@@ -61,6 +64,7 @@ public class CharacterBox {
 	}
 
 	private void deleteOther() {
+		System.out.println("deleting other");
 		for (int i = 0; i < this.box.size(); i++) {
 			if (!Character.isDigit(this.box.get(i)) && !Character.isAlphabetic(this.box.get(i))) {
 				box.remove(i);
@@ -90,6 +94,7 @@ public class CharacterBox {
 			char forbiddenChar) {
 
 		returnToFullBox();
+//		System.out.println(Arrays.toString(box.toArray()));
 
 		// doubles deleten uit box
 		if (!doubles.isEmpty()) {
@@ -103,12 +108,16 @@ public class CharacterBox {
 			deleteCharFromBox(forbiddenChar);
 		}
 
+		System.out.printf("Dezelfde genereren: %b, %s\n", generateSame, sort);
+		System.out.printf("Een andere genereren: %b, %s\n", generateOther, sort);
+		
 		// zelfde soort of ander of maakt niet uit?
 		if (generateSame) {
 			makeSameSortBox(sort);
 		} else if (generateOther) {
 			makeOtherSortsBox(sort);
 		} 
+//		System.out.println(Arrays.toString(box.toArray()));
 
 		return generateChar();
 

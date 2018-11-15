@@ -8,7 +8,7 @@ public class App {
 	public static void main(String[] args) {
 
 		try {
-			PasswordGenerator pg = new PasswordGenerator(0);
+			PasswordGenerator pg = new PasswordGenerator(8);
 
 		} catch (TooSmallException e) {
 			System.out.println(e.getMessage());
