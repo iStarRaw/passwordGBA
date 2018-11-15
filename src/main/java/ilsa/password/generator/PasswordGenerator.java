@@ -3,6 +3,7 @@ package ilsa.password.generator;
 import java.util.ArrayList;
 import java.util.List;
 
+import ilsa.password.customexception.TooSmallException;
 import ilsa.password.models.CharacterBox;
 import ilsa.password.models.Password;
 
@@ -12,7 +13,7 @@ public class PasswordGenerator {
 	private CharacterBox cbox;
 	private List<Character> duplicates;
 
-	public PasswordGenerator(int length) {
+	public PasswordGenerator(int length) throws TooSmallException {
 		password = new Password(length);
 		cbox = new CharacterBox();
 		duplicates = new ArrayList<>();
@@ -40,7 +41,16 @@ public class PasswordGenerator {
 
 		if (indexToAdd < 2) {
 			password.getPassword().add(cbox.generateChar());
-			
+
+		}
+
+		// TODO als indexToAdd laatste is dan moet isTheSame(2) false zijn: oftewel de
+		// laatste 2 moeten verschillend zijn
+		if (indexToAdd == password.getLength() - 1) {
+			if (!password.isTheSame(2)) {
+				generateOther = true;
+				sort = password.getSort(indexToAdd - 1);
+			}
 		}
 
 		else if (indexToAdd == 2) {
@@ -68,12 +78,11 @@ public class PasswordGenerator {
 				duplicate = password.getDuplicate();
 				duplicates.add(duplicate);
 			}
-			
-			
-			if (password.isTheSame(2) & !password.isTheSame(3)) {
+
+			if (password.isTheSame(2) && !password.isTheSame(3)) {
 				generateSame = true;
 				sort = password.getSort(indexToAdd - 1);
-				
+
 				if (password.isSequence()) {
 					forbiddenChar = password.getForbiddenChar();
 				}
@@ -81,7 +90,7 @@ public class PasswordGenerator {
 			} else if (password.isTheSame(3)) {
 				generateOther = true;
 				sort = password.getSort(indexToAdd - 1);
-			} 
+			}
 			password.getPassword().add(cbox.generateChar(duplicates, sort, generateSame, generateOther, forbiddenChar));
 
 		}

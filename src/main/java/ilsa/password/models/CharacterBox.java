@@ -108,7 +108,7 @@ public class CharacterBox {
 			makeSameSortBox(sort);
 		} else if (generateOther) {
 			makeOtherSortsBox(sort);
-		}
+		} 
 
 		return generateChar();
 

@@ -3,11 +3,17 @@ package ilsa.password.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import ilsa.password.customexception.TooSmallException;
+
 public class Password {
 	private int length;
 	private List<Character> password;
 
-	public Password(int length) {
+	public Password(int length) throws TooSmallException{
+		if (length < 8) {
+			throw new TooSmallException();
+		}
+		
 		this.length = length;
 		this.password = new ArrayList<>();
 	}
