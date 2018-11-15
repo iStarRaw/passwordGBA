@@ -29,7 +29,7 @@ public class Password {
 	}
 
 	// TODO Advies Eric: zoek uit of dit niet beter in for loop kan!
-	public boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
+	private boolean areSameSortHelper(int totalToCheck, int lastIndexToCheck, boolean sameSort, int count) {
 		if (count == totalToCheck) {
 			return sameSort;
 		}
@@ -54,22 +54,7 @@ public class Password {
 	
 	public boolean compareSorts(char lastChar, char beforeLastChar) {
 		
-		if (Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) {
-			return true;
-		} else if (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)) {
-			return true;
-		} else if (!Character.isDigit(lastChar) && !Character.isAlphabetic(lastChar) &&
-	    (!Character.isDigit(beforeLastChar) && !Character.isAlphabetic(beforeLastChar))) {
-	    	return true;
-	    }
-	    return false;
-		
-		
-//		return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) || 
-//			    (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)) || 
-//			    (!Character.isDigit(lastChar) && !Character.isAlphabetic(lastChar)) &&
-//			    (!Character.isDigit(beforeLastChar) && !Character.isAlphabetic(beforeLastChar)));
-
+	    return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar)) || (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)));
 	}
 	
 

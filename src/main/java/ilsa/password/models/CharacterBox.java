@@ -114,44 +114,38 @@ public class CharacterBox {
 
 	}
 
-	private void makeSameSortBox(String nameSort) {
-		switch (nameSort) {
+	private void makeSameSortBox(String onlyThis) {
+		switch (onlyThis) {
 		case "Digit":
 			deleteLetters();
 			deleteOther();
-			System.out.println("make same sort: digit");
 
 			break;
 		case "Letter":
 			deleteOther();
 			deleteDigits();
-			System.out.println("make same sort: letter");
 
 			break;
 		case "Other":
 			deleteDigits();
 			deleteLetters();
-			System.out.println("make same sort: other");
 
 			break;
 		}
 	}
 
-	private void makeOtherSortsBox(String nameSort) {
-		switch (nameSort) {
+	private void makeOtherSortsBox(String without) {
+		switch (without) {
 		case "Digit":
 			deleteDigits();
-			System.out.println("make other sort than digits");
 
 			break;
 		case "Letter":
 			deleteLetters();
-			System.out.println("make other sort than letters");
 
 			break;
 		case "Other":
 			deleteOther();
-			System.out.println("make other sort than other");
 
 			break;
 		}

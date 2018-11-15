@@ -52,7 +52,6 @@ public class PasswordGenerator {
 
 			if (password.areSameSort(2)) {
 				generateSame = true;
-				generateOther = false;
 				sort = password.getSort(indexToAdd - 1);
 
 				if (password.isSequence()) {
@@ -73,7 +72,6 @@ public class PasswordGenerator {
 			
 			if (password.areSameSort(2) & !password.areSameSort(3)) {
 				generateSame = true;
-				generateOther = false;
 				sort = password.getSort(indexToAdd - 1);
 				
 				if (password.isSequence()) {
@@ -81,7 +79,6 @@ public class PasswordGenerator {
 				}
 
 			} else if (password.areSameSort(3)) {
-				generateSame = false;
 				generateOther = true;
 				sort = password.getSort(indexToAdd - 1);
 			} 
