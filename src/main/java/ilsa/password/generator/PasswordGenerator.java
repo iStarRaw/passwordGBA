@@ -32,7 +32,7 @@ public class PasswordGenerator {
 			System.out.printf("Index %d is: %c en is een %s\n", i, password.getPassword().get(i), password.getSort(i));
 		}
 
-		System.out.println(password.toHexString()); // sommige printen niet goed uit ivm encoding
+		System.out.println(password.toHexString());
 		System.out.println(password.toBinaryString());
 
 	}
@@ -71,6 +71,7 @@ public class PasswordGenerator {
 						forbiddenChar = password.getForbiddenChar();
 					}
 				} else {
+					generateSame = false;
 					generateOther = true;
 					sort = password.getSort(indexToAdd - 1);
 				}
