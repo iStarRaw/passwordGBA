@@ -3,7 +3,6 @@ package ilsa.password.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import ilsa.password.customexception.TooSmallException;
 
 public class Password {
 	private int length;
@@ -66,7 +65,6 @@ public class Password {
 		}
 
 		char lastValue = password.get(password.size() - 1);
-
 		for (int i = 0; i < password.size() - 1; i++) {
 			if (Character.compare(password.get(i), lastValue) == 0) {
 				return true;
