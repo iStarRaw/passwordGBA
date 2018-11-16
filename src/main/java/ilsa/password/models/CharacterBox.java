@@ -41,7 +41,7 @@ public class CharacterBox {
 	}
 
 	private void makeFullBox() {
-		System.out.println("return to full box");
+		System.out.println("make full box");
 		this.box.clear();
 		fillBox();
 	}
@@ -82,7 +82,7 @@ public class CharacterBox {
 
 	public char generateChar() {
 		int index = secGenerator.nextInt(this.box.size());
-
+		
 		while (index < 0 || index > this.box.size()) {
 			index = secGenerator.nextInt(this.box.size());
 		}
@@ -95,6 +95,7 @@ public class CharacterBox {
 		makeFullBox();
 		
 		deleteDoubles(doubles);
+		
 		deleteSequenceChar(forbiddenChar);
 
 		if (generateSame) {
@@ -102,7 +103,6 @@ public class CharacterBox {
 		} else if (generateOther) {
 			makeOtherSortsBox(sort);
 		} 
-		
 	}
 
 	private void deleteSequenceChar(char forbiddenChar) {

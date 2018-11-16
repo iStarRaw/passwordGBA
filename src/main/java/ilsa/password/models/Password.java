@@ -20,8 +20,12 @@ public class Password {
 	public int getLength() {
 		return length;
 	}
+	
+	public void addThisChar(char thisChar) {
+		this.password.add(thisChar);
+	}
 
-	public boolean isTheSame(int amount) {
+	public boolean areSameSort(int amount) {
 		int limitIndex = password.size() - amount;
 		int lastIndex = password.size() - 1;
 		int beforeLastIndex = lastIndex - 1;
@@ -31,7 +35,7 @@ public class Password {
 
 		for (int i = lastIndex; i > limitIndex; i--) {
 
-			if (!isTheSameHelper(lastChar, beforeLastChar)) {
+			if (!isSameSort(lastChar, beforeLastChar)) {
 				return false;
 			}
 
@@ -47,14 +51,13 @@ public class Password {
 			beforeLastChar = password.get(beforeLastIndex);
 
 			if (beforeLastIndex == 0) {
-				return isTheSameHelper(lastChar, beforeLastChar);
+				return isSameSort(lastChar, beforeLastChar);
 			}
 		}
 		return true;
 	}
 
-	public boolean isTheSameHelper(char lastChar, char beforeLastChar) {
-
+	public boolean isSameSort(char lastChar, char beforeLastChar) {
 		return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
 				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)));
 	}
@@ -79,7 +82,6 @@ public class Password {
 	}
 
 	public String getSort(int index) {
-
 		char toCheck = password.get(index);
 
 		if (Character.isDigit(toCheck)) {

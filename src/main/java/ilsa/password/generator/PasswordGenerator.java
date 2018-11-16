@@ -38,43 +38,40 @@ public class PasswordGenerator {
 	private void addChar(int indexToAdd) {
 		boolean generateSame = false;
 		boolean generateOther = false;
-		String sort = "";
+		String lastCharName = "";
 		char forbiddenChar = '\0';
 
 		if (indexToAdd < 2) {
-			password.getPassword().add(cbox.generateChar());
+			char newChar = cbox.generateChar();
+			password.addThisChar(newChar);
 
-		}
-
-		else if (indexToAdd >= 2) {
-
+		} else if (indexToAdd >= 2) {
 			checkDuplicates();
+			lastCharName = password.getSort(indexToAdd - 1);
 
 			if (indexToAdd == password.getLength() - 1) {
-				if (!password.isTheSame(2)) {
+				if (!password.areSameSort(2)) {
 					generateOther = true;
-					sort = password.getSort(indexToAdd - 1);
 				}
 
-			} else if (password.isTheSame(2)) {
-				if (!password.isTheSame(3) || indexToAdd == 2) {
+			} else if (password.areSameSort(2)) {
+				if (password.areSameSort(3)) {
+					// 4 dezelfde mogen niet
+					generateOther = true;
+
+				} else if (!password.areSameSort(3) || indexToAdd == 2) {
+					// 2 dezelfde mogen niet dus zelfde soort trekken.
 					generateSame = true;
-					sort = password.getSort(indexToAdd - 1);
 
 					if (password.isSequence()) {
 						forbiddenChar = password.getForbiddenChar();
 					}
-				} else {
-					generateSame = false;
-					generateOther = true;
-					sort = password.getSort(indexToAdd - 1);
 				}
-
 			}
+			cbox.prepareBox(duplicates, lastCharName, generateSame, generateOther, forbiddenChar);
 
-			cbox.prepareBox(duplicates, sort, generateSame, generateOther, forbiddenChar);
-			
-			password.getPassword().add(cbox.generateChar());
+			char newChar = cbox.generateChar();
+			password.addThisChar(newChar);
 
 		}
 	}
