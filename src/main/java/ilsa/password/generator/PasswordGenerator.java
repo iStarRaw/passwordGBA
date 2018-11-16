@@ -78,6 +78,7 @@ public class PasswordGenerator {
 
 			}
 
+			
 			password.getPassword().add(cbox.prepareBox(duplicates, sort, generateSame, generateOther, forbiddenChar));
 
 		}

@@ -40,7 +40,7 @@ public class CharacterBox {
 		}
 	}
 
-	private void returnToFullBox() {
+	private void makeFullBox() {
 		System.out.println("return to full box");
 		this.box.clear();
 		fillBox();
@@ -90,9 +90,9 @@ public class CharacterBox {
 
 	}
 
-	public char prepareBox(List<Character> doubles, String sort, boolean generateSame, boolean generateOther,
+	public void prepareBox(List<Character> doubles, String sort, boolean generateSame, boolean generateOther,
 			char forbiddenChar) {
-		returnToFullBox();
+		makeFullBox();
 		
 		deleteDoubles(doubles);
 		deleteSequenceChar(forbiddenChar);
@@ -102,8 +102,7 @@ public class CharacterBox {
 		} else if (generateOther) {
 			makeOtherSortsBox(sort);
 		} 
-		return generateChar();
-
+		
 	}
 
 	private void deleteSequenceChar(char forbiddenChar) {
