@@ -92,22 +92,16 @@ public class CharacterBox {
 
 	public char prepareBox(List<Character> doubles, String sort, boolean generateSame, boolean generateOther,
 			char forbiddenChar) {
-
 		returnToFullBox();
+		
 		deleteDoubles(doubles);
 		deleteSequenceChar(forbiddenChar);
 
-		System.out.printf("Dezelfde genereren: %b, %s\n", generateSame, sort);
-		System.out.printf("Een andere genereren: %b, %s\n", generateOther, sort);
-		
-		// zelfde soort of ander of maakt niet uit?
 		if (generateSame) {
 			makeSameSortBox(sort);
 		} else if (generateOther) {
 			makeOtherSortsBox(sort);
 		} 
-//		System.out.println(Arrays.toString(box.toArray()));
-
 		return generateChar();
 
 	}
