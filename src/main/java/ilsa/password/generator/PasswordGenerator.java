@@ -31,14 +31,11 @@ public class PasswordGenerator {
 
 			System.out.printf("Index %d is: %c en is een %s\n", i, password.getPassword().get(i), password.getSort(i));
 		}
-
 		System.out.println(password.toHexString());
-		System.out.println(password.toBinaryString());
 
 	}
 
 	private void addChar(int indexToAdd) {
-		char duplicate;
 		boolean generateSame = false;
 		boolean generateOther = false;
 		String sort = "";
@@ -51,10 +48,7 @@ public class PasswordGenerator {
 
 		else if (indexToAdd >= 2) {
 
-			if (password.lastIsDuplicate()) {
-				duplicate = password.getDuplicate();
-				duplicates.add(duplicate);
-			}
+			checkDuplicates();
 
 			if (indexToAdd == password.getLength() - 1) {
 				if (!password.isTheSame(2)) {
@@ -78,9 +72,18 @@ public class PasswordGenerator {
 
 			}
 
+			cbox.prepareBox(duplicates, sort, generateSame, generateOther, forbiddenChar);
 			
-			password.getPassword().add(cbox.prepareBox(duplicates, sort, generateSame, generateOther, forbiddenChar));
+			password.getPassword().add(cbox.generateChar());
 
+		}
+	}
+
+	private void checkDuplicates() {
+		char duplicate;
+		if (password.lastIsDuplicate()) {
+			duplicate = password.getDuplicate();
+			duplicates.add(duplicate);
 		}
 	}
 
