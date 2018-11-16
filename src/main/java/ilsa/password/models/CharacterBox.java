@@ -94,19 +94,8 @@ public class CharacterBox {
 			char forbiddenChar) {
 
 		returnToFullBox();
-//		System.out.println(Arrays.toString(box.toArray()));
-
-		// doubles deleten uit box
-		if (!doubles.isEmpty()) {
-			for (Character c : doubles) {
-				deleteCharFromBox(c);
-			}
-		}
-
-		// sequence deleten uit box
-		if (forbiddenChar != 0) {
-			deleteCharFromBox(forbiddenChar);
-		}
+		deleteDoubles(doubles);
+		deleteSequenceChar(forbiddenChar);
 
 		System.out.printf("Dezelfde genereren: %b, %s\n", generateSame, sort);
 		System.out.printf("Een andere genereren: %b, %s\n", generateOther, sort);
@@ -121,6 +110,20 @@ public class CharacterBox {
 
 		return generateChar();
 
+	}
+
+	private void deleteSequenceChar(char forbiddenChar) {
+		if (forbiddenChar != 0) {
+			deleteCharFromBox(forbiddenChar);
+		}
+	}
+
+	private void deleteDoubles(List<Character> doubles) {
+		if (!doubles.isEmpty()) {
+			for (Character c : doubles) {
+				deleteCharFromBox(c);
+			}
+		}
 	}
 
 	private void makeSameSortBox(String onlyThis) {
