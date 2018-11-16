@@ -81,7 +81,7 @@ public class Password {
 		return password.get(password.size() - 1);
 	}
 
-	public String getSort(int index) {
+	public String getCharSort(int index) {
 		char toCheck = password.get(index);
 
 		if (Character.isDigit(toCheck)) {

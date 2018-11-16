@@ -29,7 +29,7 @@ public class PasswordGenerator {
 		for (int i = 0; i < password.getLength(); i++) {
 			addChar(i);
 
-			System.out.printf("Index %d is: %c en is een %s\n", i, password.getPassword().get(i), password.getSort(i));
+			System.out.printf("Index %d is: %c en is een %s\n", i, password.getPassword().get(i), password.getCharSort(i));
 		}
 		System.out.println(password.toHexString());
 
@@ -47,7 +47,7 @@ public class PasswordGenerator {
 
 		} else if (indexToAdd >= 2) {
 			checkDuplicates();
-			lastCharName = password.getSort(indexToAdd - 1);
+			lastCharName = password.getCharSort(indexToAdd - 1);
 
 			if (indexToAdd == password.getLength() - 1) {
 				if (!password.areSameSort(2)) {
