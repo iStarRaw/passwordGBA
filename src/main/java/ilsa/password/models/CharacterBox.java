@@ -90,7 +90,7 @@ public class CharacterBox {
 
 	}
 
-	public char generateChar(List<Character> doubles, String sort, boolean generateSame, boolean generateOther,
+	public char prepareBox(List<Character> doubles, String sort, boolean generateSame, boolean generateOther,
 			char forbiddenChar) {
 
 		returnToFullBox();
