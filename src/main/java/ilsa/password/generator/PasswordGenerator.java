@@ -10,7 +10,6 @@ import ilsa.password.customexception.PasswordException;
 import ilsa.password.models.Password;
 
 public class PasswordGenerator {
-
 	private Password password;
 	private List<Character> box;
 	private SecureRandom secGenerator = new SecureRandom();
@@ -91,8 +90,22 @@ public class PasswordGenerator {
 
 				}
 			}
-			prepareBox(duplicates, lastCharName, generateSame, generateOther, forbiddenChar);
+			prepareBox(lastCharName, generateSame, generateOther, forbiddenChar);
 
+		}
+	}
+	
+	private void prepareBox(String sort, boolean generateSame, boolean generateOther,
+			char forbiddenChar) {
+		makeFullBox();
+
+		deleteDoubles();
+		deleteSequenceChar(forbiddenChar);
+
+		if (generateSame) {
+			makeSameSortBox(sort);
+		} else if (generateOther) {
+			makeOtherSortsBox(sort);
 		}
 	}
 
@@ -155,7 +168,7 @@ public class PasswordGenerator {
 		}
 	}
 
-	public char generateChar() {
+	private char generateChar() {
 		int index = secGenerator.nextInt(this.box.size());
 
 		while (index < 0 || index > this.box.size()) {
@@ -165,30 +178,15 @@ public class PasswordGenerator {
 
 	}
 
-	public void prepareBox(List<Character> doubles, String sort, boolean generateSame, boolean generateOther,
-			char forbiddenChar) {
-		makeFullBox();
-
-		deleteDoubles(doubles);
-
-		deleteSequenceChar(forbiddenChar);
-
-		if (generateSame) {
-			makeSameSortBox(sort);
-		} else if (generateOther) {
-			makeOtherSortsBox(sort);
-		}
-	}
-
 	private void deleteSequenceChar(char forbiddenChar) {
 		if (forbiddenChar != 0) {
 			deleteCharFromBox(forbiddenChar);
 		}
 	}
 
-	private void deleteDoubles(List<Character> doubles) {
-		if (!doubles.isEmpty()) {
-			for (Character c : doubles) {
+	private void deleteDoubles() {
+		if (!duplicates.isEmpty()) {
+			for (Character c : duplicates) {
 				deleteCharFromBox(c);
 			}
 		}
