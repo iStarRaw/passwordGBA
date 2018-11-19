@@ -27,27 +27,30 @@ public class PasswordGenerator {
 
 	private void createPassword() {
 		for (int i = 0; i < password.getLength(); i++) {
-			addChar(i);
+			// prepare box
+			makeSelection(i);
+			cbox.toString();
 
-			System.out.printf("Index %d is: %c en is een %s\n", i, password.getPassword().get(i), password.getCharSort(i));
+			// pick random char
+			char newChar = cbox.generateChar();
+
+			// addChar
+			password.addThisChar(newChar);
+
+			System.out.printf("Index %d is: %c en is een %s\n", i, password.getPassword().get(i),
+					password.getCharSort(i));
 		}
 		System.out.println(password.toHexString());
 
 	}
 
-	private void addChar(int indexToAdd) {
-		boolean generateSame = false;
-		boolean generateOther = false;
-		String lastCharName = "";
-		char forbiddenChar = '\0';
-
-		if (indexToAdd < 2) {
-			char newChar = cbox.generateChar();
-			password.addThisChar(newChar);
-
-		} else if (indexToAdd >= 2) {
+	private void makeSelection(int indexToAdd) {
+		if (indexToAdd >= 2) {
+			boolean generateSame = false;
+			boolean generateOther = false;
+			char forbiddenChar = '\0';
 			checkDuplicates();
-			lastCharName = password.getCharSort(indexToAdd - 1);
+			String lastCharName = password.getCharSort(indexToAdd - 1);
 
 			if (indexToAdd == password.getLength() - 1) {
 				if (!password.areSameSort(2)) {
@@ -69,9 +72,6 @@ public class PasswordGenerator {
 				}
 			}
 			cbox.prepareBox(duplicates, lastCharName, generateSame, generateOther, forbiddenChar);
-
-			char newChar = cbox.generateChar();
-			password.addThisChar(newChar);
 
 		}
 	}

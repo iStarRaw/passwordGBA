@@ -3,7 +3,9 @@ package ilsa.password.models;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ilsadejager Class that defines the characters out of which the
@@ -25,7 +27,7 @@ public class CharacterBox {
 		excluded = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
 				24, 25, 26, 27, 28, 29, 30, 31, 32, 48, 127, 129, 141, 143, 144, 157, 160, 173);
 		fillBox();
-
+		System.out.println(box.toString());
 	}
 
 	public List<Character> getBox() {
@@ -48,26 +50,30 @@ public class CharacterBox {
 
 	private void deleteLetters() {
 		System.out.println("deleting letters");
-		for (int i = 0; i < this.box.size(); i++) {
-			if (Character.isAlphabetic(this.box.get(i))) {
-				box.remove(i);
+		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
+			char c = iterator.next();
+			if (Character.isLetter(c)) {
+				iterator.remove();
 			}
 		}
 	}
 
 	private void deleteDigits() {
 		System.out.println("deleting digits");
-		for (int i = 0; i < this.box.size(); i++) {
-			if (Character.isDigit(this.box.get(i)))
-				box.remove(i);
+		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
+			char c = iterator.next();
+			if (Character.isDigit(c)) {
+				iterator.remove();
+			}
 		}
 	}
 
 	private void deleteOther() {
 		System.out.println("deleting other");
-		for (int i = 0; i < this.box.size(); i++) {
-			if (!Character.isDigit(this.box.get(i)) && !Character.isAlphabetic(this.box.get(i))) {
-				box.remove(i);
+		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
+			char c = iterator.next();
+			if (!Character.isDigit(c) && !Character.isAlphabetic(c)) {
+				iterator.remove();
 			}
 		}
 	}
@@ -82,7 +88,7 @@ public class CharacterBox {
 
 	public char generateChar() {
 		int index = secGenerator.nextInt(this.box.size());
-		
+
 		while (index < 0 || index > this.box.size()) {
 			index = secGenerator.nextInt(this.box.size());
 		}
@@ -93,16 +99,16 @@ public class CharacterBox {
 	public void prepareBox(List<Character> doubles, String sort, boolean generateSame, boolean generateOther,
 			char forbiddenChar) {
 		makeFullBox();
-		
+
 		deleteDoubles(doubles);
-		
+
 		deleteSequenceChar(forbiddenChar);
 
 		if (generateSame) {
 			makeSameSortBox(sort);
 		} else if (generateOther) {
 			makeOtherSortsBox(sort);
-		} 
+		}
 	}
 
 	private void deleteSequenceChar(char forbiddenChar) {
@@ -154,6 +160,11 @@ public class CharacterBox {
 
 			break;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return this.box.stream().map(e -> e.toString()).collect(Collectors.joining());
 	}
 
 }
