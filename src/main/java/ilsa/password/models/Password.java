@@ -3,6 +3,8 @@ package ilsa.password.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import ilsa.password.generator.PasswordGenerator;
+
 
 public class Password {
 	private int length;
@@ -59,7 +61,7 @@ public class Password {
 
 	public boolean isSameSort(char lastChar, char beforeLastChar) {
 		return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
-				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)));
+				|| (Character.isLetter(lastChar) && Character.isLetter(beforeLastChar)));
 	}
 
 	public boolean lastIsDuplicate() {
@@ -165,6 +167,11 @@ public class Password {
 		}
 		return passwordString.toString();
 
+	}
+
+	public static Password generate(int length) {
+		PasswordGenerator pg = new PasswordGenerator(length);
+		return pg.getPassword();
 	}
 
 }
