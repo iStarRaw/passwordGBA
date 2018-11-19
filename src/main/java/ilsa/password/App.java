@@ -8,6 +8,8 @@ public class App {
 		int length = 8;
 
 		Password pwd = Password.generate(length);
+		
+//		String passwordString = pwd.toString();
 	}
 
 }

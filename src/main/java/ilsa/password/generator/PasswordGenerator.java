@@ -31,7 +31,7 @@ public class PasswordGenerator {
 
 		createPassword();
 	}
-	
+
 	private void createPassword() {
 		for (int i = 0; i < password.getLength(); i++) {
 			addChar(i);
@@ -42,7 +42,7 @@ public class PasswordGenerator {
 		System.out.println(password.toHexString());
 
 	}
-	
+
 	public Password getPassword() {
 		return password;
 	}
@@ -54,9 +54,11 @@ public class PasswordGenerator {
 
 	}
 
-	/**defines the characters out of which the password will be made (Extended ASCII). https://www.ascii-code.com.
-	 * Uitgesloten zijn: 0 t/m 32, 48, 127, 129, 141, 143, 144, 157, 160, 173.
-	 */     
+	/**
+	 * defines the characters out of which the password will be made (Extended
+	 * ASCII). https://www.ascii-code.com. Uitgesloten zijn: 0 t/m 32, 48, 127, 129,
+	 * 141, 143, 144, 157, 160, 173.
+	 */
 	private void makeSelection(int indexToAdd) {
 		if (indexToAdd >= 2) {
 			boolean generateSame = false;
@@ -94,9 +96,8 @@ public class PasswordGenerator {
 
 		}
 	}
-	
-	private void prepareBox(String sort, boolean generateSame, boolean generateOther,
-			char forbiddenChar) {
+
+	private void prepareBox(String sort, boolean generateSame, boolean generateOther, char forbiddenChar) {
 		makeFullBox();
 
 		deleteDoubles();
@@ -116,7 +117,7 @@ public class PasswordGenerator {
 			duplicates.add(duplicate);
 		}
 	}
-	
+
 	private void fillBox() {
 		for (int i = 1; i < 256; i++) {
 			if (!excluded.contains(i)) {

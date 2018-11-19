@@ -36,14 +36,17 @@ public class Password {
 		char beforeLastChar = password.get(beforeLastIndex);
 
 		for (int i = lastIndex; i > limitIndex; i--) {
+			System.out.println("Index is: " + i);
 
 			if (!isSameSort(lastChar, beforeLastChar)) {
+				
 				return false;
 			}
 
 			lastIndex--;
 
 			if (lastIndex == 0) {
+				System.out.println("Last index == 0");
 				return true;
 			}
 
@@ -53,6 +56,7 @@ public class Password {
 			beforeLastChar = password.get(beforeLastIndex);
 
 			if (beforeLastIndex == 0) {
+				System.out.println("Before == 0");
 				return isSameSort(lastChar, beforeLastChar);
 			}
 		}
