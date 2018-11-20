@@ -67,33 +67,20 @@ public class PasswordGenerator {
 
 			checkDuplicates();
 			
-			if (password.areSameSort(2) && password.areSameSort(3)) {
+			if (password.areSameSort(3)) {
 				generateOther = true;
-				if (indexToAdd == 2) {
-					generateOther = false;
-					generateSame = true;
-				}
-			} else if (password.areSameSort(3)) {
-				generateOther = true;
-				if (indexToAdd == 2) {
-					generateOther = false;
-					generateSame = true;
-				}
 			} else if (password.areSameSort(2) && !password.areSameSort(3)) {
 				generateSame = true;
-			} 
-			
-			if (indexToAdd == password.getLength() - 1) {
+			} else if (indexToAdd == password.getLength() - 1) {
 				if ((!password.areSameSort(2)) || (password.areSameSort(3))) {
 					generateOther = true;
 				} else if (password.areSameSort(2)) {
 					generateSame = true;
 				}
 			}
-			
 			prepareBox(lastCharName, generateSame, generateOther, forbiddenChar);
+			
 		}
-
 	}
 
 	private void prepareBox(String sort, boolean generateSame, boolean generateOther, char forbiddenChar) {
@@ -131,7 +118,6 @@ public class PasswordGenerator {
 	}
 
 	private void deleteLetters() {
-		System.out.println("deleting letters");
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
 			if (Character.isLetter(c)) {
@@ -141,7 +127,6 @@ public class PasswordGenerator {
 	}
 
 	private void deleteDigits() {
-		System.out.println("deleting digits");
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
 			if (Character.isDigit(c)) {
@@ -151,7 +136,6 @@ public class PasswordGenerator {
 	}
 
 	private void deleteOther() {
-		System.out.println("deleting other");
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
 			if (!Character.isDigit(c) && !Character.isAlphabetic(c)) {

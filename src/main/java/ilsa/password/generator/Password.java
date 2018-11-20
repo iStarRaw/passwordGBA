@@ -29,6 +29,10 @@ public class Password {
 		int limitIndex = password.size() - amount;
 		int lastIndex = password.size() - 1;
 		
+		if (lastIndex == 1 && amount == 3) {
+			return false;
+		}
+		
 		for (int i = lastIndex; i > limitIndex; i--) {
 			int beforeLastIndex = lastIndex - 1;
 			char lastChar = password.get(lastIndex);
