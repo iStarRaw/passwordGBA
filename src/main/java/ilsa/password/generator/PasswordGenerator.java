@@ -66,34 +66,34 @@ public class PasswordGenerator {
 			String lastCharName = password.getCharSort(indexToAdd - 1);
 
 			checkDuplicates();
-
-			// bij laatste index
+			
+			if (password.areSameSort(2) && password.areSameSort(3)) {
+				generateOther = true;
+				if (indexToAdd == 2) {
+					generateOther = false;
+					generateSame = true;
+				}
+			} else if (password.areSameSort(3)) {
+				generateOther = true;
+				if (indexToAdd == 2) {
+					generateOther = false;
+					generateSame = true;
+				}
+			} else if (password.areSameSort(2) && !password.areSameSort(3)) {
+				generateSame = true;
+			} 
+			
 			if (indexToAdd == password.getLength() - 1) {
-				// bij 2 verschillende of 3 dezelfde een andere trekken
 				if ((!password.areSameSort(2)) || (password.areSameSort(3))) {
 					generateOther = true;
-
 				} else if (password.areSameSort(2)) {
 					generateSame = true;
 				}
-
-			} else if (password.areSameSort(2)) {
-				if (!password.areSameSort(3) || indexToAdd == 2) {
-					// 2 dezelfde mogen niet dus zelfde soort trekken.
-					generateSame = true;
-
-					if (password.isSequence()) {
-						forbiddenChar = password.getForbiddenChar();
-					}
-				} else if (password.areSameSort(3)) {
-					// 4 dezelfde mogen niet
-					generateOther = true;
-
-				}
 			}
+			
 			prepareBox(lastCharName, generateSame, generateOther, forbiddenChar);
-
 		}
+
 	}
 
 	private void prepareBox(String sort, boolean generateSame, boolean generateOther, char forbiddenChar) {

@@ -28,39 +28,29 @@ public class Password {
 	public boolean areSameSort(int amount) {
 		int limitIndex = password.size() - amount;
 		int lastIndex = password.size() - 1;
-		int beforeLastIndex = lastIndex - 1;
-
-		char lastChar = password.get(lastIndex);
-		char beforeLastChar = password.get(beforeLastIndex);
-
+		
 		for (int i = lastIndex; i > limitIndex; i--) {
+			int beforeLastIndex = lastIndex - 1;
+			char lastChar = password.get(lastIndex);
+			char beforeLastChar = password.get(beforeLastIndex);
+			boolean result = isSameSort(lastChar, beforeLastChar);
 			
-			if (!isSameSort(lastChar, beforeLastChar)) {
+			if (!result) {
 				return false;
-			}
+			} 
 
 			lastIndex--;
 
-			if (lastIndex == 0) {
-				return true;
-			}
-
-			beforeLastIndex--;
-
-			if (beforeLastIndex == 0) {
-				return true;
-			}
-			
-			lastChar = password.get(lastIndex);
-			beforeLastChar = password.get(beforeLastIndex);
-			
+			if (lastIndex == 0 || beforeLastIndex == 0) {
+				return result;
+			}			
 		}
 		return true;
 	}
 
 	public boolean isSameSort(char lastChar, char beforeLastChar) {
 		return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
-				|| (Character.isLetter(lastChar) && Character.isLetter(beforeLastChar)));
+				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)));
 	}
 
 	public boolean lastIsDuplicate() {
