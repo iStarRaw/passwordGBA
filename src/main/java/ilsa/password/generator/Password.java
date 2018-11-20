@@ -1,9 +1,7 @@
-package ilsa.password.models;
+package ilsa.password.generator;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import ilsa.password.generator.PasswordGenerator;
 
 
 public class Password {
