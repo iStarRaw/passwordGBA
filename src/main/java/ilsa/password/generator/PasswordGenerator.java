@@ -16,7 +16,7 @@ public class PasswordGenerator {
 	private List<Character> duplicates;
 	private final int MINIMUM_LENGTH = 8;
 
-	public PasswordGenerator(int length) throws PasswordException {
+	PasswordGenerator(int length) throws PasswordException {
 		if (length < MINIMUM_LENGTH) {
 			throw new PasswordException();
 		}
@@ -35,11 +35,7 @@ public class PasswordGenerator {
 		for (int i = 0; i < password.getLength(); i++) {
 			addChar(i);
 
-			System.out.printf("Index %d is: %c en is een %s\n", i, password.getPassword().get(i),
-					password.getCharSort(i));
 		}
-		System.out.println(password.toHexString());
-
 	}
 
 	public Password getPassword() {
