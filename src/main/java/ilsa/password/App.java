@@ -9,7 +9,8 @@ public class App {
 
 		Password pwd = Password.generate(length);
 		
-//		String passwordString = pwd.toString();
+		System.out.println(pwd.toHexString());
+		
 	}
 
 }
