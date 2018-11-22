@@ -31,6 +31,10 @@ public class PasswordGenerator {
 		createPassword();
 	}
 
+	/**
+	 * Creates a password. Chars are added to the list until the length given has
+	 * been reached.
+	 */
 	private void createPassword() {
 		for (int i = 0; i < password.getLength(); i++) {
 			addChar(i);
@@ -42,6 +46,12 @@ public class PasswordGenerator {
 		return password;
 	}
 
+	/**
+	 * Admitted char will be randomly generated and added to the given index in the
+	 * password List.
+	 * 
+	 * @param indexToAdd
+	 */
 	private void addChar(int indexToAdd) {
 		makeSelection(indexToAdd);
 		char newChar = generateChar();
@@ -50,9 +60,8 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * defines the characters out of which the password will be made (Extended
-	 * ASCII). https://www.ascii-code.com. Uitgesloten zijn: 0 t/m 32, 48, 127, 129,
-	 * 141, 143, 144, 157, 160, 173.
+	 * Defines the admitted characters out of which the password will be made.
+	 * 
 	 */
 	private void makeSelection(int indexToAdd) {
 		if (indexToAdd >= 2) {
@@ -62,7 +71,7 @@ public class PasswordGenerator {
 			String lastCharName = password.getCharSort(indexToAdd - 1);
 
 			checkDuplicates();
-			
+
 			if (password.areSameSort(3)) {
 				generateOther = true;
 			} else if (password.areSameSort(2) && !password.areSameSort(3)) {
@@ -75,10 +84,19 @@ public class PasswordGenerator {
 				}
 			}
 			prepareBox(lastCharName, generateSame, generateOther, forbiddenChar);
-			
+
 		}
 	}
 
+	/**
+	 * Determines if characters are not allowed to be generated. Starts with a full
+	 * character box and deletes the prohibited characters.
+	 * 
+	 * @param sort
+	 * @param generateSame
+	 * @param generateOther
+	 * @param forbiddenChar
+	 */
 	private void prepareBox(String sort, boolean generateSame, boolean generateOther, char forbiddenChar) {
 		makeFullBox();
 
@@ -92,6 +110,10 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Checks if the last char is a duplicate and adds it to the duplicate List if
+	 * so.
+	 */
 	private void checkDuplicates() {
 		char duplicate;
 		if (password.lastIsDuplicate()) {
@@ -100,6 +122,11 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Character List is filled with initial Characters (Extended ASCII).
+	 * https://www.ascii-code.com. Excluded are: 0 to 32 inclusive, 48, 127, 129,
+	 * 141, 143, 144, 157, 160, 173.
+	 */
 	private void fillBox() {
 		for (int i = 1; i < 256; i++) {
 			if (!excluded.contains(i)) {
@@ -108,11 +135,18 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Clears the existing modified Character List and returns to the initial one
+	 * with all Characters.
+	 */
 	private void makeFullBox() {
 		this.box.clear();
 		fillBox();
 	}
 
+	/**
+	 * Deletes all letters from the current Character List.
+	 */
 	private void deleteLetters() {
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
@@ -122,6 +156,9 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Deletes all digits from the current Character List.
+	 */
 	private void deleteDigits() {
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
@@ -131,6 +168,9 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Deletes all other (no digit, no letter) from the current Character List.
+	 */
 	private void deleteOther() {
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
@@ -140,6 +180,10 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Deletes a given char from the current Character List.
+	 * @param charToDelete
+	 */
 	private void deleteCharFromBox(char charToDelete) {
 		for (int i = 0; i < this.box.size(); i++) {
 			if (box.get(i) == charToDelete) {
@@ -148,6 +192,10 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Generates a random char out of the Character List.
+	 * @return
+	 */
 	private char generateChar() {
 		int index = secGenerator.nextInt(this.box.size());
 
@@ -158,6 +206,7 @@ public class PasswordGenerator {
 
 	}
 
+	
 	private void deleteSequenceChar(char forbiddenChar) {
 		if (forbiddenChar != 0) {
 			deleteCharFromBox(forbiddenChar);

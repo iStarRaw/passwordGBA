@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Class that holds the password in the form of a Character List. It has methods
+ * that add chars and compare chars in this List.
+ * 
  * @author Dictu
  *
  */
@@ -25,7 +28,7 @@ public class Password {
 	}
 
 	/**
-	 * Adds a char to the password.
+	 * Adds a char to the password List.
 	 * 
 	 * @param thisChar
 	 */
@@ -34,7 +37,8 @@ public class Password {
 	}
 
 	/**
-	 * Checks if the values of the number of indexes given, are of the same sort.
+	 * Checks if the values of the number of indexes given (coming from the last
+	 * index), are of the same sort.
 	 * 
 	 * @param amount
 	 * @return boolean
@@ -161,8 +165,8 @@ public class Password {
 
 	/**
 	 * If the last two chars(the int representations) are a sequence, the next int
-	 * in sequence will be given back as a char. 0 is returned if no
-	 * forbiddenChar exists.
+	 * in sequence will be given back as a char. 0 is returned if no forbiddenChar
+	 * exists.
 	 * 
 	 * @return char
 	 */
@@ -187,6 +191,7 @@ public class Password {
 
 	/**
 	 * Gives back the password in a byte array.
+	 * 
 	 * @return byte[]
 	 */
 	public byte[] toByteArray() {
@@ -202,6 +207,7 @@ public class Password {
 
 	/**
 	 * Gives back the password in a binary string.
+	 * 
 	 * @return String
 	 */
 	public String toBinaryString() {
@@ -218,6 +224,7 @@ public class Password {
 
 	/**
 	 * Gives back the password in a hex format.
+	 * 
 	 * @return String
 	 */
 	public String toHexString() {
@@ -234,6 +241,7 @@ public class Password {
 
 	/**
 	 * Password will be generated with the length given.
+	 * 
 	 * @param length
 	 * @return List
 	 */
