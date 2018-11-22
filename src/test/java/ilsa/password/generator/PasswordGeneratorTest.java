@@ -12,16 +12,23 @@ class PasswordGeneratorTest {
 	void testConstructor() {
 		
 	
-	}
-
+	}	
 	
-
-	@Test
-	void exceptionTesting() {
-	    // set up user
-	    Throwable exception = expectThrows(PasswordException.class, () -> new PasswordGenerator(4));
-	    assertEquals("Your password has to be 8 characters or more!", exception.getMessage());
-	}
+//	@Test
+//	void shouldThrowException() {
+//	    Throwable exception = assertThrows(PasswordException.class, () -> {
+//	      throw new PasswordException();
+//	    });
+//	    assertEquals(exception.getMessage(), "Your password has to be 8 characters or more!");
+//	}
+//	 
+//	@Test
+//	void assertThrowsException() {
+//	    String str = null;
+//	    assertThrows(IllegalArgumentException.class, () -> {
+//	      Integer.valueOf(str);
+//	    });
+//	}
 	
 	
 }
