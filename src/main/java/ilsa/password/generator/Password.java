@@ -185,6 +185,10 @@ public class Password {
 		return 0;
 	}
 
+	/**
+	 * Gives back the password in a byte array.
+	 * @return byte[]
+	 */
 	public byte[] toByteArray() {
 		byte[] bytes = new byte[password.size()];
 
@@ -196,6 +200,10 @@ public class Password {
 		return bytes;
 	}
 
+	/**
+	 * Gives back the password in a binary string.
+	 * @return String
+	 */
 	public String toBinaryString() {
 		StringBuilder binaryString = new StringBuilder();
 		for (Character c : password) {
@@ -208,6 +216,10 @@ public class Password {
 
 	}
 
+	/**
+	 * Gives back the password in a hex format.
+	 * @return String
+	 */
 	public String toHexString() {
 		StringBuilder passwordString = new StringBuilder();
 		for (Character c : password) {

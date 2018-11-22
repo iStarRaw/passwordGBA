@@ -21,27 +21,6 @@ class PasswordTest {
 		assertEquals(otherChar, otherActual);
 
 	}
-	
-//	@Test
-//	void testIsSameSortTrue() {
-//		Password pw = new Password(2);
-//		char thisChar = '4';
-//		char otherChar = '0';
-//		
-//		boolean actual = pw.isSameSort(thisChar, otherChar);
-//		assertTrue(actual);
-//	}
-//
-//	@Test
-//	void testIsSameSortFalse() {
-//		Password pw = new Password(2);
-//		char thisChar = 'k';
-//		char otherChar = '0';
-//		
-//		boolean actual = pw.isSameSort(thisChar, otherChar);
-//		assertFalse(actual);
-//		
-//	}
 
 	@Test
 	void testAreSameSortTrue() {
@@ -102,6 +81,7 @@ class PasswordTest {
 		
 		boolean actual = pw.lastIsDuplicate();
 		assertTrue(actual);
+		
 	}
 
 	@Test
@@ -119,7 +99,143 @@ class PasswordTest {
 		
 		boolean actual = pw.lastIsDuplicate();
 		assertFalse(actual);
+		
 	}
+	
+	@Test
+	void testGetCharSort() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '0';
+		char char2 = '@';
+		char char3 = 'a';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		String actual1 = pw.getCharSort(1);
+		String actual2 = pw.getCharSort(2);
+		String actual3 = pw.getCharSort(3);
+	
+		assertEquals("Digit", actual1);
+		assertEquals("Other", actual2);
+		assertEquals("Letter", actual3);
+		
+	}
+	
+	@Test
+	void testIsSequenceLetterDownTrue() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '0';
+		char char2 = 'd';
+		char char3 = 'c';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		boolean actual = pw.isSequence();
+		assertTrue(actual);
+		
+	}
+	
+	@Test
+	void testIsSequenceLetterUpTrue() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '0';
+		char char2 = 'a';
+		char char3 = 'b';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		boolean actual = pw.isSequence();
+		assertTrue(actual);
+		
+	}
+	
+	@Test
+	void testIsSequenceLetterFalse() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '0';
+		char char2 = 's';
+		char char3 = 'c';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		boolean actual = pw.isSequence();
+		assertFalse(actual);
+		
+	}
+	
+	@Test
+	void testIsSequenceDigitDownTrue() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '0';
+		char char2 = '4';
+		char char3 = '3';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		boolean actual = pw.isSequence();
+		assertTrue(actual);
+		
+	}
+	
+	@Test
+	void testIsSequenceDigitUpTrue() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '0';
+		char char2 = '6';
+		char char3 = '7';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		boolean actual = pw.isSequence();
+		assertTrue(actual);
+		
+	}
+	
+	@Test
+	void testIsSequenceDigitFalse() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '0';
+		char char2 = '2';
+		char char3 = '7';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		boolean actual = pw.isSequence();
+		assertFalse(actual);
+		
+	}
+	
+	
+	
+	
 	
 	
 	
