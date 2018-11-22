@@ -21,6 +21,8 @@ class PasswordTest {
 		assertEquals(otherChar, otherActual);
 
 	}
+	
+	//char toevoegen als lijst niet bestaat?
 
 	@Test
 	void testAreSameSortTrue() {
@@ -43,6 +45,8 @@ class PasswordTest {
 		assertTrue(actual);
 
 	}
+	
+	//toepassen op lege lijst? of op 00000?
 	
 	@Test
 	void testAreSameSortFalse() {
@@ -83,6 +87,8 @@ class PasswordTest {
 		assertTrue(actual);
 		
 	}
+	
+	//toepassen op lege lijst? of op 00000
 
 	@Test
 	void testLastIsDuplicateFalse() {
@@ -125,6 +131,8 @@ class PasswordTest {
 		
 	}
 	
+	//toepassen op lege lijst? of op 00000
+	
 	@Test
 	void testIsSequenceLetterDownTrue() {
 		Password pw = new Password(4);
@@ -160,6 +168,8 @@ class PasswordTest {
 		assertTrue(actual);
 		
 	}
+	
+	//toepassen op lege lijst? of op 00000
 	
 	@Test
 	void testIsSequenceLetterFalse() {
@@ -250,6 +260,8 @@ class PasswordTest {
 		assertEquals('4', actual);
 		
 	}
+	
+	//toepassen op lege lijst? of op 00000
 	
 	@Test
 	void testGetForbiddenCharDigitDown() {
