@@ -123,7 +123,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Character List is filled with initial Characters (Extended ASCII).
+	 * Character List (box) is filled with initial Characters (Extended ASCII).
 	 * https://www.ascii-code.com. Excluded are: 0 to 32 inclusive, 48, 127, 129,
 	 * 141, 143, 144, 157, 160, 173.
 	 */
@@ -136,8 +136,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Clears the existing modified Character List and returns to the initial one
-	 * with all Characters.
+	 * Clears the existing list and fills it with the initial Characters.
 	 */
 	private void makeFullBox() {
 		this.box.clear();
@@ -145,7 +144,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes all letters from the current Character List.
+	 * Deletes all letters from the list.
 	 */
 	private void deleteLetters() {
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
@@ -157,7 +156,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes all digits from the current Character List.
+	 * Deletes all digits from the list.
 	 */
 	private void deleteDigits() {
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
@@ -169,7 +168,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes all other (no digit, no letter) from the current Character List.
+	 * Deletes all other (no digit, no letter) from the list.
 	 */
 	private void deleteOther() {
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
@@ -181,7 +180,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes a given char from the current Character List.
+	 * Deletes a given char from the list.
 	 * @param charToDelete
 	 */
 	private void deleteCharFromBox(char charToDelete) {
@@ -193,7 +192,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Generates a random char out of the Character List.
+	 * Generates a random char out of the list.
 	 * @return
 	 */
 	private char generateChar() {
@@ -206,13 +205,19 @@ public class PasswordGenerator {
 
 	}
 
-	
+	/**
+	 * Deletes the char, that is not allowed because it is in sequence with the previous chars, from the list.
+	 * @param forbiddenChar
+	 */
 	private void deleteSequenceChar(char forbiddenChar) {
 		if (forbiddenChar != 0) {
 			deleteCharFromBox(forbiddenChar);
 		}
 	}
 
+	/**
+	 * 
+	 */
 	private void deleteDoubles() {
 		if (!duplicates.isEmpty()) {
 			for (Character c : duplicates) {
