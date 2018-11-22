@@ -16,7 +16,7 @@ public class PasswordGenerator {
 	private List<Character> duplicates;
 	private final int MINIMUM_LENGTH = 8;
 
-	PasswordGenerator(int length) throws PasswordException {
+	public PasswordGenerator(int length) throws PasswordException {
 		if (length < MINIMUM_LENGTH) {
 			throw new PasswordException();
 		}
@@ -62,6 +62,7 @@ public class PasswordGenerator {
 	/**
 	 * Defines the admitted characters out of which the password will be made.
 	 * 
+	 * @param indexToAdd
 	 */
 	private void makeSelection(int indexToAdd) {
 		if (indexToAdd >= 2) {
@@ -195,7 +196,7 @@ public class PasswordGenerator {
 	/**
 	 * Generates a random char out of the list.
 	 * 
-	 * @return
+	 * @return char
 	 */
 	private char generateChar() {
 		int index = secGenerator.nextInt(this.box.size());
@@ -233,10 +234,10 @@ public class PasswordGenerator {
 	 * Deletes all other sorts from the list. Only the given String character sort
 	 * remains.
 	 * 
-	 * @param onlyThis
+	 * @param onlyThisSort
 	 */
-	private void makeSameSortBox(String onlyThis) {
-		switch (onlyThis) {
+	private void makeSameSortBox(String onlyThisSort) {
+		switch (onlyThisSort) {
 		case "Digit":
 			deleteLetters();
 			deleteOther();
