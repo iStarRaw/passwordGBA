@@ -180,7 +180,8 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes a given char from the list.
+	 * Deletes the given char from the list.
+	 * 
 	 * @param charToDelete
 	 */
 	private void deleteCharFromBox(char charToDelete) {
@@ -193,6 +194,7 @@ public class PasswordGenerator {
 
 	/**
 	 * Generates a random char out of the list.
+	 * 
 	 * @return
 	 */
 	private char generateChar() {
@@ -206,7 +208,8 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes the char, that is not allowed because it is in sequence with the previous chars, from the list.
+	 * Deletes the char, that is in sequence with the previous chars, from the list.
+	 * 
 	 * @param forbiddenChar
 	 */
 	private void deleteSequenceChar(char forbiddenChar) {
@@ -216,7 +219,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * 
+	 * Deletes the duplicates from the list.
 	 */
 	private void deleteDoubles() {
 		if (!duplicates.isEmpty()) {
@@ -226,6 +229,12 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Deletes all other sorts from the list. Only the given String character sort
+	 * remains.
+	 * 
+	 * @param onlyThis
+	 */
 	private void makeSameSortBox(String onlyThis) {
 		switch (onlyThis) {
 		case "Digit":
@@ -246,6 +255,11 @@ public class PasswordGenerator {
 		}
 	}
 
+	/**
+	 * Deletes the given sort from the list.
+	 * 
+	 * @param without
+	 */
 	private void makeOtherSortsBox(String without) {
 		switch (without) {
 		case "Digit":
