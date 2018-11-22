@@ -233,10 +233,95 @@ class PasswordTest {
 		
 	}
 	
+	@Test
+	void testGetForbiddenCharDigitUp() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '[';
+		char char2 = '2';
+		char char3 = '3';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		char actual = pw.getForbiddenChar();
+		assertEquals('4', actual);
+		
+	}
 	
+	@Test
+	void testGetForbiddenCharDigitDown() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '[';
+		char char2 = '4';
+		char char3 = '3';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		char actual = pw.getForbiddenChar();
+		assertEquals('2', actual);
+		
+	}
 	
+	@Test
+	void testGetForbiddenCharLetterUp() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '[';
+		char char2 = 'a';
+		char char3 = 'b';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		char actual = pw.getForbiddenChar();
+		assertEquals('c', actual);
+		
+	}
 	
+	@Test
+	void testGetForbiddenCharLetterDown() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '[';
+		char char2 = 'z';
+		char char3 = 'y';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		char actual = pw.getForbiddenChar();
+		assertEquals('x', actual);
+		
+	}
 	
+	@Test
+	void testGetForbiddenCharNone() {
+		Password pw = new Password(4);
+		char char0 = 'k';
+		char char1 = '[';
+		char char2 = 'z';
+		char char3 = 'r';
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		pw.addThisChar(char3);
+		
+		char actual = pw.getForbiddenChar();
+		assertEquals(0, actual);
+		
+	}
 	
 	
 }
