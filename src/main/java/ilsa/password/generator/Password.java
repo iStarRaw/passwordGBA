@@ -3,6 +3,8 @@ package ilsa.password.generator;
 import java.util.ArrayList;
 import java.util.List;
 
+import ilsa.password.customexception.PasswordException;
+
 /**
  * Class that holds the password in the form of a Character List. It has methods
  * that add chars and compare chars in this List.
@@ -32,8 +34,12 @@ public class Password {
 	 * 
 	 * @param thisChar
 	 */
-	public void addThisChar(char thisChar) {
+	public void addThisChar(char thisChar) throws PasswordException {
+		if (password.size() < this.length) {
 		this.password.add(thisChar);
+		} else {
+			throw new PasswordException("Password already has the desired length");
+		}
 	}
 
 	/**

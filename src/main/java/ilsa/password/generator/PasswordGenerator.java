@@ -3,6 +3,7 @@ package ilsa.password.generator;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class PasswordGenerator {
 
 	public PasswordGenerator(int length) throws PasswordException {
 		if (length < MINIMUM_LENGTH) {
-			throw new PasswordException();
+			throw new PasswordException(String.format("Password has to be at least %d characters!", MINIMUM_LENGTH));
 		}
 
 		password = new Password(length);
@@ -52,9 +53,12 @@ public class PasswordGenerator {
 	 * 
 	 * @param indexToAdd
 	 */
-	private void addChar(int indexToAdd) {
+	private void addChar(int indexToAdd) throws InputMismatchException {
 		makeSelection(indexToAdd);
 		char newChar = generateChar();
+		if ((int)newChar > 256) {
+			throw new InputMismatchException("Character is not allowed!");
+		}
 		password.addThisChar(newChar);
 
 	}

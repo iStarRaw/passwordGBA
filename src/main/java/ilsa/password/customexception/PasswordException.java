@@ -1,10 +1,14 @@
 package ilsa.password.customexception;
 
 public class PasswordException extends RuntimeException {
-	public String message = "Your password has to be 8 characters or more!";
+	public String message;
 
 	public PasswordException() {
 		
+	}
+	
+	public PasswordException(String message) {
+		this.message = message;
 	}
 
 	public String getMessage() {
