@@ -41,6 +41,7 @@ class PasswordTest {
 	void testAddThisCharNotAllowed() {
 		Password pw = new Password(1);
 		char thisChar = '∇';
+		System.out.println((int)thisChar);
 		
 		assertThrows(InputMismatchException.class, () -> {
 			pw.addThisChar(thisChar);
