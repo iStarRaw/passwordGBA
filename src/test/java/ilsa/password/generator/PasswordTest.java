@@ -6,10 +6,17 @@ import java.util.InputMismatchException;
 
 import org.junit.jupiter.api.Test;
 
-import ilsa.password.customexception.PasswordException;
+import ilsa.password.exception.PasswordException;
 
 class PasswordTest {
 
+	@Test
+	void testGenerateLength() {
+		 Password pwd = Password.generate(8);
+		 assertNotNull(pwd);
+		 assertEquals(8, pwd.getPassword().size());
+	}
+	
 	@Test
 	void testAddThisChar() {
 		Password pw = new Password(2);

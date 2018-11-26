@@ -1,4 +1,4 @@
-package ilsa.password.customexception;
+package ilsa.password.exception;
 
 public class PasswordException extends RuntimeException {
 	public String message;

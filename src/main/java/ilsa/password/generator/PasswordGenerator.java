@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 
-import ilsa.password.customexception.PasswordException;
+import ilsa.password.exception.PasswordException;
 
 public class PasswordGenerator {
 	private Password password;

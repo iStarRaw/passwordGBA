@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 
-import ilsa.password.customexception.PasswordException;
+import ilsa.password.exception.PasswordException;
 
 /**
  * Class that holds the password in the form of a Character List. It has methods
@@ -119,7 +119,7 @@ public class Password {
 	 * 
 	 * @return char
 	 */
-	public char getDuplicate() {
+	char getDuplicate() {
 		return password.get(password.size() - 1);
 	}
 
@@ -130,7 +130,7 @@ public class Password {
 	 * @param index
 	 * @return String
 	 */
-	public String getCharSort(int index) {
+	String getCharSort(int index) {
 		char toCheck = password.get(index);
 
 		if (Character.isDigit(toCheck)) {
@@ -180,7 +180,7 @@ public class Password {
 	 * 
 	 * @return char
 	 */
-	public char getForbiddenChar() {
+	char getForbiddenChar() {
 		if (password.size() < 1) {
 			return 0;
 		}
