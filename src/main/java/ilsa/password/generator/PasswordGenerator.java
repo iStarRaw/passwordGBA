@@ -77,14 +77,14 @@ public class PasswordGenerator {
 
 			checkDuplicates();
 
-			if (password.areSameSort(3)) {
+			if (password.areSameType(3)) {
 				generateOther = true;
-			} else if (password.areSameSort(2) && !password.areSameSort(3)) {
+			} else if (password.areSameType(2) && !password.areSameType(3)) {
 				generateSame = true;
 			} else if (indexToAdd == password.getLength() - 1) {
-				if ((!password.areSameSort(2)) || (password.areSameSort(3))) {
+				if ((!password.areSameType(2)) || (password.areSameType(3))) {
 					generateOther = true;
-				} else if (password.areSameSort(2)) {
+				} else if (password.areSameType(2)) {
 					generateSame = true;
 				}
 			}
@@ -97,21 +97,21 @@ public class PasswordGenerator {
 	 * Determines if characters are not allowed to be generated. Starts with a full
 	 * character box and deletes the prohibited characters.
 	 * 
-	 * @param sort
+	 * @param charType
 	 * @param generateSame
 	 * @param generateOther
 	 * @param forbiddenChar
 	 */
-	private void prepareBox(String sort, boolean generateSame, boolean generateOther, char forbiddenChar) {
+	private void prepareBox(String charType, boolean generateSame, boolean generateOther, char forbiddenChar) {
 		makeFullBox();
 
 		deleteDoubles();
 		deleteSequenceChar(forbiddenChar);
 
 		if (generateSame) {
-			makeSameSortBox(sort);
+			makeSameTypeBox(charType);
 		} else if (generateOther) {
-			makeOtherSortsBox(sort);
+			makeBoxWithout(charType);
 		}
 	}
 
@@ -173,7 +173,7 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes all other (no digit, no letter) from the list.
+	 * Deletes all "other" (= no digit, no letter) from the list.
 	 */
 	private void deleteOther() {
 		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
@@ -235,13 +235,13 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes all other sorts from the list. Only the given String character sort
+	 * Deletes all other char types from the list. Only the given String character type
 	 * remains.
 	 * 
-	 * @param onlyThisSort
+	 * @param onlyThisType
 	 */
-	private void makeSameSortBox(String onlyThisSort) {
-		switch (onlyThisSort) {
+	private void makeSameTypeBox(String onlyThisType) {
+		switch (onlyThisType) {
 		case "Digit":
 			deleteLetters();
 			deleteOther();
@@ -261,11 +261,11 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Deletes the given sort from the list.
+	 * Deletes the given character type from the list.
 	 * 
 	 * @param without
 	 */
-	private void makeOtherSortsBox(String without) {
+	private void makeBoxWithout(String without) {
 		switch (without) {
 		case "Digit":
 			deleteDigits();

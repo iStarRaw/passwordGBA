@@ -55,7 +55,7 @@ class PasswordTest {
 	
 
 	@Test
-	void testAreSameSortTrue() {
+	void testAreSameTypeTrue() {
 		Password pw = new Password(6);
 		char char0 = '@';
 		char char1 = 'a';
@@ -71,13 +71,13 @@ class PasswordTest {
 		pw.addThisChar(char4);
 		pw.addThisChar(char5);
 
-		boolean actual = pw.areSameSort(3);
+		boolean actual = pw.areSameType(3);
 		assertTrue(actual);
 
 	}
 
 	@Test
-	void testAreSameSortFalse() {
+	void testAreSameTypeFalse() {
 		Password pw = new Password(6);
 		char char0 = '@';
 		char char1 = 'a';
@@ -93,13 +93,13 @@ class PasswordTest {
 		pw.addThisChar(char4);
 		pw.addThisChar(char5);
 
-		boolean actual = pw.areSameSort(3);
+		boolean actual = pw.areSameType(3);
 		assertFalse(actual);
 
 	}
 
 	@Test
-	void testAreSameSortZeros() {
+	void testAreSameTypeZeros() {
 		Password pw = new Password(3);
 		char char0 = '0';
 		char char1 = '0';
@@ -109,18 +109,18 @@ class PasswordTest {
 		pw.addThisChar(char1);
 		pw.addThisChar(char2);
 
-		boolean actual0 = pw.areSameSort(2);
-		boolean actual1 = pw.areSameSort(3);
+		boolean actual0 = pw.areSameType(2);
+		boolean actual1 = pw.areSameType(3);
 
 		assertTrue(actual0);
 		assertTrue(actual1);
 	}
 	
 	@Test
-	void testAreSameSortEmptyListThrowsException() {
+	void testAreSameTypeEmptyListThrowsException() {
 		Password pw = new Password(0);
 		assertThrows(IndexOutOfBoundsException.class, () -> {
-			pw.areSameSort(2);
+			pw.areSameType(2);
 		});
 	}
 
@@ -170,7 +170,7 @@ class PasswordTest {
 	}
 
 	@Test
-	void testGetCharSort() {
+	void testGetCharType() {
 		Password pw = new Password(4);
 		char char0 = 'k';
 		char char1 = '0';
@@ -193,7 +193,7 @@ class PasswordTest {
 	}
 
 	@Test
-	void testGetCharSortEmptyListThrowsException() {
+	void testGetCharTypeEmptyListThrowsException() {
 		Password pw = new Password(0);
 		assertThrows(IndexOutOfBoundsException.class, () -> {
 			pw.getCharSort(2);

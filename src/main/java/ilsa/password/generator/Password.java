@@ -48,12 +48,12 @@ public class Password {
 
 	/**
 	 * Checks if the values of the number of indexes given (coming from the last
-	 * index), are of the same sort.
+	 * index), are of the same character type.
 	 * 
 	 * @param amount
 	 * @return boolean
 	 */
-	boolean areSameSort(int amount) {
+	boolean areSameType(int amount) {
 		int limitIndex = password.size() - amount;
 		int lastIndex = password.size() - 1;
 
@@ -65,7 +65,7 @@ public class Password {
 			int beforeLastIndex = lastIndex - 1;
 			char lastChar = password.get(lastIndex);
 			char beforeLastChar = password.get(beforeLastIndex);
-			boolean result = isSameSort(lastChar, beforeLastChar);
+			boolean result = isSameType(lastChar, beforeLastChar);
 
 			if (!result) {
 				return false;
@@ -81,14 +81,14 @@ public class Password {
 	}
 
 	/**
-	 * Checks if two chars are of the same sort (digit and alphabetic). Symbol is
+	 * Checks if two chars are of the same type (digit and alphabetic). Symbol is
 	 * not of importance and not checked upon.
 	 * 
 	 * @param lastChar
 	 * @param beforeLastChar
 	 * @return boolean
 	 */
-	boolean isSameSort(char lastChar, char beforeLastChar) {
+	boolean isSameType(char lastChar, char beforeLastChar) {
 		return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
 				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)));
 	}
@@ -124,7 +124,7 @@ public class Password {
 	}
 
 	/**
-	 * Gets name of the sort (Digit/Letter/Other) of the char given and returns this
+	 * Gets name of the type (Digit/Letter/Other) of the char given and returns this
 	 * in a String.
 	 * 
 	 * @param index
