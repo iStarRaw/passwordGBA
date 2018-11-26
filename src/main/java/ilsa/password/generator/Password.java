@@ -35,7 +35,7 @@ public class Password {
 	 * 
 	 * @param thisChar
 	 */
-	public void addThisChar(char thisChar) throws PasswordException {
+	void addThisChar(char thisChar) throws PasswordException {
 		if ((int)thisChar > 256) {
 			throw new InputMismatchException("Character is not allowed!");
 		}
@@ -53,7 +53,7 @@ public class Password {
 	 * @param amount
 	 * @return boolean
 	 */
-	public boolean areSameSort(int amount) {
+	boolean areSameSort(int amount) {
 		int limitIndex = password.size() - amount;
 		int lastIndex = password.size() - 1;
 
@@ -88,7 +88,7 @@ public class Password {
 	 * @param beforeLastChar
 	 * @return boolean
 	 */
-	private boolean isSameSort(char lastChar, char beforeLastChar) {
+	boolean isSameSort(char lastChar, char beforeLastChar) {
 		return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
 				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)));
 	}
@@ -99,7 +99,7 @@ public class Password {
 	 * 
 	 * @return boolean
 	 */
-	public boolean lastIsDuplicate() {
+	boolean lastIsDuplicate() {
 		if (password.size() < 2) {
 			return false;
 		}
@@ -149,7 +149,7 @@ public class Password {
 	 * 
 	 * @return boolean
 	 */
-	public boolean isSequence() {
+	boolean isSequence() {
 		if (password.size() < 1) {
 			return false;
 		}
