@@ -1,10 +1,10 @@
-package ilsa.password.generator;
+package dictu.password.generator;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 
-import ilsa.password.exception.PasswordException;
+import dictu.password.exception.PasswordException;
 
 /**
  * Class that holds the password in the form of a Character List. It has methods
@@ -36,7 +36,7 @@ public class Password {
 	 * @param thisChar
 	 */
 	void addThisChar(char thisChar) throws PasswordException {
-		if ((int)thisChar > 256) {
+		if ((int)thisChar > 254) {
 			throw new InputMismatchException("Character is not allowed!");
 		}
 		if (password.size() < this.length) {

@@ -1,4 +1,4 @@
-package ilsa.password.generator;
+package dictu.password.generator;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 
-import ilsa.password.exception.PasswordException;
+import dictu.password.exception.PasswordException;
 
 public class PasswordGenerator {
 	private Password password;

@@ -1,4 +1,4 @@
-package ilsa.password.generator;
+package dictu.password.generator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,7 +6,8 @@ import java.util.InputMismatchException;
 
 import org.junit.jupiter.api.Test;
 
-import ilsa.password.exception.PasswordException;
+import dictu.password.exception.PasswordException;
+import dictu.password.generator.Password;
 
 class PasswordTest {
 
@@ -16,6 +17,16 @@ class PasswordTest {
 		 assertNotNull(pwd);
 		 assertEquals(8, pwd.getPassword().size());
 	}
+	
+	@Test
+	void testGetPassword() {
+		Password pwd = Password.generate(8);
+		 assertNotNull(pwd);
+		 pwd.getDuplicate();
+	}
+	
+	
+	
 	
 	@Test
 	void testAddThisChar() {

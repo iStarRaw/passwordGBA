@@ -1,4 +1,4 @@
-package ilsa.password.exception;
+package dictu.password.exception;
 
 public class PasswordException extends RuntimeException {
 	public String message;
