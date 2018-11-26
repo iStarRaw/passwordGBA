@@ -36,12 +36,10 @@ class PasswordTest {
 		});
 	}
 	
-	//als er een char wordt toegevoegd die niet ascii t/m 255 is
 	@Test
 	void testAddThisCharNotAllowed() {
 		Password pw = new Password(1);
-		char thisChar = '∇';
-		System.out.println((int)thisChar);
+		char thisChar = '∇'; //not ASCII < 256
 		
 		assertThrows(InputMismatchException.class, () -> {
 			pw.addThisChar(thisChar);

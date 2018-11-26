@@ -1,6 +1,7 @@
 package ilsa.password.generator;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import ilsa.password.customexception.PasswordException;
@@ -35,6 +36,9 @@ public class Password {
 	 * @param thisChar
 	 */
 	public void addThisChar(char thisChar) throws PasswordException {
+		if ((int)thisChar > 256) {
+			throw new InputMismatchException("Character is not allowed!");
+		}
 		if (password.size() < this.length) {
 		this.password.add(thisChar);
 		} else {
