@@ -21,7 +21,7 @@ public class PasswordGenerator {
 		if (length < MINIMUM_LENGTH) {
 			throw new PasswordException(String.format("Password has to be at least %d characters!", MINIMUM_LENGTH));
 		}
-
+		
 		password = new Password(length);
 		box = new ArrayList<>();
 		duplicates = new ArrayList<>();
@@ -56,9 +56,6 @@ public class PasswordGenerator {
 	private void addChar(int indexToAdd) throws InputMismatchException {
 		makeSelection(indexToAdd);
 		char newChar = generateChar();
-		if ((int)newChar > 256) {
-			throw new InputMismatchException("Character is not allowed!");
-		}
 		password.addThisChar(newChar);
 
 	}

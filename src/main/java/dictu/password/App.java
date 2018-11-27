@@ -14,6 +14,7 @@ public class App {
 		int length = 8;
 
 		Password pwd = Password.generate(length);
+		System.out.println(pwd.toHexString());
 
 	}
 

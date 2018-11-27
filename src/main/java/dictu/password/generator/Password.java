@@ -1,8 +1,10 @@
 package dictu.password.generator;
 
+import java.lang.Character.UnicodeBlock;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import dictu.password.exception.PasswordException;
 
@@ -35,15 +37,12 @@ public class Password {
 	 * 
 	 * @param thisChar
 	 */
-	void addThisChar(char thisChar) throws PasswordException {
-		if ((int)thisChar > 254) {
-			throw new InputMismatchException("Character is not allowed!");
-		}
-		if (password.size() < this.length) {
-		this.password.add(thisChar);
-		} else {
+	void addThisChar(char thisChar) throws PasswordException, InputMismatchException {
+		if (password.size() >= this.length) {
 			throw new PasswordException("Password already has the desired length");
-		}
+		} 
+		this.password.add(thisChar);
+
 	}
 
 	/**
@@ -54,7 +53,7 @@ public class Password {
 	 * @return boolean
 	 */
 	boolean areSameType(int amount) {
-		int limitIndex = password.size() - amount;
+		final int limitIndex = password.size() - amount;
 		int lastIndex = password.size() - 1;
 
 		if (lastIndex == 1 && amount == 3) {
@@ -89,8 +88,8 @@ public class Password {
 	 * @return boolean
 	 */
 	boolean isSameType(char lastChar, char beforeLastChar) {
-		return ((Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
-				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar)));
+		return (Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
+				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar));
 	}
 
 	/**
@@ -154,8 +153,8 @@ public class Password {
 			return false;
 		}
 
-		char lastValue = password.get(password.size() - 1);
-		char beforeLastValue = password.get(password.size() - 2);
+		final char lastValue = password.get(password.size() - 1);
+		final char beforeLastValue = password.get(password.size() - 2);
 
 		if (!Character.isAlphabetic(lastValue) && !Character.isDigit(lastValue)) {
 			return false;
