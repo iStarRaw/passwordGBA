@@ -42,6 +42,7 @@ public class Password {
 	 * @param thisChar
 	 */
 	void addThisChar(char thisChar) throws PasswordException, InputMismatchException {
+		//TODO convert to hexString to see if char is admitted
 		if (password.size() >= this.length) {
 			throw new PasswordException("Password already has the desired length");
 		}

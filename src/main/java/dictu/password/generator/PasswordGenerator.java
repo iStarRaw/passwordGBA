@@ -46,6 +46,7 @@ public class PasswordGenerator {
 	private void addChar(int indexToAdd) throws InputMismatchException {
 		makeSelection(indexToAdd);
 		char newChar = generateChar();
+		//TODO convert to hexString to see if it is admitted
 		password.addThisChar(newChar);
 
 	}
