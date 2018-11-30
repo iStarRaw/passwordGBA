@@ -1,10 +1,8 @@
 package dictu.password.generator;
 
-import java.lang.Character.UnicodeBlock;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import dictu.password.exception.PasswordException;
 
@@ -18,6 +16,9 @@ import dictu.password.exception.PasswordException;
 public class Password {
 	private int length;
 	private List<Character> password;
+	private static final int MIN_LENGTH = 2;
+	private static final int THREE_TO_CHECK = 3;
+	private static final int SECOND_CHAR = 1;
 
 	public Password(int length) {
 		this.length = length;
@@ -56,7 +57,7 @@ public class Password {
 		final int limitIndex = password.size() - amount;
 		int lastIndex = password.size() - 1;
 
-		if (lastIndex == 1 && amount == 3) {
+		if (lastIndex == SECOND_CHAR && amount == THREE_TO_CHECK) {
 			return false;
 		}
 
@@ -99,11 +100,13 @@ public class Password {
 	 * @return boolean
 	 */
 	boolean lastIsDuplicate() {
-		if (password.size() < 2) {
+		if (password.size() < MIN_LENGTH) {
 			return false;
 		}
-
-		char lastValue = password.get(password.size() - 1);
+		
+		final int lastIndex = password.size() - 1;
+		char lastValue = password.get(lastIndex);
+		
 		for (int i = 0; i < password.size() - 1; i++) {
 			if (Character.compare(password.get(i), lastValue) == 0) {
 				return true;
@@ -149,12 +152,12 @@ public class Password {
 	 * @return boolean
 	 */
 	boolean isSequence() {
-		if (password.size() < 1) {
+		if (password.size() < MIN_LENGTH) {
 			return false;
 		}
 
-		final char lastValue = password.get(password.size() - 1);
-		final char beforeLastValue = password.get(password.size() - 2);
+		char lastValue = password.get(password.size() - 1);
+		char beforeLastValue = password.get(password.size() - 2);
 
 		if (!Character.isAlphabetic(lastValue) && !Character.isDigit(lastValue)) {
 			return false;
@@ -180,7 +183,7 @@ public class Password {
 	 * @return char
 	 */
 	char getForbiddenChar() {
-		if (password.size() < 1) {
+		if (password.size() < MIN_LENGTH) {
 			return 0;
 		}
 
@@ -222,7 +225,6 @@ public class Password {
 	public String toBinaryString() {
 		StringBuilder binaryString = new StringBuilder();
 		for (Character c : password) {
-
 			String binary = Integer.toBinaryString(c);
 			binaryString.append(String.format("%s, ", binary));
 

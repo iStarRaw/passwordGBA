@@ -59,13 +59,14 @@ class PasswordTest {
 //	@Test
 //	void testAddThisCharNotAllowed() {
 //		Password pw = new Password(1);
-//		char thisChar = '\u0100';
+//		String hexString = "30"; //0
+//		char thisChar = '\u0030';
 //		
 //		assertThrows(InputMismatchException.class, () -> {
 //			pw.addThisChar(thisChar);
 //		});
 //	}
-//	
+	
 //	@Test
 //	void testAddThisCharNotAllowed2() {
 //		Password pw = new Password(1);

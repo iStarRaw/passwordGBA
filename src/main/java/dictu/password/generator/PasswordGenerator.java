@@ -15,7 +15,11 @@ public class PasswordGenerator {
 	private SecureRandom secGenerator = new SecureRandom();
 	private List<Integer> excluded;
 	private List<Character> duplicates;
-	private final int MINIMUM_LENGTH = 8;
+	private static final int MINIMUM_LENGTH = 8;
+	private static final int MAX_DECIMAL_VALUE = 256;
+	private static final String DIGIT = "Digit";
+	private static final String LETTER = "Letter";
+	private static final String OTHER = "Other";
 
 	public PasswordGenerator(int length) throws PasswordException {
 		if (length < MINIMUM_LENGTH) {
@@ -70,18 +74,20 @@ public class PasswordGenerator {
 			boolean generateSame = false;
 			boolean generateOther = false;
 			char forbiddenChar = '\0';
-			String lastCharName = password.getCharSort(indexToAdd - 1);
+			final String lastCharName = password.getCharSort(indexToAdd - 1);
+			final int threeTogether = 3;
+			final int twoTogether = 2;
 
 			checkDuplicates();
 
-			if (password.areSameType(3)) {
+			if (password.areSameType(threeTogether)) {
 				generateOther = true;
-			} else if (password.areSameType(2) && !password.areSameType(3)) {
+			} else if (password.areSameType(twoTogether) && !password.areSameType(threeTogether)) {
 				generateSame = true;
 			} else if (indexToAdd == password.getLength() - 1) {
-				if ((!password.areSameType(2)) || (password.areSameType(3))) {
+				if ((!password.areSameType(twoTogether)) || (password.areSameType(threeTogether))) {
 					generateOther = true;
-				} else if (password.areSameType(2)) {
+				} else if (password.areSameType(twoTogether)) {
 					generateSame = true;
 				}
 			}
@@ -130,7 +136,7 @@ public class PasswordGenerator {
 	 * 141, 143, 144, 157, 160, 173.
 	 */
 	private void fillBox() {
-		for (int i = 1; i < 256; i++) {
+		for (int i = 1; i < MAX_DECIMAL_VALUE; i++) {
 			if (!excluded.contains(i)) {
 				box.add((char) i);
 			}
@@ -239,17 +245,17 @@ public class PasswordGenerator {
 	 */
 	private void makeSameTypeBox(String onlyThisType) {
 		switch (onlyThisType) {
-		case "Digit":
+		case DIGIT:
 			deleteLetters();
 			deleteOther();
 
 			break;
-		case "Letter":
+		case LETTER:
 			deleteOther();
 			deleteDigits();
 
 			break;
-		case "Other":
+		case OTHER:
 			deleteDigits();
 			deleteLetters();
 
@@ -264,15 +270,15 @@ public class PasswordGenerator {
 	 */
 	private void makeBoxWithout(String without) {
 		switch (without) {
-		case "Digit":
+		case DIGIT:
 			deleteDigits();
 
 			break;
-		case "Letter":
+		case LETTER:
 			deleteLetters();
 
 			break;
-		case "Other":
+		case OTHER:
 			deleteOther();
 
 			break;
