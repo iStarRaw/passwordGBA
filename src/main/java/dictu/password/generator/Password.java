@@ -14,23 +14,26 @@ import dictu.password.exception.PasswordException;
  *
  */
 public class Password {
-	private int length;
-	private List<Character> password;
 	private static final int MIN_LENGTH = 2;
 	private static final int THREE_TO_CHECK = 3;
 	private static final int SECOND_CHAR = 1;
+	private int length;
+	private List<Character> password;
 
 	public Password(int length) {
 		this.length = length;
 		this.password = new ArrayList<>();
 	}
 
-	public List<Character> getPassword() {
-		return password;
-	}
-
-	public int getLength() {
-		return length;
+	/**
+	 * Password will be generated with the length given.
+	 * 
+	 * @param length
+	 * @return List
+	 */
+	public static Password generate(int length) {
+		PasswordGenerator pg = new PasswordGenerator(length);
+		return pg.getPassword();
 	}
 
 	/**
@@ -41,7 +44,7 @@ public class Password {
 	void addThisChar(char thisChar) throws PasswordException, InputMismatchException {
 		if (password.size() >= this.length) {
 			throw new PasswordException("Password already has the desired length");
-		} 
+		}
 		this.password.add(thisChar);
 
 	}
@@ -81,51 +84,6 @@ public class Password {
 	}
 
 	/**
-	 * Checks if two chars are of the same type (digit and alphabetic). Symbol is
-	 * not of importance and not checked upon.
-	 * 
-	 * @param lastChar
-	 * @param beforeLastChar
-	 * @return boolean
-	 */
-	boolean isSameType(char lastChar, char beforeLastChar) {
-		return (Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
-				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar));
-	}
-
-	/**
-	 * Checks if the value of the last index is a duplication of another value in
-	 * the password.
-	 * 
-	 * @return boolean
-	 */
-	boolean lastIsDuplicate() {
-		if (password.size() < MIN_LENGTH) {
-			return false;
-		}
-		
-		final int lastIndex = password.size() - 1;
-		char lastValue = password.get(lastIndex);
-		
-		for (int i = 0; i < password.size() - 1; i++) {
-			if (Character.compare(password.get(i), lastValue) == 0) {
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	/**
-	 * If last char is a duplicate, it returns this value.
-	 * 
-	 * @return char
-	 */
-	char getDuplicate() {
-		return password.get(password.size() - 1);
-	}
-
-	/**
 	 * Gets name of the type (Digit/Letter/Other) of the char given and returns this
 	 * in a String.
 	 * 
@@ -145,34 +103,12 @@ public class Password {
 	}
 
 	/**
-	 * Checks if the two last chars are in sequence (in case they are both numbers
-	 * or digits). For example in the case of ab, ba, 12, or 21 false is being
-	 * returned.
+	 * If last char is a duplicate, it returns this value.
 	 * 
-	 * @return boolean
+	 * @return char
 	 */
-	boolean isSequence() {
-		if (password.size() < MIN_LENGTH) {
-			return false;
-		}
-
-		char lastValue = password.get(password.size() - 1);
-		char beforeLastValue = password.get(password.size() - 2);
-
-		if (!Character.isAlphabetic(lastValue) && !Character.isDigit(lastValue)) {
-			return false;
-		}
-
-		if ((int) lastValue == (int) beforeLastValue - 1) {
-			return true;
-		}
-
-		if ((int) lastValue == (int) beforeLastValue + 1) {
-			return true;
-		}
-
-		return false;
-
+	char getDuplicate() {
+		return password.get(password.size() - 1);
 	}
 
 	/**
@@ -201,20 +137,74 @@ public class Password {
 		return 0;
 	}
 
-	/**
-	 * Gives back the password in a byte array.
-	 * 
-	 * @return byte[]
-	 */
-	public byte[] toByteArray() {
-		byte[] bytes = new byte[password.size()];
+	public int getLength() {
+		return length;
+	}
 
-		for (int i = 0; i < bytes.length; i++) {
-			Integer charInt = (int) password.get(i);
-			bytes[i] = charInt.byteValue();
+	public List<Character> getPassword() {
+		return password;
+	}
+
+	/**
+	 * Checks if two chars are of the same type (digit and alphabetic). Symbol is
+	 * not of importance and not checked upon.
+	 * 
+	 * @param lastChar
+	 * @param beforeLastChar
+	 * @return boolean
+	 */
+	boolean isSameType(char lastChar, char beforeLastChar) {
+		return (Character.isDigit(lastChar) && Character.isDigit(beforeLastChar))
+				|| (Character.isAlphabetic(lastChar) && Character.isAlphabetic(beforeLastChar));
+	}
+
+	/**
+	 * Checks if the two last chars are in sequence (in case they are both numbers
+	 * or digits). For example in the case of ab, ba, 12, or 21 false is being
+	 * returned.
+	 * 
+	 * @return boolean
+	 */
+	boolean isSequence() {
+		if (password.size() < MIN_LENGTH) {
+			return false;
 		}
 
-		return bytes;
+		char lastValue = password.get(password.size() - 1);
+		char beforeLastValue = password.get(password.size() - 2);
+
+		if (!Character.isAlphabetic(lastValue) && !Character.isDigit(lastValue)) {
+			return false;
+		}
+
+		if ((int) lastValue == (int) beforeLastValue - 1 || (int) lastValue == (int) beforeLastValue + 1) {
+			return true;
+		}
+		return false;
+
+	}
+
+	/**
+	 * Checks if the value of the last index is a duplication of another value in
+	 * the password.
+	 * 
+	 * @return boolean
+	 */
+	boolean lastIsDuplicate() {
+		if (password.size() < MIN_LENGTH) {
+			return false;
+		}
+
+		final int lastIndex = password.size() - 1;
+		char lastValue = password.get(lastIndex);
+
+		for (int i = 0; i < password.size() - 1; i++) {
+			if (Character.compare(password.get(i), lastValue) == 0) {
+				return true;
+			}
+		}
+		return false;
+
 	}
 
 	/**
@@ -234,6 +224,22 @@ public class Password {
 	}
 
 	/**
+	 * Gives back the password in a byte array.
+	 * 
+	 * @return byte[]
+	 */
+	public byte[] toByteArray() {
+		byte[] bytes = new byte[password.size()];
+
+		for (int i = 0; i < bytes.length; i++) {
+			Integer charInt = (int) password.get(i);
+			bytes[i] = charInt.byteValue();
+		}
+
+		return bytes;
+	}
+
+	/**
 	 * Gives back the password in a hex format.
 	 * 
 	 * @return String
@@ -248,17 +254,6 @@ public class Password {
 		}
 		return passwordString.toString();
 
-	}
-
-	/**
-	 * Password will be generated with the length given.
-	 * 
-	 * @param length
-	 * @return List
-	 */
-	public static Password generate(int length) {
-		PasswordGenerator pg = new PasswordGenerator(length);
-		return pg.getPassword();
 	}
 
 }
