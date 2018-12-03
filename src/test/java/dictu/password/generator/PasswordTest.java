@@ -67,15 +67,15 @@ class PasswordTest {
 //		});
 //	}
 	
-//	@Test
-//	void testAddThisCharNotAllowed2() {
-//		Password pw = new Password(1);
-//		char thisChar = '0';
-//		
-//		assertThrows(InputMismatchException.class, () -> {
-//			pw.addThisChar(thisChar);
-//		});
-//	}
+	@Test
+	void testAddThisCharNotAllowed2() {
+		Password pw = new Password(1);
+		char thisChar = '0';
+		
+		assertThrows(InputMismatchException.class, () -> {
+			pw.addThisChar(thisChar);
+		});
+	}
 	
 	@Test
 	void testAreSameTypeTrue() {
