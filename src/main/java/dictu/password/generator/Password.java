@@ -42,10 +42,6 @@ public class Password {
 	 * @param thisChar
 	 */
 	void addThisChar(char thisChar) throws PasswordException, InputMismatchException {
-		if (thisChar == 0) {
-			throw new InputMismatchException();
-		}
-		
 		if (password.size() >= this.length) {
 			throw new PasswordException("Password already has the desired length");
 		}

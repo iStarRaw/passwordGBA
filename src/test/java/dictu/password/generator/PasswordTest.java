@@ -13,20 +13,20 @@ class PasswordTest {
 
 	@Test
 	void testGenerateLength() {
-		 Password pwd = Password.generate(8);
-		 assertNotNull(pwd);
-		 assertEquals(8, pwd.getPassword().size());
-		 
+		Password pwd = Password.generate(8);
+		assertNotNull(pwd);
+		assertEquals(8, pwd.getPassword().size());
+
 	}
-	
+
 	@Test
 	void testGetPassword() {
 		Password pwd = Password.generate(8);
-		 assertNotNull(pwd);
-		 pwd.getDuplicate();
-		 
+		assertNotNull(pwd);
+		pwd.getDuplicate();
+
 	}
-	
+
 	@Test
 	void testAddThisChar() {
 		Password pw = new Password(2);
@@ -40,7 +40,7 @@ class PasswordTest {
 		char otherActual = pw.getPassword().get(1);
 		assertEquals(thisChar, actual);
 		assertEquals(otherChar, otherActual);
-		
+
 	}
 
 	@Test
@@ -52,31 +52,12 @@ class PasswordTest {
 		assertThrows(PasswordException.class, () -> {
 			pw.addThisChar(thisChar);
 		});
-		
+
 	}
-	
-	//TODO nog cross-platform proof maken
-//	@Test
-//	void testAddThisCharNotAllowed() {
-//		Password pw = new Password(1);
-//		String hexString = "30"; //0
-//		char thisChar = '\u0030';
-//		
-//		assertThrows(InputMismatchException.class, () -> {
-//			pw.addThisChar(thisChar);
-//		});
-//	}
-	
-	@Test
-	void testAddThisCharNotAllowed2() {
-		Password pw = new Password(1);
-		char thisChar = '0';
-		
-		assertThrows(InputMismatchException.class, () -> {
-			pw.addThisChar(thisChar);
-		});
-	}
-	
+
+	// TODO addCharTest voor het adden van notAdmitted chars. zie list "excluded" in
+	// passwordGenerator.
+
 	@Test
 	void testAreSameTypeTrue() {
 		Password pw = new Password(6);
@@ -138,7 +119,7 @@ class PasswordTest {
 		assertTrue(actual0);
 		assertTrue(actual1);
 	}
-	
+
 	@Test
 	void testAreSameTypeEmptyListThrowsException() {
 		Password pw = new Password(0);
@@ -182,7 +163,7 @@ class PasswordTest {
 		assertFalse(actual);
 
 	}
-	
+
 	@Test
 	void testLastIsDuplicateEmptyList() {
 		Password pw = new Password(0);
@@ -262,7 +243,7 @@ class PasswordTest {
 	@Test
 	void testIsSequenceEmptyList() {
 		Password pw = new Password(0);
-		
+
 		boolean actual = pw.isSequence();
 		assertFalse(actual);
 
@@ -405,11 +386,11 @@ class PasswordTest {
 		assertEquals(0, actual);
 
 	}
-	
+
 	@Test
 	void testGetForbiddenCharEmptyList() {
 		Password pw = new Password(0);
-		
+
 		char actual = pw.getForbiddenChar();
 		assertEquals(0, actual);
 	}

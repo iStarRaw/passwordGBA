@@ -1,16 +1,20 @@
 package dictu.password.generator;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 
 import dictu.password.exception.PasswordException;
 
 public class PasswordTestHelper {
+	private int length;
+	private List<Character> passwordHelper;
 	
-	public PasswordTestHelper () {
-		
+	public PasswordTestHelper (int length) {
+		this.length = length;
+		this.passwordHelper = new ArrayList<>();
 		
 	}
-	
 	
 	void addThisChar(char thisChar) throws PasswordException, InputMismatchException {
 		if (thisChar == 0) {
