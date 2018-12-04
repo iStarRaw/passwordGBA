@@ -1,5 +1,7 @@
 package dictu.password;
 
+import java.util.Arrays;
+
 import dictu.password.generator.Password;
 
 /**
@@ -15,6 +17,7 @@ public class App {
 
 		Password pwd = Password.generate(length);
 		System.out.println(pwd.toHexString());
+		System.out.println(Arrays.toString(pwd.toByteArray()));
 
 	}
 

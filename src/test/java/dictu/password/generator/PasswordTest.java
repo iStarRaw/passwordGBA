@@ -394,5 +394,38 @@ class PasswordTest {
 		char actual = pw.getForbiddenChar();
 		assertEquals(0, actual);
 	}
+	
+	@Test
+	void testToBinaryString() {
+		Password pw = new Password(3);
+		char char0 = 'k';
+		char char1 = 'r';
+		char char2 = '÷';
+		String expected = "1101011, 1110010, 11110111";
+	
+				
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		
+		String actual = pw.toBinaryString();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void testToByteArray() {
+		Password pw = new Password(3);
+		char char0 = 'z';
+		char char1 = 'L';
+		byte[] expected = {122, 76};
+		
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		
+		assertArrayEquals(expected, pw.toByteArray());
+		
+		}
+	
+	
 
 }

@@ -217,8 +217,10 @@ public class Password {
 		for (Character c : password) {
 			String binary = Integer.toBinaryString(c);
 			binaryString.append(String.format("%s, ", binary));
-
 		}
+		int withoutComma = binaryString.length() - 2;
+		binaryString.setLength(withoutComma);
+		
 		return binaryString.toString();
 
 	}
