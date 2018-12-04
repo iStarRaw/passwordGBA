@@ -17,7 +17,6 @@ public class App {
 
 		Password pwd = Password.generate(length);
 		System.out.println(pwd.toHexString());
-		System.out.println(Arrays.toString(pwd.toByteArray()));
 
 	}
 

@@ -243,7 +243,7 @@ public class PasswordGenerator {
 			boolean generateSame = false;
 			boolean generateOther = false;
 			char forbiddenChar = '\0';
-			final String lastCharName = password.getCharSort(indexToAdd - 1);
+			final String lastCharName = password.getCharType(indexToAdd - 1);
 			final int threeTogether = 3;
 			final int twoTogether = 2;
 

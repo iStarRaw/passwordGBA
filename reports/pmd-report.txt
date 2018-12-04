@@ -1,0 +1,439 @@
+src/main/java/dictu/password/App.java:3:	Avoid unused imports such as 'java.util.Arrays'
+src/main/java/dictu/password/App.java:10:	Comment is too large: Line too long
+src/main/java/dictu/password/App.java:13:	All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+src/main/java/dictu/password/App.java:13:	Avoid short class names like App
+src/main/java/dictu/password/App.java:15:	Parameter 'args' is not assigned and could be declared final
+src/main/java/dictu/password/App.java:15:	Public method and constructor comments are required
+src/main/java/dictu/password/App.java:16:	Local variable 'length' could be declared final
+src/main/java/dictu/password/App.java:18:	Local variable 'pwd' could be declared final
+src/main/java/dictu/password/App.java:19:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/dictu/password/App.java:19:	System.out.println is used
+src/main/java/dictu/password/exception/PasswordException.java:3:	Classes implementing Serializable should set a serialVersionUID
+src/main/java/dictu/password/exception/PasswordException.java:3:	Header comments are required
+src/main/java/dictu/password/exception/PasswordException.java:4:	Field comments are required
+src/main/java/dictu/password/exception/PasswordException.java:4:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/dictu/password/exception/PasswordException.java:6:	Document empty constructor
+src/main/java/dictu/password/exception/PasswordException.java:6:	It is a good practice to call super() in a constructor
+src/main/java/dictu/password/exception/PasswordException.java:6:	Public method and constructor comments are required
+src/main/java/dictu/password/exception/PasswordException.java:10:	It is a good practice to call super() in a constructor
+src/main/java/dictu/password/exception/PasswordException.java:10:	Parameter 'message' is not assigned and could be declared final
+src/main/java/dictu/password/exception/PasswordException.java:10:	Public method and constructor comments are required
+src/main/java/dictu/password/generator/Password.java:17:	Field comments are required
+src/main/java/dictu/password/generator/Password.java:18:	Field comments are required
+src/main/java/dictu/password/generator/Password.java:19:	Field comments are required
+src/main/java/dictu/password/generator/Password.java:20:	Field comments are required
+src/main/java/dictu/password/generator/Password.java:20:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/dictu/password/generator/Password.java:20:	Private field 'length' could be made final; it is only initialized in the declaration or constructor.
+src/main/java/dictu/password/generator/Password.java:21:	Field comments are required
+src/main/java/dictu/password/generator/Password.java:21:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/dictu/password/generator/Password.java:21:	It is somewhat confusing to have a field name matching the declaring class name
+src/main/java/dictu/password/generator/Password.java:21:	Private field 'password' could be made final; it is only initialized in the declaration or constructor.
+src/main/java/dictu/password/generator/Password.java:23:	Parameter 'length' is not assigned and could be declared final
+src/main/java/dictu/password/generator/Password.java:23:	Public method and constructor comments are required
+src/main/java/dictu/password/generator/Password.java:34:	Parameter 'length' is not assigned and could be declared final
+src/main/java/dictu/password/generator/Password.java:35:	Avoid variables with short names like pg
+src/main/java/dictu/password/generator/Password.java:35:	Local variable 'pg' could be declared final
+src/main/java/dictu/password/generator/Password.java:44:	Parameter 'thisChar' is not assigned and could be declared final
+src/main/java/dictu/password/generator/Password.java:44:	To avoid mistakes add a comment at the beginning of the addThisChar method if you want a default access modifier
+src/main/java/dictu/password/generator/Password.java:44:	Use explicit scoping instead of the default package private level
+src/main/java/dictu/password/generator/Password.java:59:	Parameter 'amount' is not assigned and could be declared final
+src/main/java/dictu/password/generator/Password.java:59:	To avoid mistakes add a comment at the beginning of the areSameType method if you want a default access modifier
+src/main/java/dictu/password/generator/Password.java:59:	Use explicit scoping instead of the default package private level
+src/main/java/dictu/password/generator/Password.java:60:	Avoid declaring a variable if it is unreferenced before a possible exit point.
+src/main/java/dictu/password/generator/Password.java:60:	Found 'DU'-anomaly for variable 'limitIndex' (lines '60'-'84').
+src/main/java/dictu/password/generator/Password.java:64:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:68:	Local variable 'beforeLastIndex' could be declared final
+src/main/java/dictu/password/generator/Password.java:69:	Local variable 'lastChar' could be declared final
+src/main/java/dictu/password/generator/Password.java:70:	Local variable 'beforeLastChar' could be declared final
+src/main/java/dictu/password/generator/Password.java:71:	Local variable 'result' could be declared final
+src/main/java/dictu/password/generator/Password.java:74:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:80:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:93:	Parameter 'index' is not assigned and could be declared final
+src/main/java/dictu/password/generator/Password.java:93:	To avoid mistakes add a comment at the beginning of the getCharSort method if you want a default access modifier
+src/main/java/dictu/password/generator/Password.java:93:	Use explicit scoping instead of the default package private level
+src/main/java/dictu/password/generator/Password.java:94:	Local variable 'toCheck' could be declared final
+src/main/java/dictu/password/generator/Password.java:97:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:99:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:110:	To avoid mistakes add a comment at the beginning of the getDuplicate method if you want a default access modifier
+src/main/java/dictu/password/generator/Password.java:110:	Use explicit scoping instead of the default package private level
+src/main/java/dictu/password/generator/Password.java:121:	To avoid mistakes add a comment at the beginning of the getForbiddenChar method if you want a default access modifier
+src/main/java/dictu/password/generator/Password.java:121:	Use explicit scoping instead of the default package private level
+src/main/java/dictu/password/generator/Password.java:123:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:126:	Local variable 'lastCharInt' could be declared final
+src/main/java/dictu/password/generator/Password.java:127:	Local variable 'beforeLastCharInt' could be declared final
+src/main/java/dictu/password/generator/Password.java:131:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:134:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:156:	Parameter 'beforeLastChar' is not assigned and could be declared final
+src/main/java/dictu/password/generator/Password.java:156:	Parameter 'lastChar' is not assigned and could be declared final
+src/main/java/dictu/password/generator/Password.java:156:	To avoid mistakes add a comment at the beginning of the isSameType method if you want a default access modifier
+src/main/java/dictu/password/generator/Password.java:156:	Use explicit scoping instead of the default package private level
+src/main/java/dictu/password/generator/Password.java:157:	Useless parentheses.
+src/main/java/dictu/password/generator/Password.java:158:	Useless parentheses.
+src/main/java/dictu/password/generator/Password.java:168:	To avoid mistakes add a comment at the beginning of the isSequence method if you want a default access modifier
+src/main/java/dictu/password/generator/Password.java:168:	Use explicit scoping instead of the default package private level
+src/main/java/dictu/password/generator/Password.java:170:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:173:	Local variable 'lastValue' could be declared final
+src/main/java/dictu/password/generator/Password.java:174:	Avoid declaring a variable if it is unreferenced before a possible exit point.
+src/main/java/dictu/password/generator/Password.java:174:	Found 'DU'-anomaly for variable 'beforeLastValue' (lines '174'-'185').
+src/main/java/dictu/password/generator/Password.java:174:	Local variable 'beforeLastValue' could be declared final
+src/main/java/dictu/password/generator/Password.java:177:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:180:	Avoid unnecessary if..then..else statements when returning booleans
+src/main/java/dictu/password/generator/Password.java:181:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:193:	To avoid mistakes add a comment at the beginning of the lastIsDuplicate method if you want a default access modifier
+src/main/java/dictu/password/generator/Password.java:193:	Use explicit scoping instead of the default package private level
+src/main/java/dictu/password/generator/Password.java:195:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:199:	Found 'DU'-anomaly for variable 'lastValue' (lines '199'-'208').
+src/main/java/dictu/password/generator/Password.java:199:	Local variable 'lastValue' could be declared final
+src/main/java/dictu/password/generator/Password.java:203:	A method should have only one exit point, and that should be the last statement in the method
+src/main/java/dictu/password/generator/Password.java:215:	Found 'UR'-anomaly for variable 'c' (lines '215'-'218').
+src/main/java/dictu/password/generator/Password.java:216:	Local variable 'binaryString' could be declared final
+src/main/java/dictu/password/generator/Password.java:217:	Local variable 'c' could be declared final
+src/main/java/dictu/password/generator/Password.java:218:	Local variable 'binary' could be declared final
+src/main/java/dictu/password/generator/Password.java:221:	Local variable 'withoutComma' could be declared final
+src/main/java/dictu/password/generator/Password.java:237:	Local variable 'charInt' could be declared final
+src/main/java/dictu/password/generator/Password.java:238:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/dictu/password/generator/Password.java:249:	Found 'UR'-anomaly for variable 'c' (lines '249'-'252').
+src/main/java/dictu/password/generator/Password.java:250:	Local variable 'passwordString' could be declared final
+src/main/java/dictu/password/generator/Password.java:251:	Local variable 'c' could be declared final
+src/main/java/dictu/password/generator/Password.java:252:	Local variable 'item' could be declared final
+src/main/java/dictu/password/generator/Password.java:253:	Local variable 'hexString' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:12:	Header comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:12:	Possible God Class (WMC=54, ATFD=10, TCC=24.265%)
+src/main/java/dictu/password/generator/PasswordGenerator.java:12:	This class has too many methods, consider refactoring it.
+src/main/java/dictu/password/generator/PasswordGenerator.java:13:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:14:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:15:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:16:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:17:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:18:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:18:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/dictu/password/generator/PasswordGenerator.java:18:	Private field 'password' could be made final; it is only initialized in the declaration or constructor.
+src/main/java/dictu/password/generator/PasswordGenerator.java:19:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:19:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/dictu/password/generator/PasswordGenerator.java:19:	Private field 'box' could be made final; it is only initialized in the declaration or constructor.
+src/main/java/dictu/password/generator/PasswordGenerator.java:20:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:20:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/dictu/password/generator/PasswordGenerator.java:20:	Private field 'excluded' could be made final; it is only initialized in the declaration or constructor.
+src/main/java/dictu/password/generator/PasswordGenerator.java:21:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:21:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/dictu/password/generator/PasswordGenerator.java:21:	Private field 'duplicates' could be made final; it is only initialized in the declaration or constructor.
+src/main/java/dictu/password/generator/PasswordGenerator.java:22:	Field comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:22:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/dictu/password/generator/PasswordGenerator.java:22:	Private field 'secGenerator' could be made final; it is only initialized in the declaration or constructor.
+src/main/java/dictu/password/generator/PasswordGenerator.java:25:	Parameter 'length' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:25:	Public method and constructor comments are required
+src/main/java/dictu/password/generator/PasswordGenerator.java:46:	Parameter 'indexToAdd' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:48:	Local variable 'newChar' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:82:	Parameter 'charToDelete' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:94:	Local variable 'iterator' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:95:	Avoid variables with short names like c
+src/main/java/dictu/password/generator/PasswordGenerator.java:95:	Local variable 'c' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:105:	Found 'UR'-anomaly for variable 'c' (lines '105'-'108').
+src/main/java/dictu/password/generator/PasswordGenerator.java:107:	Local variable 'c' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:117:	Local variable 'iterator' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:118:	Avoid variables with short names like c
+src/main/java/dictu/password/generator/PasswordGenerator.java:118:	Local variable 'c' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:129:	Local variable 'iterator' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:130:	Avoid variables with short names like c
+src/main/java/dictu/password/generator/PasswordGenerator.java:130:	Local variable 'c' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:142:	Parameter 'forbiddenChar' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:167:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/dictu/password/generator/PasswordGenerator.java:167:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/dictu/password/generator/PasswordGenerator.java:170:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/dictu/password/generator/PasswordGenerator.java:170:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/dictu/password/generator/PasswordGenerator.java:185:	Parameter 'without' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:186:	Switch statements should have a default label
+src/main/java/dictu/password/generator/PasswordGenerator.java:211:	Comment is too large: Line too long
+src/main/java/dictu/password/generator/PasswordGenerator.java:216:	Parameter 'onlyThisType' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:217:	Switch statements should have a default label
+src/main/java/dictu/password/generator/PasswordGenerator.java:241:	Parameter 'indexToAdd' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:242:	Avoid using Literals in Conditional Statements
+src/main/java/dictu/password/generator/PasswordGenerator.java:243:	Found 'DD'-anomaly for variable 'generateSame' (lines '243'-'255').
+src/main/java/dictu/password/generator/PasswordGenerator.java:243:	Found 'DD'-anomaly for variable 'generateSame' (lines '243'-'260').
+src/main/java/dictu/password/generator/PasswordGenerator.java:244:	Found 'DD'-anomaly for variable 'generateOther' (lines '244'-'253').
+src/main/java/dictu/password/generator/PasswordGenerator.java:244:	Found 'DD'-anomaly for variable 'generateOther' (lines '244'-'258').
+src/main/java/dictu/password/generator/PasswordGenerator.java:245:	Local variable 'forbiddenChar' could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:247:	Avoid using final local variables, turn them into fields
+src/main/java/dictu/password/generator/PasswordGenerator.java:248:	Avoid using final local variables, turn them into fields
+src/main/java/dictu/password/generator/PasswordGenerator.java:248:	Found 'DU'-anomaly for variable 'twoTogether' (lines '248'-'266').
+src/main/java/dictu/password/generator/PasswordGenerator.java:257:	Useless parentheses.
+src/main/java/dictu/password/generator/PasswordGenerator.java:257:	Useless parentheses.
+src/main/java/dictu/password/generator/PasswordGenerator.java:268:	Comment is too large: Too many lines
+src/main/java/dictu/password/generator/PasswordGenerator.java:277:	Parameter 'charType' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:277:	Parameter 'forbiddenChar' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:277:	Parameter 'generateOther' is not assigned and could be declared final
+src/main/java/dictu/password/generator/PasswordGenerator.java:277:	Parameter 'generateSame' is not assigned and could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:5:	Avoid unused imports such as 'java.util.InputMismatchException'
+src/test/java/dictu/password/generator/PasswordTest.java:10:	No need to import a type that lives in the same package
+src/test/java/dictu/password/generator/PasswordTest.java:12:	Each class should declare at least one constructor
+src/test/java/dictu/password/generator/PasswordTest.java:12:	Header comments are required
+src/test/java/dictu/password/generator/PasswordTest.java:12:	This class has too many methods, consider refactoring it.
+src/test/java/dictu/password/generator/PasswordTest.java:14:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:15:	To avoid mistakes add a comment at the beginning of the testGenerateLength method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:15:	Unit tests should not contain more than 1 assert(s).
+src/test/java/dictu/password/generator/PasswordTest.java:16:	Local variable 'pwd' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:17:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:18:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:18:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/dictu/password/generator/PasswordTest.java:18:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/dictu/password/generator/PasswordTest.java:18:	Potential violation of Law of Demeter (object not created locally)
+src/test/java/dictu/password/generator/PasswordTest.java:22:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:23:	To avoid mistakes add a comment at the beginning of the testGetPassword method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:24:	Local variable 'pwd' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:25:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:26:	Potential violation of Law of Demeter (object not created locally)
+src/test/java/dictu/password/generator/PasswordTest.java:30:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:31:	To avoid mistakes add a comment at the beginning of the testAddThisChar method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:31:	Unit tests should not contain more than 1 assert(s).
+src/test/java/dictu/password/generator/PasswordTest.java:32:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:32:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:33:	Local variable 'thisChar' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:34:	Local variable 'otherChar' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:39:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:39:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/dictu/password/generator/PasswordTest.java:40:	Local variable 'otherActual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:40:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/dictu/password/generator/PasswordTest.java:41:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:42:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:46:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:47:	To avoid mistakes add a comment at the beginning of the testAddThisCharEmptyListThrowsException method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:47:	Unit tests should not contain more than 1 assert(s).
+src/test/java/dictu/password/generator/PasswordTest.java:48:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:48:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:49:	Local variable 'thisChar' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:51:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:61:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:62:	To avoid mistakes add a comment at the beginning of the testAreSameTypeTrue method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:63:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:63:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:64:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:65:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:66:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:67:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:68:	Local variable 'char4' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:69:	Local variable 'char5' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:78:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:79:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:83:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:84:	To avoid mistakes add a comment at the beginning of the testAreSameTypeFalse method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:85:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:85:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:86:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:87:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:88:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:89:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:90:	Local variable 'char4' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:91:	Local variable 'char5' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:100:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:101:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:105:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:106:	To avoid mistakes add a comment at the beginning of the testAreSameTypeZeros method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:106:	Unit tests should not contain more than 1 assert(s).
+src/test/java/dictu/password/generator/PasswordTest.java:107:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:107:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:108:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:109:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:110:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:116:	Local variable 'actual0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:117:	Local variable 'actual1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:119:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:120:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:123:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:124:	To avoid mistakes add a comment at the beginning of the testAreSameTypeEmptyListThrowsException method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:125:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:125:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:131:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:132:	To avoid mistakes add a comment at the beginning of the testLastIsDuplicateTrue method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:133:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:133:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:134:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:135:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:136:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:137:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:144:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:145:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:149:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:150:	To avoid mistakes add a comment at the beginning of the testLastIsDuplicateFalse method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:151:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:151:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:152:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:153:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:154:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:155:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:162:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:163:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:167:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:168:	To avoid mistakes add a comment at the beginning of the testLastIsDuplicateEmptyList method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:169:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:169:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:171:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:172:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:176:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:177:	To avoid mistakes add a comment at the beginning of the testGetCharType method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:177:	Unit tests should not contain more than 1 assert(s).
+src/test/java/dictu/password/generator/PasswordTest.java:178:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:178:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:179:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:180:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:181:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:182:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:189:	Local variable 'actual1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:190:	Local variable 'actual2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:191:	Local variable 'actual3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:193:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:194:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:195:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:199:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:200:	To avoid mistakes add a comment at the beginning of the testGetCharTypeEmptyListThrowsException method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:201:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:201:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:207:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:208:	To avoid mistakes add a comment at the beginning of the testIsSequenceLetterDownTrue method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:209:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:209:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:210:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:211:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:212:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:213:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:220:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:221:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:225:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:226:	To avoid mistakes add a comment at the beginning of the testIsSequenceLetterUpTrue method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:227:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:227:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:228:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:229:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:230:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:231:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:238:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:239:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:243:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:244:	To avoid mistakes add a comment at the beginning of the testIsSequenceEmptyList method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:245:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:245:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:247:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:248:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:252:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:253:	To avoid mistakes add a comment at the beginning of the testIsSequenceLetterFalse method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:254:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:254:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:255:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:256:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:257:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:258:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:265:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:266:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:270:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:271:	To avoid mistakes add a comment at the beginning of the testIsSequenceDigitDownTrue method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:272:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:272:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:273:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:274:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:275:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:276:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:283:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:284:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:288:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:289:	To avoid mistakes add a comment at the beginning of the testIsSequenceDigitUpTrue method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:290:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:290:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:291:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:292:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:293:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:294:	Local variable 'char3' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:301:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:302:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:306:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:307:	To avoid mistakes add a comment at the beginning of the testIsSequenceDigitFalse method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:308:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:308:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:309:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:310:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:315:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:316:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:320:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:321:	To avoid mistakes add a comment at the beginning of the testGetForbiddenCharDigitUp method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:322:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:322:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:323:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:324:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:329:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:330:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:334:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:335:	To avoid mistakes add a comment at the beginning of the testGetForbiddenCharDigitDown method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:336:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:336:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:337:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:338:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:343:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:344:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:348:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:349:	To avoid mistakes add a comment at the beginning of the testGetForbiddenCharLetterUp method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:350:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:350:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:351:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:352:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:357:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:358:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:362:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:363:	To avoid mistakes add a comment at the beginning of the testGetForbiddenCharLetterDown method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:364:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:364:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:365:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:366:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:371:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:372:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:376:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:377:	To avoid mistakes add a comment at the beginning of the testGetForbiddenCharNone method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:378:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:378:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:379:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:380:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:385:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:386:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:390:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:391:	To avoid mistakes add a comment at the beginning of the testGetForbiddenCharEmptyList method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:392:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:392:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:394:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:395:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:398:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:399:	To avoid mistakes add a comment at the beginning of the testToBinaryString method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:400:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:400:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:401:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:402:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:403:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:404:	Local variable 'expected' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:411:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:412:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:415:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:416:	To avoid mistakes add a comment at the beginning of the testToByteArray method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:417:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:417:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:418:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:419:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:420:	Local variable 'expected' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:425:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTest.java:429:	Use explicit scoping instead of the default package private level
+src/test/java/dictu/password/generator/PasswordTest.java:430:	To avoid mistakes add a comment at the beginning of the testToHexString method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTest.java:431:	Avoid variables with short names like pw
+src/test/java/dictu/password/generator/PasswordTest.java:431:	Local variable 'pw' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:432:	Local variable 'char0' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:433:	Local variable 'char1' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:434:	Local variable 'char2' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:435:	Local variable 'expected' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:442:	Local variable 'actual' could be declared final
+src/test/java/dictu/password/generator/PasswordTest.java:443:	JUnit assertions should include a message
+src/test/java/dictu/password/generator/PasswordTestHelper.java:9:	Header comments are required
+src/test/java/dictu/password/generator/PasswordTestHelper.java:10:	Field comments are required
+src/test/java/dictu/password/generator/PasswordTestHelper.java:10:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/dictu/password/generator/PasswordTestHelper.java:10:	Private field 'length' could be made final; it is only initialized in the declaration or constructor.
+src/test/java/dictu/password/generator/PasswordTestHelper.java:11:	Field comments are required
+src/test/java/dictu/password/generator/PasswordTestHelper.java:11:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/dictu/password/generator/PasswordTestHelper.java:11:	Private field 'passwordHelper' could be made final; it is only initialized in the declaration or constructor.
+src/test/java/dictu/password/generator/PasswordTestHelper.java:13:	Parameter 'length' is not assigned and could be declared final
+src/test/java/dictu/password/generator/PasswordTestHelper.java:13:	Public method and constructor comments are required
+src/test/java/dictu/password/generator/PasswordTestHelper.java:19:	Parameter 'thisChar' is not assigned and could be declared final
+src/test/java/dictu/password/generator/PasswordTestHelper.java:19:	To avoid mistakes add a comment at the beginning of the addThisChar method if you want a default access modifier
+src/test/java/dictu/password/generator/PasswordTestHelper.java:19:	Use explicit scoping instead of the default package private level

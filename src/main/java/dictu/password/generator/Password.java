@@ -90,7 +90,7 @@ public class Password {
 	 * @param index
 	 * @return String
 	 */
-	String getCharSort(int index) {
+	String getCharType(int index) {
 		char toCheck = password.get(index);
 
 		if (Character.isDigit(toCheck)) {

@@ -55,8 +55,9 @@ class PasswordTest {
 
 	}
 
-	// TODO addCharTest voor het adden van notAdmitted chars. zie list "excluded" in
-	// passwordGenerator.
+	// TODO make addCharTest. In case notAdmitted chars are being added (see List "excluded" in
+	// passwordGenerator).
+	
 
 	@Test
 	void testAreSameTypeTrue() {
@@ -186,9 +187,9 @@ class PasswordTest {
 		pw.addThisChar(char2);
 		pw.addThisChar(char3);
 
-		String actual1 = pw.getCharSort(1);
-		String actual2 = pw.getCharSort(2);
-		String actual3 = pw.getCharSort(3);
+		String actual1 = pw.getCharType(1);
+		String actual2 = pw.getCharType(2);
+		String actual3 = pw.getCharType(3);
 
 		assertEquals("Digit", actual1);
 		assertEquals("Other", actual2);
@@ -198,9 +199,9 @@ class PasswordTest {
 
 	@Test
 	void testGetCharTypeEmptyListThrowsException() {
-		Password pw = new Password(0);
+		Password pw = new Password(2);
 		assertThrows(IndexOutOfBoundsException.class, () -> {
-			pw.getCharSort(2);
+			pw.getCharType(2);
 		});
 	}
 
@@ -414,7 +415,7 @@ class PasswordTest {
 	
 	@Test
 	void testToByteArray() {
-		Password pw = new Password(3);
+		Password pw = new Password(2);
 		char char0 = 'z';
 		char char1 = 'L';
 		byte[] expected = {122, 76};
@@ -425,6 +426,23 @@ class PasswordTest {
 		assertArrayEquals(expected, pw.toByteArray());
 		
 		}
+	
+	@Test
+	void testToHexString() {
+		Password pw = new Password(3);
+		char char0 = '2';
+		char char1 = '/';
+		char char2 = 'Ö';
+		String expected = String.format("32\n2f\nd6\n");
+	
+				
+		pw.addThisChar(char0);
+		pw.addThisChar(char1);
+		pw.addThisChar(char2);
+		
+		String actual = pw.toHexString();
+		assertEquals(expected, actual);
+	}
 	
 	
 
