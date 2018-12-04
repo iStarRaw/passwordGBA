@@ -1,7 +1,5 @@
 package dictu.password;
 
-import java.util.Arrays;
-
 import dictu.password.generator.Password;
 
 /**

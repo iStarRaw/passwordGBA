@@ -17,8 +17,10 @@ public class Password {
 	private static final int MIN_LENGTH = 2;
 	private static final int THREE_TO_CHECK = 3;
 	private static final int SECOND_CHAR = 1;
+	private static List<Integer> excluded = new ArrayList<>();
 	private int length;
 	private List<Character> password;
+	
 
 	public Password(int length) {
 		this.length = length;
@@ -33,6 +35,7 @@ public class Password {
 	 */
 	public static Password generate(int length) {
 		PasswordGenerator pg = new PasswordGenerator(length);
+		excluded = pg.getExcluded();
 		return pg.getPassword();
 	}
 
@@ -42,6 +45,9 @@ public class Password {
 	 * @param thisChar
 	 */
 	void addThisChar(char thisChar) throws PasswordException, InputMismatchException {
+		if (excluded.contains((int)thisChar)) {
+			throw new InputMismatchException();
+		}
 		if (password.size() >= this.length) {
 			throw new PasswordException("Password already has the desired length");
 		}

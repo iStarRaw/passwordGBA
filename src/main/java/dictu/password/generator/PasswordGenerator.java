@@ -36,6 +36,10 @@ public class PasswordGenerator {
 
 		createPassword();
 	}
+	
+	public List<Integer> getExcluded() {
+		return excluded;
+	}
 
 	/**
 	 * Admitted char will be randomly generated and added to the given index in the
@@ -46,7 +50,6 @@ public class PasswordGenerator {
 	private void addChar(int indexToAdd) throws InputMismatchException {
 		makeSelection(indexToAdd);
 		char newChar = generateChar();
-		//TODO convert to hexString to see if it is admitted
 		password.addThisChar(newChar);
 
 	}

@@ -55,9 +55,17 @@ class PasswordTest {
 
 	}
 
-	// TODO make addCharTest. In case notAdmitted chars are being added (see List "excluded" in
-	// passwordGenerator).
-	
+	@Test
+	void testAddProhibittedCharThrowsException() {
+		Password pw = new Password(1);
+		char thisChar = '0';
+
+		assertNotNull(pw);
+		assertThrows(InputMismatchException.class, () -> {
+			pw.addThisChar(thisChar);
+		});
+
+	}
 
 	@Test
 	void testAreSameTypeTrue() {
@@ -104,24 +112,6 @@ class PasswordTest {
 	}
 
 	@Test
-	void testAreSameTypeZeros() {
-		Password pw = new Password(3);
-		char char0 = '0';
-		char char1 = '0';
-		char char2 = '0';
-
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-
-		boolean actual0 = pw.areSameType(2);
-		boolean actual1 = pw.areSameType(3);
-
-		assertTrue(actual0);
-		assertTrue(actual1);
-	}
-
-	@Test
 	void testAreSameTypeEmptyListThrowsException() {
 		Password pw = new Password(0);
 		assertThrows(IndexOutOfBoundsException.class, () -> {
@@ -133,7 +123,7 @@ class PasswordTest {
 	void testLastIsDuplicateTrue() {
 		Password pw = new Password(4);
 		char char0 = 'k';
-		char char1 = '0';
+		char char1 = '2';
 		char char2 = 'a';
 		char char3 = 'a';
 
@@ -178,7 +168,7 @@ class PasswordTest {
 	void testGetCharType() {
 		Password pw = new Password(4);
 		char char0 = 'k';
-		char char1 = '0';
+		char char1 = '1';
 		char char2 = '@';
 		char char3 = 'a';
 
@@ -209,7 +199,7 @@ class PasswordTest {
 	void testIsSequenceLetterDownTrue() {
 		Password pw = new Password(4);
 		char char0 = 'k';
-		char char1 = '0';
+		char char1 = '1';
 		char char2 = 'd';
 		char char3 = 'c';
 
@@ -227,7 +217,7 @@ class PasswordTest {
 	void testIsSequenceLetterUpTrue() {
 		Password pw = new Password(4);
 		char char0 = 'k';
-		char char1 = '0';
+		char char1 = '1';
 		char char2 = 'a';
 		char char3 = 'b';
 
@@ -254,7 +244,7 @@ class PasswordTest {
 	void testIsSequenceLetterFalse() {
 		Password pw = new Password(4);
 		char char0 = 'k';
-		char char1 = '0';
+		char char1 = '1';
 		char char2 = 's';
 		char char3 = 'c';
 
@@ -272,7 +262,7 @@ class PasswordTest {
 	void testIsSequenceDigitDownTrue() {
 		Password pw = new Password(4);
 		char char0 = 'k';
-		char char1 = '0';
+		char char1 = '1';
 		char char2 = '4';
 		char char3 = '3';
 
@@ -290,7 +280,7 @@ class PasswordTest {
 	void testIsSequenceDigitUpTrue() {
 		Password pw = new Password(4);
 		char char0 = 'k';
-		char char1 = '0';
+		char char1 = '2';
 		char char2 = '6';
 		char char3 = '7';
 
