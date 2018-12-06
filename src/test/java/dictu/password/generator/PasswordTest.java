@@ -2,11 +2,8 @@ package dictu.password.generator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.InputMismatchException;
-
 import org.junit.jupiter.api.Test;
 
-import dictu.password.exception.PasswordException;
 import dictu.password.generator.Password;
 
 class PasswordTest {
@@ -33,37 +30,13 @@ class PasswordTest {
 		char thisChar = 'k';
 		char otherChar = '1';
 
-		pw.addThisChar(thisChar);
-		pw.addThisChar(otherChar);
+		pw.addAdmitted(thisChar);
+		pw.addAdmitted(otherChar);
 
 		char actual = pw.getPassword().get(0);
 		char otherActual = pw.getPassword().get(1);
 		assertEquals(thisChar, actual);
 		assertEquals(otherChar, otherActual);
-
-	}
-
-	@Test
-	void testAddThisCharEmptyListThrowsException() {
-		Password pw = new Password(0);
-		char thisChar = 'k';
-
-		assertNotNull(pw);
-		assertThrows(PasswordException.class, () -> {
-			pw.addThisChar(thisChar);
-		});
-
-	}
-
-	@Test
-	void testAddProhibittedCharThrowsException() {
-		Password pw = new Password(1);
-		char thisChar = '0';
-
-		assertNotNull(pw);
-		assertThrows(InputMismatchException.class, () -> {
-			pw.addThisChar(thisChar);
-		});
 
 	}
 
@@ -77,12 +50,12 @@ class PasswordTest {
 		char char4 = '4';
 		char char5 = '1';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
-		pw.addThisChar(char4);
-		pw.addThisChar(char5);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
+		pw.addAdmitted(char4);
+		pw.addAdmitted(char5);
 
 		boolean actual = pw.areSameType(3);
 		assertTrue(actual);
@@ -99,12 +72,12 @@ class PasswordTest {
 		char char4 = '4';
 		char char5 = ';';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
-		pw.addThisChar(char4);
-		pw.addThisChar(char5);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
+		pw.addAdmitted(char4);
+		pw.addAdmitted(char5);
 
 		boolean actual = pw.areSameType(3);
 		assertFalse(actual);
@@ -127,10 +100,10 @@ class PasswordTest {
 		char char2 = 'a';
 		char char3 = 'a';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
 
 		boolean actual = pw.lastIsDuplicate();
 		assertTrue(actual);
@@ -145,10 +118,10 @@ class PasswordTest {
 		char char2 = '@';
 		char char3 = 'a';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
 
 		boolean actual = pw.lastIsDuplicate();
 		assertFalse(actual);
@@ -172,10 +145,10 @@ class PasswordTest {
 		char char2 = '@';
 		char char3 = 'a';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
 
 		String actual1 = pw.getCharType(1);
 		String actual2 = pw.getCharType(2);
@@ -203,10 +176,10 @@ class PasswordTest {
 		char char2 = 'd';
 		char char3 = 'c';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
 
 		boolean actual = pw.isSequence();
 		assertTrue(actual);
@@ -221,10 +194,10 @@ class PasswordTest {
 		char char2 = 'a';
 		char char3 = 'b';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
 
 		boolean actual = pw.isSequence();
 		assertTrue(actual);
@@ -248,10 +221,10 @@ class PasswordTest {
 		char char2 = 's';
 		char char3 = 'c';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
 
 		boolean actual = pw.isSequence();
 		assertFalse(actual);
@@ -266,10 +239,10 @@ class PasswordTest {
 		char char2 = '4';
 		char char3 = '3';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
 
 		boolean actual = pw.isSequence();
 		assertTrue(actual);
@@ -284,10 +257,10 @@ class PasswordTest {
 		char char2 = '6';
 		char char3 = '7';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
-		pw.addThisChar(char3);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
+		pw.addAdmitted(char3);
 
 		boolean actual = pw.isSequence();
 		assertTrue(actual);
@@ -300,8 +273,8 @@ class PasswordTest {
 		char char0 = '2';
 		char char1 = '7';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
 
 		boolean actual = pw.isSequence();
 		assertFalse(actual);
@@ -314,8 +287,8 @@ class PasswordTest {
 		char char0 = '2';
 		char char1 = '3';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
 
 		char actual = pw.getForbiddenChar();
 		assertEquals('4', actual);
@@ -328,8 +301,8 @@ class PasswordTest {
 		char char0 = '4';
 		char char1 = '3';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
 
 		char actual = pw.getForbiddenChar();
 		assertEquals('2', actual);
@@ -342,8 +315,8 @@ class PasswordTest {
 		char char0 = 'a';
 		char char1 = 'b';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
 
 		char actual = pw.getForbiddenChar();
 		assertEquals('c', actual);
@@ -356,8 +329,8 @@ class PasswordTest {
 		char char0 = 'z';
 		char char1 = 'y';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
 
 		char actual = pw.getForbiddenChar();
 		assertEquals('x', actual);
@@ -370,8 +343,8 @@ class PasswordTest {
 		char char0 = 'k';
 		char char1 = 'r';
 
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
 
 		char actual = pw.getForbiddenChar();
 		assertEquals(0, actual);
@@ -395,9 +368,9 @@ class PasswordTest {
 		String expected = "1101011, 1110010, 11110111";
 	
 				
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
 		
 		String actual = pw.toBinaryString();
 		assertEquals(expected, actual);
@@ -410,8 +383,8 @@ class PasswordTest {
 		char char1 = 'L';
 		byte[] expected = {122, 76};
 		
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
 		
 		assertArrayEquals(expected, pw.toByteArray());
 		
@@ -426,9 +399,9 @@ class PasswordTest {
 		String expected = String.format("32\n2f\nd6\n");
 	
 				
-		pw.addThisChar(char0);
-		pw.addThisChar(char1);
-		pw.addThisChar(char2);
+		pw.addAdmitted(char0);
+		pw.addAdmitted(char1);
+		pw.addAdmitted(char2);
 		
 		String actual = pw.toHexString();
 		assertEquals(expected, actual);

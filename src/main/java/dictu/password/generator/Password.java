@@ -1,10 +1,7 @@
 package dictu.password.generator;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
-
-import dictu.password.exception.PasswordException;
 
 /**
  * Class that holds the password in the form of a Character List. It has methods
@@ -17,10 +14,8 @@ public class Password {
 	private static final int MIN_LENGTH = 2;
 	private static final int THREE_TO_CHECK = 3;
 	private static final int SECOND_CHAR = 1;
-	private static List<Integer> excluded = new ArrayList<>();
 	private int length;
 	private List<Character> password;
-	
 
 	public Password(int length) {
 		this.length = length;
@@ -35,22 +30,15 @@ public class Password {
 	 */
 	public static Password generate(int length) {
 		PasswordGenerator pg = new PasswordGenerator(length);
-		excluded = pg.getExcluded();
 		return pg.getPassword();
 	}
 
 	/**
-	 * Adds a char to the password List.
+	 * Adds an admitted char to the password List.
 	 * 
 	 * @param thisChar
 	 */
-	void addThisChar(char thisChar) throws PasswordException, InputMismatchException {
-		if (excluded.contains((int)thisChar)) {
-			throw new InputMismatchException();
-		}
-		if (password.size() >= this.length) {
-			throw new PasswordException("Password already has the desired length");
-		}
+	void addAdmitted(char thisChar) {
 		this.password.add(thisChar);
 
 	}
@@ -129,8 +117,8 @@ public class Password {
 			return 0;
 		}
 
-		int lastCharInt = (int) password.get(password.size() - 1);
-		int beforeLastCharInt = (int) password.get(password.size() - 2);
+		final int lastCharInt = (int) password.get(password.size() - 1);
+		final int beforeLastCharInt = (int) password.get(password.size() - 2);
 
 		if (lastCharInt == beforeLastCharInt + 1) {
 
@@ -176,8 +164,8 @@ public class Password {
 			return false;
 		}
 
-		char lastValue = password.get(password.size() - 1);
-		char beforeLastValue = password.get(password.size() - 2);
+		final char lastValue = password.get(password.size() - 1);
+		final char beforeLastValue = password.get(password.size() - 2);
 
 		if (!Character.isAlphabetic(lastValue) && !Character.isDigit(lastValue)) {
 			return false;
@@ -202,7 +190,7 @@ public class Password {
 		}
 
 		final int lastIndex = password.size() - 1;
-		char lastValue = password.get(lastIndex);
+		final char lastValue = password.get(lastIndex);
 
 		for (int i = 0; i < password.size() - 1; i++) {
 			if (Character.compare(password.get(i), lastValue) == 0) {
@@ -226,7 +214,7 @@ public class Password {
 		}
 		int withoutComma = binaryString.length() - 2;
 		binaryString.setLength(withoutComma);
-		
+
 		return binaryString.toString();
 
 	}

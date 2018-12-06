@@ -40,17 +40,24 @@ public class PasswordGenerator {
 	public List<Integer> getExcluded() {
 		return excluded;
 	}
-
+	
 	/**
 	 * Admitted char will be randomly generated and added to the given index in the
 	 * password List.
 	 * 
 	 * @param indexToAdd
 	 */
-	private void addChar(int indexToAdd) throws InputMismatchException {
+	private void addChar(int indexToAdd) throws PasswordException, InputMismatchException {
 		makeSelection(indexToAdd);
 		char newChar = generateChar();
-		password.addThisChar(newChar);
+		
+		if (excluded.contains((int)newChar)) {
+			throw new InputMismatchException();
+		}
+		if (password.getPassword().size() >= password.getLength()) {
+			throw new PasswordException("Password already has the desired length");
+		}
+		password.addAdmitted(newChar);
 
 	}
 
@@ -245,19 +252,20 @@ public class PasswordGenerator {
 		if (indexToAdd >= 2) {
 			boolean generateSame = false;
 			boolean generateOther = false;
-			char forbiddenChar = '\0';
 			final String lastCharName = password.getCharType(indexToAdd - 1);
 			final int threeTogether = 3;
 			final int twoTogether = 2;
 
+			char forbiddenChar = calculateForbiddenChar();
+			
 			checkDuplicates();
-
+			
 			if (password.areSameType(threeTogether)) {
 				generateOther = true;
 			} else if (password.areSameType(twoTogether) && !password.areSameType(threeTogether)) {
 				generateSame = true;
 			} else if (indexToAdd == password.getLength() - 1) {
-				if ((!password.areSameType(twoTogether)) || (password.areSameType(threeTogether))) {
+				if (!password.areSameType(twoTogether) || password.areSameType(threeTogether)) {
 					generateOther = true;
 				} else if (password.areSameType(twoTogether)) {
 					generateSame = true;
@@ -266,6 +274,14 @@ public class PasswordGenerator {
 			prepareBox(lastCharName, generateSame, generateOther, forbiddenChar);
 
 		}
+	}
+
+	private char calculateForbiddenChar() {
+		char forbiddenChar = '\0';
+		if (password.isSequence()) {
+			forbiddenChar = password.getForbiddenChar();
+		}
+		return forbiddenChar;
 	}
 
 	/**
