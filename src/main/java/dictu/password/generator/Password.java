@@ -21,6 +21,14 @@ public class Password {
 		this.length = length;
 		this.password = new ArrayList<>();
 	}
+	
+	public int getLength() {
+		return length;
+	}
+
+	public List<Character> getPassword() {
+		return password;
+	}
 
 	/**
 	 * Password will be generated with the length given.
@@ -129,14 +137,6 @@ public class Password {
 		}
 
 		return 0;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
-	public List<Character> getPassword() {
-		return password;
 	}
 
 	/**
