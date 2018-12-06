@@ -16,7 +16,7 @@ public class PasswordGenerator {
 	private static final String LETTER = "Letter";
 	private static final String OTHER = "Other";
 	private Password password;
-	private List<Character> box;
+	private List<Character> admitted;
 	private List<Integer> excluded;
 	private List<Character> duplicates;
 	private SecureRandom secGenerator = new SecureRandom();
@@ -28,11 +28,11 @@ public class PasswordGenerator {
 		}
 		
 		password = new Password(length);
-		box = new ArrayList<>();
+		admitted = new ArrayList<>();
 		duplicates = new ArrayList<>();
 		excluded = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
 				24, 25, 26, 27, 28, 29, 30, 31, 32, 48, 127, 129, 141, 143, 144, 157, 160, 173);
-		fillBox();
+		fillAdmitted();
 
 		createPassword();
 	}
@@ -90,9 +90,9 @@ public class PasswordGenerator {
 	 * @param charToDelete
 	 */
 	private void deleteCharFromBox(char charToDelete) {
-		for (int i = 0; i < this.box.size(); i++) {
-			if (box.get(i) == charToDelete) {
-				box.remove(box.remove(i));
+		for (int i = 0; i < this.admitted.size(); i++) {
+			if (admitted.get(i) == charToDelete) {
+				admitted.remove(admitted.remove(i));
 			}
 		}
 	}
@@ -101,7 +101,7 @@ public class PasswordGenerator {
 	 * Deletes all digits from the list.
 	 */
 	private void deleteDigits() {
-		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
+		for (Iterator<Character> iterator = admitted.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
 			if (Character.isDigit(c)) {
 				iterator.remove();
@@ -124,7 +124,7 @@ public class PasswordGenerator {
 	 * Deletes all letters from the list.
 	 */
 	private void deleteLetters() {
-		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
+		for (Iterator<Character> iterator = admitted.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
 			if (Character.isLetter(c)) {
 				iterator.remove();
@@ -136,7 +136,7 @@ public class PasswordGenerator {
 	 * Deletes all "other" (= no digit, no letter) from the list.
 	 */
 	private void deleteOther() {
-		for (Iterator<Character> iterator = box.iterator(); iterator.hasNext();) {
+		for (Iterator<Character> iterator = admitted.iterator(); iterator.hasNext();) {
 			char c = iterator.next();
 			if (!Character.isDigit(c) && !Character.isAlphabetic(c)) {
 				iterator.remove();
@@ -156,14 +156,14 @@ public class PasswordGenerator {
 	}
 
 	/**
-	 * Character List (box) is filled with initial Characters (Extended ASCII).
+	 * Character List, admitted, is filled with initial Characters (Extended ASCII).
 	 * https://www.ascii-code.com. Excluded are: 0 to 32 inclusive, 48, 127, 129,
 	 * 141, 143, 144, 157, 160, 173.
 	 */
-	private void fillBox() {
+	private void fillAdmitted() {
 		for (int i = 1; i < MAX_DECIMAL_VALUE; i++) {
 			if (!excluded.contains(i)) {
-				box.add((char) i);
+				admitted.add((char) i);
 			}
 		}
 	}
@@ -174,12 +174,12 @@ public class PasswordGenerator {
 	 * @return char
 	 */
 	private char generateChar() {
-		int index = secGenerator.nextInt(this.box.size());
+		int index = secGenerator.nextInt(this.admitted.size());
 
-		while (index < 0 || index > this.box.size()) {
-			index = secGenerator.nextInt(this.box.size());
+		while (index < 0 || index > this.admitted.size()) {
+			index = secGenerator.nextInt(this.admitted.size());
 		}
-		return this.box.get(index);
+		return this.admitted.get(index);
 
 	}
 
@@ -192,7 +192,7 @@ public class PasswordGenerator {
 	 * 
 	 * @param without
 	 */
-	private void makeBoxWithout(String without) {
+	private void makeListWithoutType(String without) {
 		switch (without) {
 		case DIGIT:
 			deleteDigits();
@@ -212,9 +212,9 @@ public class PasswordGenerator {
 	/**
 	 * Clears the existing list and fills it with the initial Characters.
 	 */
-	private void makeFullBox() {
-		this.box.clear();
-		fillBox();
+	private void returnToStartList() {
+		this.admitted.clear();
+		fillAdmitted();
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class PasswordGenerator {
 	 * 
 	 * @param onlyThisType
 	 */
-	private void makeSameTypeBox(String onlyThisType) {
+	private void makeListSameType(String onlyThisType) {
 		switch (onlyThisType) {
 		case DIGIT:
 			deleteLetters();
@@ -271,7 +271,7 @@ public class PasswordGenerator {
 					generateSame = true;
 				}
 			}
-			prepareBox(lastCharName, generateSame, generateOther, forbiddenChar);
+			prepareAdmitted(lastCharName, generateSame, generateOther, forbiddenChar);
 
 		}
 	}
@@ -286,23 +286,23 @@ public class PasswordGenerator {
 
 	/**
 	 * Determines if characters are not allowed to be generated. Starts with a full
-	 * character box and deletes the prohibited characters.
+	 * character list and deletes the prohibited characters.
 	 * 
 	 * @param charType
 	 * @param generateSame
 	 * @param generateOther
 	 * @param forbiddenChar
 	 */
-	private void prepareBox(String charType, boolean generateSame, boolean generateOther, char forbiddenChar) {
-		makeFullBox();
+	private void prepareAdmitted(String charType, boolean generateSame, boolean generateOther, char forbiddenChar) {
+		returnToStartList();
 
 		deleteDoubles();
 		deleteSequenceChar(forbiddenChar);
 
 		if (generateSame) {
-			makeSameTypeBox(charType);
+			makeListSameType(charType);
 		} else if (generateOther) {
-			makeBoxWithout(charType);
+			makeListWithoutType(charType);
 		}
 	}
 
